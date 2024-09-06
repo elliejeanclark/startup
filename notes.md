@@ -15,3 +15,22 @@ The less than sign makes quotes.
 ## Quoting Code
 you can call out code with single back ticks. `like this.`  
 However I can also just be fancy and do a bo of code with three back ticks before and after. ```like this.```
+## Color Models
+call out colors within a sentence by using back ticks. `#000000`  
+Hex, RGB, and HSL work. 
+## Links
+Links work by wrapping the link text in straight brackets, and then the WRL in parentheses. [Click Me](https://www.youtube.com/watch?v=dQw4w9WgXcQ)
+Relative links also work in the same way. 
+## Images
+add an ! and then wrap the alt text in square brackets and then the image link in parentheses to add images.
+## Lists
+Make unordered lists by preceding one or more lines of text with a dash, star, or plus.  
+To order the list, precede each line with a number.  
+Nested lists work by indenting one or more items below another item. Then add a list marker star or dash.  
+Task listsl preface the list items with a hyphen and a space then square brackets. To mark the task as complete, put an x in the braket. To escape the parentheses at the beginng of a task if you are adding them, you will need to use the '\' character.
+## Emojis
+Emojis are fun and you can use them with the : symbols surrounding the name of the emoji. :grin: :poop: :cat:
+## MISC
+Paragraphs are creating by leaving a blank line in between lines of text.   
+New lines are created by two or more spaces after the line and then hitting enter.  
+Footnotes have the square brackets, and then the carrot symbol with the number of the footnote. Then at the bottom of the document you add the cooresponding foot note symbol and a :.
