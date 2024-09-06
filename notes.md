@@ -1,4 +1,5 @@
 # September Notes
+If you are looking for the read me file, then [Click on me](/README.md)
 ##  Headers
 Headers have a pound symbol before them. Each following pound makes a smaller header. You can have up to six.  
 ## Styling Text
