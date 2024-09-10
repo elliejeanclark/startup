@@ -29,7 +29,7 @@ add an ! and then wrap the alt text in square brackets and then the image link i
 Make unordered lists by preceding one or more lines of text with a dash, star, or plus.  
 To order the list, precede each line with a number.  
 Nested lists work by indenting one or more items below another item. Then add a list marker star or dash.  
-Task listsl preface the list items with a hyphen and a space then square brackets. To mark the task as complete, put an x in the braket. To escape the parentheses at the beginng of a task if you are adding them, you will need to use the '\' character.
+Task lists preface the list items with a hyphen and a space then square brackets. To mark the task as complete, put an x in the braket. To escape the parentheses at the beginng of a task if you are adding them, you will need to use the '\' character.
 ### Emojis
 Emojis are fun and you can use them with the : symbols surrounding the name of the emoji. :grin: :poop: :cat:
 ### MISC
