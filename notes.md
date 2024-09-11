@@ -42,3 +42,13 @@ The laptop connects through wifi to an edge browser. The wifi is a physical laye
 The IP is like the post office. It has shipping labels. However, it is also unreliable. They connect routers in the internet.  
 The TCP is more reliable. It waits for agkowledgement before sending a package.  
 DNS converts a human readable name into an IP address.
+## Creating an AWS Instance  
+### Access
+My public IP address is 54.208.80.51  
+The link is https://54.208.80.51 [link](https://54.208.80.51)
+The command for accessing my server from my terminal is `ssh -i ~/Documents/CS260/inclass.pem ubuntu@54.208.80.51`  
+### What I learned
+Creating an instance is easy, but managing it is diffucult. If you are getting the "permissions are too open" error, you can run the command `chmod 600 CS260/inclass.pem` which will override it. This is safe in my case because *I created* the server and the instance.  
+If you aren't going to keep your instance/server running all the time, you will want either never shut down your server, or create an elastic IP address so that you can keep your same IP address.  
+The Caddyfile is for the configuration of the gateway of your webservices. The public_html directory contains all the static files you are giving to Cady when used as a web service. The services directory is the place where you install all web services once built.  
+The size of the server will change how much traffic your address can run as well as they types of things it can do. I am using a t2.micro

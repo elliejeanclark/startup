@@ -21,4 +21,4 @@ I will utilize the required techologies in these ways:
 * *React -* This will provide the ability for my application to compartmentalize my users reviews and ratings of other reivews.
 * *Service -* I will generate a meme to display once a user has successfully published a review as a fun touch and reward. I will also be using this to submit ratings on other reviews.
 * *Authentication and Database Data -* This will store users past reviews in the database as well as help users log in and register them in the firstplace. You won't be able to rate another reivew unless you have created an account. Credentials will be securely stored.
-* *WebSocket -* This will be realtime updates from the ratings on other reviews. 
+* *WebSocket -* This will be realtime updates from the ratings on other reviews.
