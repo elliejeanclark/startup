@@ -45,7 +45,7 @@ DNS converts a human readable name into an IP address.
 ## Creating an AWS Instance  
 ### Access
 My public IP address is 54.208.80.51  
-The link is https://54.208.80.51 [link](https://54.208.80.51)
+The link is http://54.208.80.51 [link](http://54.208.80.51)
 The command for accessing my server from my terminal is `ssh -i ~/Documents/CS260/inclass.pem ubuntu@54.208.80.51`  
 ### What I learned
 Creating an instance is easy, but managing it is diffucult. If you are getting the "permissions are too open" error, you can run the command `chmod 600 CS260/inclass.pem` which will override it. This is safe in my case because *I created* the server and the instance.  
