@@ -57,3 +57,37 @@ The size of the server will change how much traffic your address can run as well
 Through AWS I purchased the domain ellie-jean.com It was $14.00. I also went and added records to my domain so that the domain name points and takes the user to my IP address. After this was successful, I can now reach my website by going to http://ellie-jean.com  
 ### Making it Secure
 using the command `vi Caddyfile` and then pressing the "i" key to enter insert mode I edited the Caddyfile so that now the requests go through a web certificate making it so that the person using my webiste knows that it is me they are connecting to. Pressing the escape key followed `:wq` saved my changes. I then used the command `sudo service caddy restart` to restart caddy and make sure the changes took effect. Now my website uses https so the link is ***now*** https://ellie-jean.com
+## The Console
+### Viewing the File System
+- **pwd**  - shows you what directory you are in.
+- **ls** - shows what files are in the current directory. the `-la` addition shows you all files including hidden ones. the `-l` shows you premissions. 
+### Basic Commands
+* **echo** - Output the parameters of the command
+* **cd** - Change directory
+* **mkdir** - Make directory
+* **rmdir** - Remove directory
+* **rm** - Remove file(s)
+* **mv** - Move file(s)
+* **cp** - Copy files
+* **ls** - List files
+* **curl** - Command line client URL browser
+* **grep** - Regular expression search
+* **find** - Find files
+* **top** - View running processes with CPU and memory usage
+* **df** - View disk statistics
+* **cat** - Output the contents of a file
+* **less** - Interactively output the contents of a file
+* **wc** - Count the words in a file
+* **ps** - View the currently running processes
+* **kill** - Kill a currently running process
+* **sudo** - Execute a command as a super user (admin)
+* **ssh** - Create a secure shell on a remote computer
+* **scp** - Securely copy files to a remote computer
+* **history** - Show the history of commands
+* **ping** - Check if a website is up
+* **tracert** - Trace the connections to a website
+* **dig** - Show the DNS information for a domain
+* **man** - Look up a command in the manual
+## HTML
+### Elements and Tags
+Tags designate what type of text or element your text should be. For example the p tag means that the text that is wrapped in that tag is a paragraph element. Tags are creates with the less than and greater than symbols before and after the tag. The ending tag will have a forward slash / before its name.
