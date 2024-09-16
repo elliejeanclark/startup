@@ -60,7 +60,7 @@ using the command `vi Caddyfile` and then pressing the "i" key to enter insert m
 ## The Console
 ### Viewing the File System
 - **pwd**  - shows you what directory you are in.
-- **ls** - shows what files are in the current directory. the `-la` addition shows you all files including hidden ones. the `-l` shows you premissions. 
+- **ls** - shows what files are in the current directory. the `-la` addition shows you all files including hidden ones. the `-l` shows you premissions. The `-lh` will show you human readable information.
 ### Basic Commands
 * **echo** - Output the parameters of the command
 * **cd** - Change directory
@@ -88,6 +88,10 @@ using the command `vi Caddyfile` and then pressing the "i" key to enter insert m
 * **tracert** - Trace the connections to a website
 * **dig** - Show the DNS information for a domain
 * **man** - Look up a command in the manual
+### More information
+The | symbol takes the output from the command on the left and pass it to the command on the right.
+The > - symbols Redirect output to a file. Overwrites the file if it exists
+The >> - symbols Redirect output to a file. Appends if the file exists
 ## HTML
 ### Elements and Tags
 Tags designate what type of text or element your text should be. For example the p tag means that the text that is wrapped in that tag is a paragraph element. Tags are creates with the less than and greater than symbols before and after the tag. The ending tag will have a forward slash / before its name.
