@@ -92,6 +92,49 @@ using the command `vi Caddyfile` and then pressing the "i" key to enter insert m
 The | symbol takes the output from the command on the left and pass it to the command on the right.
 The > - symbols Redirect output to a file. Overwrites the file if it exists
 The >> - symbols Redirect output to a file. Appends if the file exists
-## HTML
+## HTML Basics
 ### Elements and Tags
-Tags designate what type of text or element your text should be. For example the p tag means that the text that is wrapped in that tag is a paragraph element. Tags are creates with the less than and greater than symbols before and after the tag. The ending tag will have a forward slash / before its name.
+Tags designate what type of text or element your text should be. For example the p tag means that the text that is wrapped in that tag is a paragraph element. Tags are creates with the less than and greater than symbols before and after the tag. The ending tag will have a forward slash / before its name.  
+Common Elements:
+* html - The page container
+* head - Header information
+* title - Title of the page
+* meta - Metadata for the page such as character set or viewport settings
+* script - JavaScript reference. Either a external reference, or inline
+* include - External content reference
+* body - The entire content body of the page
+* header - Header of the main content
+* footer - Footer of the main content
+* nav - Navigational inputs
+* main - Main content of the page
+* section - A section of the main content
+* aside - Aside content from the main content
+* div - A block division of content
+* span - An inline span of content
+* h<1-9> - Text heading. From h1, the highest level, down to h9, the lowest level
+* p - A paragraph of text
+* b - Bring attention
+* table - Table
+* tr - Table row
+* th - Table header
+* td - Table data
+* ol,ul - Ordered or unordered list
+* li - List item
+* a - Anchor the text to a hyperlink
+* img - Graphical image reference
+* dialog - Interactive component such as a confirmation
+* form - A collection of user input
+* input - User input field
+* audio - Audio content
+* video - Video content
+* svg - Scalable vector graphic content
+* iframe - Inline frame of another HTML page
+### Attributes
+Attributes describe the specific details of the element. Examples include id and class. They are written inside the element tag after the tag name and before the closing greater than sign. Single or double quotes are used.
+### Hyperlinks
+The ability to move from one page to another. Hyperlinks are represented with the an anchor element (a) and has an attribute containing the address of the hyperlink reference (href).
+### Other things of Import
+HTML defines a header `<!Doctype html>` that tells the broswer the type and version of the document. Always include this at the top of the HTML file.  
+Comments: `<!--my comment here-->`
+Special characters need entity syntax because they have special meaning in HTML.  
+By default a web server displays the HTML file named index.html when a specific request is not made.
