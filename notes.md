@@ -130,7 +130,7 @@ Common Elements:
 * svg - Scalable vector graphic content
 * iframe - Inline frame of another HTML page
 ### Attributes
-Attributes describe the specific details of the element. Examples include id and class. They are written inside the element tag after the tag name and before the closing greater than sign. Single or double quotes are used.
+Attributes describe the specific details of the element. Examples include id and class. They are written inside the element tag after the tag name and before the closing greater than sign. Single or double quotes are used. Remember to use the equal sign and not the colon when deliminating what an attribute is. 
 ### Hyperlinks
 The ability to move from one page to another. Hyperlinks are represented with the an anchor element (a) and has an attribute containing the address of the hyperlink reference (href).
 ### Other things of Import
@@ -138,3 +138,24 @@ HTML defines a header `<!Doctype html>` that tells the broswer the type and vers
 Comments: `<!--my comment here-->`
 Special characters need entity syntax because they have special meaning in HTML.  
 By default a web server displays the HTML file named index.html when a specific request is not made.
+## HTML structure elements
+HTML provides structure and content to a web application.
+A Block element is supposed to be a distinct block in the flow of the content structre. An inline element is meant to be inline with the content flow of a block element. 
+## HTML Input
+### Input Elements
+* form - Input container and submission: <form action="form.html" method="post">
+* fieldset - Labeled input grouping: <fieldset> ... </fieldset>
+* input - Multiple types of user input: <input type="" />
+    - Inputs can have multiple types. Some common ones include text, password, email, tel, url, number, checkbox, radio (exclusive selection ie which of the following is your favorite of these three options), range, date, datetime-local, month, week, color, file, and submit.
+    - Inputs also have some common elements. These include name, disabled (which makes it so the user can't interact with the input), value (initial value), and required (makes it so you have to submit something, a value is required).
+* select - Selection dropdown: <select><option>1</option></select>
+* optgroup - Grouped selection dropdown: <optgroup><option>1</option></optgroup>
+* option - Selection option: <option selected>option2</option>
+* textarea - Multiline text input: <textarea></textarea>
+* label - Individual input label: <label for="range">Range: </label>
+* output - Output of input: <output for="range">0</output>
+* meter - Display value with a known range: <meter min="0" max="100" value="50"></meter>
+### Input Validation
+A lot of inputs have validation, which means that only certain things are allowed to be inputed.  
+The pattern attribute works with the following elements: text, search, url, tel, email, and password. The pattern element creates a regular expression that must match for the input to be valid.  
+Input Validation will also be a big part of javascript. CSS will provide feedback early on to show the user if they are providing valid input or not, as well as showing that the input was accepted.
