@@ -159,3 +159,28 @@ A Block element is supposed to be a distinct block in the flow of the content st
 A lot of inputs have validation, which means that only certain things are allowed to be inputed.  
 The pattern attribute works with the following elements: text, search, url, tel, email, and password. The pattern element creates a regular expression that must match for the input to be valid.  
 Input Validation will also be a big part of javascript. CSS will provide feedback early on to show the user if they are providing valid input or not, as well as showing that the input was accepted.
+## HTML Media
+### Media elements
+* img
+    - reference to an external file.
+    - alt attribute is the text that describes the image
+    - src is the link to the image.
+* audio
+    - reference to an external file.
+    - src is the link to the audio.
+    - include controls if you want the user to be able to control audio playback. 
+    - autoplay attribute starts the audio playing as soon as the audio file is loaded.
+    - loop keeps it looping believe it or not. 
+* video
+    - reference to an external file.
+    - src for url
+    - also has contros and autoplay attributes.
+    - if you are requesting files from a different domain than the one serving your content, you may need to use the attribute `crossorigin="anonymous"` so that you can access it. 
+* svg
+    - contain code to render visual image that can be animated.
+* canvas
+    - contain code to render visual image that can be animated.
+### External Media
+Media tags that reference external media all take a URL as an attribue. It can be a relative or full path. (Relative path means that it is served from the same location as the HTML page rendering the element.)
+### Internal media
+Both the canvas and svg elements require code that you write. CSS is used with svg to help make great images, and the cavnas tool needs JavaScript support to help us "draw" in the area.
