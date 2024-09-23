@@ -19,6 +19,6 @@ I will utilize the required techologies in these ways:
 * *CSS -* I will use clean and interesting color choices and stying that isn't garish or shocking to invite users to stay and interact with my application for extended periods of time.
 * *JavaScript -* I will use this to provide login, publishihng reviews, and applying ratings to other reviews.
 * *React -* This will provide the ability for my application to compartmentalize my users reviews and ratings of other reivews.
-* *Service -* I will generate a meme to display once a user has successfully published a review as a fun touch and reward. I will also be using this to submit ratings on other reviews.
+* *Service -* I will randomly generate a movie quote at the top of the landing page where you can see and rate other reviews. (this was modified and swapped from the original random dog meme.)
 * *Authentication and Database Data -* This will store users past reviews in the database as well as help users log in and register them in the firstplace. You won't be able to rate another reivew unless you have created an account. Credentials will be securely stored.
 * *WebSocket -* This will be realtime updates from the ratings on other reviews.
