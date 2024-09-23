@@ -224,3 +224,54 @@ You can also reference the ID of an element. Prefix it with the hash symbol `#` 
 Allows you to select elements based on attributes. They also suuport wildcards. So you could do `p[href*="https://"]`
 ### Pseudo Selector
 Pseudo Selectors are based on positional relationships, mouse interactions, hyperlink visitation states, and attributes. To accomplish this, we can change the selector to have a colon and then what the action is doing. ie `section:hover`. 
+## Declarations
+CSS Rule declarations specify a property and a value to assignewhen the rule selector matches one or more elements. Here are some commonly used ones.
+- barcground-color
+- border
+- border-radius
+- box-shadow
+- columns
+- color
+- cursor
+- display
+- filter
+- float
+- flex
+- font
+- grid
+- height
+- margin
+- max
+- min
+- opacity
+- overflow
+- position
+- padding
+- left
+- text-align
+- top
+- transform
+- width
+- z-index
+### Units
+Units can change based on the element you are trying to define. Here are some common ones. They are all prefixed with a number when used as a property.  
+- px
+- pt
+- in
+- cm
+- %
+- em
+- rem
+- ex
+- vw
+- vh
+- vmin
+- vmax
+### Color
+There are multiple ways to describe color.
+- keyword ie red
+- RGB hex
+- RGB function
+    - red green and blue as a percentage or number between 0-225 with an optional alpha opacity percentage.
+- HSL
+    - hue, saturation, light
