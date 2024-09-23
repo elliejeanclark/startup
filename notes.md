@@ -200,4 +200,27 @@ There are a couple different ways that you can incorporate CSS.
 ### Cascading Styles
 Because of the way that CSS works, as you get more specific with an element having a specific rule, it will override the more general rule. All p tags are told to be red, then p tags in this specific table are told to be blue, and then this specific p tag in the table it told to be green. So there will be red, blue, and green tags, blue in the table, and then one specific tag will be green.
 ### Box Model
-Everything in CSS is held inside of boxes. The box contains margins, borders, padding, and content. How big your content box is will automatically determine the size of the other boxes. You can change the height and width of the content and border boxes by using the `box sizing` property of CSS.s
+Everything in CSS is held inside of boxes. The box contains margins, borders, padding, and content. How big your content box is will automatically determine the size of the other boxes. You can change the height and width of the content and border boxes by using the `box sizing` property of CSS.
+## Selectors
+### Element Type Selectors
+This is used to select an entire element to change the style of. For example this is how we would change the "default" font for our document.  
+There is a wildcard selector to pick all elements, that is the `*` selector.  
+### Combinators
+Descendant cobinators combine two elements. The second is the descendant. For example, if I wanted all h2 tags in a secion to be blue, then I would have section then h2 followed by the rule. There are a couple different types of combinators.
+- Descendant - a list of descendants
+    * ie `body section` would mean that the following rules apply to any section that is a descendant of a body.
+- Child - a list of direct children.
+    * ie `secion > p` so that any p that is a *direct* child of a section.
+- General Siblings - a list of siblings 
+    * ie `div ~ p` is any p that has a div sibling.
+- Adjacent siblings - a list of adjacent siblings
+    * ie `div + p` is any p that has an adjacent div sibling.
+### Class Selector
+Any element can have zero or more classifications applied to it. If you want to apply a rule to a specific element by class, you prefix that class name with a period. ie `.summary`.  
+You can also combind the lement name and class selectors to select all of an element name with a specific class. ie `p.summary` would get all paragraphs with the summary class.
+### ID Selector
+You can also reference the ID of an element. Prefix it with the hash symbol `#` to select it. 
+### Attribute Selector
+Allows you to select elements based on attributes. They also suuport wildcards. So you could do `p[href*="https://"]`
+### Pseudo Selector
+Pseudo Selectors are based on positional relationships, mouse interactions, hyperlink visitation states, and attributes. To accomplish this, we can change the selector to have a colon and then what the action is doing. ie `section:hover`. 
