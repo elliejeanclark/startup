@@ -1,4 +1,4 @@
-# September Notes
+# Startup Setup Notes
 If you are looking for the read me file, then [Click on me](/README.md)
 ## Styling
 ###  Headers
@@ -92,7 +92,8 @@ using the command `vi Caddyfile` and then pressing the "i" key to enter insert m
 The | symbol takes the output from the command on the left and pass it to the command on the right.
 The > - symbols Redirect output to a file. Overwrites the file if it exists
 The >> - symbols Redirect output to a file. Appends if the file exists
-## HTML Basics
+# HTML
+## The Basics
 ### Elements and Tags
 Tags designate what type of text or element your text should be. For example the p tag means that the text that is wrapped in that tag is a paragraph element. Tags are creates with the less than and greater than symbols before and after the tag. The ending tag will have a forward slash / before its name.  
 Common Elements:
