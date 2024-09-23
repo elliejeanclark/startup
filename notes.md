@@ -190,3 +190,13 @@ Deploying deletes any previous deployment, copies up all the files found in the 
 `./deployFiles.sh -k <yourpemkey> -h <yourdomain> -s <service>` To deploy simon to my project the command looks like `./deployFiles.sh -k ~/Documents/CS260/inclass.pem -h ellie-jean.com -s simon`  
 If you want to update your HTML, save changes to the code and then redeploy. For deploying to my domain now because I copied the deployFiles.sh content into my [deploy.sh](/deploy.sh) file, the command is `./deploy.sh -k ~/Documents/CS260/inclass.pem -h ellie_jean.com -s <service>`
 # CSS
+## CSS Introduction
+CSS defines rules for the HTML. A rule has a selector which chooes the HTML element to apply the styling to, and then uses a colon to declare a value for a certain property, like a color. 
+### CSS and HTML
+There are a couple different ways that you can incorporate CSS. 
+- Use the "style" attribute directly inside the HTML itself. 
+- Use a `<style>` element in the `<head>` of the HTML document to apply CSS to an entire HTML document. 
+- Use the `<link>` element in the `<head>` of the HTML document to link to a relative CSS file that has all the rules defined. This is the preferred ways to include CSS inside your HTML.
+### Cascading Styles
+Because of the way that CSS works, as you get more specific with an element having a specific rule, it will override the more general rule. All p tags are told to be red, then p tags in this specific table are told to be blue, and then this specific p tag in the table it told to be green. So there will be red, blue, and green tags, blue in the table, and then one specific tag will be green.
+### Box Model
