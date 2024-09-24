@@ -22,3 +22,12 @@ I will utilize the required techologies in these ways:
 * *Service -* I will randomly generate a movie quote at the top of the landing page where you can see and rate other reviews. (this was modified and swapped from the original random dog meme.)
 * *Authentication and Database Data -* This will store users past reviews in the database as well as help users log in and register them in the firstplace. You won't be able to rate another reivew unless you have created an account. Credentials will be securely stored.
 * *WebSocket -* This will be realtime updates from the ratings on other reviews.
+## HTML Deliverable
+- [x] Two HTML pages. One as a landing page and a place to see and search other reviews. Pages link together successfully.
+- [x] Use of Header, Footer, Body, and Nav tags in both pages. 
+- [x] Links to each page in nav tags.
+- [x] There are labels for each of the reviews and voting areas as well as text to invite users to create and rate reviews.
+- [x] In the MyReviews page there is a placeholder for calling a third party service to quote movies.
+- [x] Logo image for the website was created and integrated. Logo was created with Canva Education.
+- [x] Login placeholder/create account placeholder as well as place to display username.
+- [x] Websocket placeholder where realtime communication about rating of other reviews will be shown.
