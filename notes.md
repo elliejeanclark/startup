@@ -226,47 +226,49 @@ Allows you to select elements based on attributes. They also suuport wildcards. 
 Pseudo Selectors are based on positional relationships, mouse interactions, hyperlink visitation states, and attributes. To accomplish this, we can change the selector to have a colon and then what the action is doing. ie `section:hover`. 
 ## Declarations
 CSS Rule declarations specify a property and a value to assignewhen the rule selector matches one or more elements. Here are some commonly used ones.
-- barcground-color
+- background-color
 - border
-- border-radius
-- box-shadow
-- columns
+- border-radius: creates rounded corners on elements. Percentages and pixels accepted.
+- box-shadow: adds shadow effects.
+    - horizontal-offset is the horizontal distance of the shadow. Potivie values to the right, negative to the left.
+    - vertical-offset is the vertical distance of the shadow. positive values move the shadow ***down*** and negative move them ***up***.
+- columns: creates a multi-column layout for element. `columns` is shorthand for `column-width` and `column-count`. 
 - color
-- cursor
-- display
-- filter
-- float
-- flex
+- cursor: sets the cursor to display when hovering over the element.
+- display: defines how to display the element and its children.
+- filter: applies a visual filter.
+- float: places element to left or right in flow.
+- flex: flex layout, used for responsive design
 - font
-- grid
-- height
-- margin
-- max
-- min
+- grid: grid layout
+- height: sets the height of the box
+- margin: sets the margin spacing
+- max: restricts the width or height to no more than the unit.
+- min: restricts the width or height to no less than the unit.
 - opacity
-- overflow
-- position
-- padding
-- left
-- text-align
-- top
-- transform
-- width
-- z-index
+- overflow: defines what happens when content doesn't fit inside the box. 
+- position: defines how the element is positioned in the document.
+- padding: sets the padding spacing
+- left: the horizontal value of a positioned element
+- text-align: defines how the text is aligned in the element
+- top: thevertical value of a positioned element
+- transform: applies a transformation to the element.
+- width: sets the width of the box.
+- z-index: controls the positioning of the element on the z axis.
 ### Units
-Units can change based on the element you are trying to define. Here are some common ones. They are all prefixed with a number when used as a property.  
-- px
-- pt
-- in
-- cm
-- %
-- em
-- rem
-- ex
-- vw
-- vh
-- vmin
-- vmax
+Units can change based on the element you are trying to define. Here are some common ones. They are all prefixed with a number when used as a property.
+- px: number of pixels
+- pt: number of points (1/72 of an inch)
+- in: number of inches
+- cm: number of centimeters
+- %: percentage of the parent element
+- emj: a multiplier of the width of the letter m in the parent's font
+- rem: a multiplier of the width of the letter m in the root's font.
+- ex: a multiplier of the height of the element's font.
+- vw: a percentage of the viewport's width
+- vh: a percentage of the viewport's height
+- vmin: a percentage of the viewport's smaller dimension
+- vmax: a percentage of the viewport's larger dimension.
 ### Color
 There are multiple ways to describe color.
 - keyword ie red
@@ -286,5 +288,7 @@ Use the `animation` and `keyframes` properties to change what the animation look
 ### The Basics
 You will want to specify the the `animation-name` and `animation-duration` to tell the code what animation to use and how long to complete the animation.  
 The `alternate` tag tells it to go backwards through the animation as well. `infinite` tells the animation to loop for infinite times.  
+The `animation-iteration-count` will allow you to specify how many times you want the animation to occur.  
+You can also just use the `animate` property, and then what you enter after will be in the following order: duration, optional easing-function, delay, iteration-count, direction (aka going backwords or forwards through your keyframe), fill-mode, play-state, name of animation.
 ### Keyframes
-Keywords like from and to help you tell keyframe what to do as time progresses. You can also specify a specific point at which you want a different thing to happen. Like `95%`. 
+Keywords like from and to help you tell keyframe what to do as time progresses. You can also specify a specific point at which you want a different thing to happen. Like `95%`. To name the animation put the name of the animation after the `@keyframes` property.
