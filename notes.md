@@ -275,3 +275,16 @@ There are multiple ways to describe color.
     - red green and blue as a percentage or number between 0-225 with an optional alpha opacity percentage.
 - HSL
     - hue, saturation, light
+## Fonts
+The `font-family` property of CSS is what controls fonts for a webpage. It is good to stick with one font family. 
+### Font Families
+There are four major families of fonts. Serif, sans-serif, fixed, and symbol. Serifs are extra strokes at the ends of letters. So sans-serif fonts do not have the extra strokes. Fixed font characters are all the same size. (useful for lining up text.) Symbols are non-language characters like arrows and emojis.
+### Importing fonts
+The `@font-face` property will pick a family that you can import from a url. You can also use the `@import` property to import a font family. Font-Face is for a font on your family, and import is for an open source font you are pulling from. 
+## Animations
+Use the `animation` and `keyframes` properties to change what the animation looks like at different times.
+### The Basics
+You will want to specify the the `animation-name` and `animation-duration` to tell the code what animation to use and how long to complete the animation.  
+The `alternate` tag tells it to go backwards through the animation as well. `infinite` tells the animation to loop for infinite times.  
+### Keyframes
+Keywords like from and to help you tell keyframe what to do as time progresses. You can also specify a specific point at which you want a different thing to happen. Like `95%`. 
