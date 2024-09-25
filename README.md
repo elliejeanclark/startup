@@ -31,4 +31,4 @@ I will utilize the required techologies in these ways:
 - [x] Logo image for the website was created and integrated. Logo was created with Canva Education.
 - [x] Login placeholder/create account placeholder as well as place to display username.
 - [x] Websocket placeholder where realtime communication about rating of other reviews will be shown.
-- [x] Placeholders for data that will be saved (previous reviews)
+- [x] Placeholders for data that will be saved in the database (previous reviews)
