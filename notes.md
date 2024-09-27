@@ -292,3 +292,23 @@ The `animation-iteration-count` will allow you to specify how many times you wan
 You can also just use the `animate` property, and then what you enter after will be in the following order: duration, optional easing-function, delay, iteration-count, direction (aka going backwords or forwards through your keyframe), fill-mode, play-state, name of animation.
 ### Keyframes
 Keywords like from and to help you tell keyframe what to do as time progresses. You can also specify a specific point at which you want a different thing to happen. Like `95%`. To name the animation put the name of the animation after the `@keyframes` property.
+## Responsive Design
+This is the ability to recognize the interface and changes to the interface so that your design can adapt and still be clear and understandable.
+### Display
+The display element in CSS allows you to change how a thing is displaying in HTML. Here are some common options with this element. 
+- none: Don't display this element. The element still exists, but the browser will not render it.
+- block: Display this element with a width that fills its parent element. A p or div element has block display by default.
+    - The div element in HTML uses the diplay property block.
+- inline: Display this element with a width that is only as big as its content. A b or span element has inline display by default.
+- flex: Display this element's children in a flexible orientation.
+- grid: Display this element's children in a grid orientation.
+### Viewport Meta Tag
+These tell the website not to just scale everything based on the different viewports. This is included in the `<head>` of your html document. An example: `<meta name="viewport" content="width=device-width,initial-scale=1" />`
+### Float
+Moves an element to the left or right of it's container element and allows inline elements to wrap around it. I.e. causing text to wrap around an image.
+### Media Queries
+The `@media` selector allows us to know which side of the screen is the longest. It takes one or more predicates (parameters). ie `@media (orientation: portrait)`. You then tell what you want your website to do if things are changing. 
+## Grid
+This is used when you want to display child elements in a responsive grid. The `grid-template-columns` property can specify the layout of the grid columns. In this example, `grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));` we are telling it to repeatedly auto size the grid elements to be a minimum of 300px wide and a maximum of 1 fr (fraction unit of the parent) wide. You can then add things like gaps in between the grid elements using the `grid-gap` property, and you can also specify what height you want the elements to be using the `grid-auto-rows` property. 
+## Flex
+Allows the design to move in reponse to the user. `display: flex` tells all the children of the element are to be displayed in a flex flow. 
