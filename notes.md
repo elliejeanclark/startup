@@ -311,4 +311,8 @@ The `@media` selector allows us to know which side of the screen is the longest.
 ## Grid
 This is used when you want to display child elements in a responsive grid. The `grid-template-columns` property can specify the layout of the grid columns. In this example, `grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));` we are telling it to repeatedly auto size the grid elements to be a minimum of 300px wide and a maximum of 1 fr (fraction unit of the parent) wide. You can then add things like gaps in between the grid elements using the `grid-gap` property, and you can also specify what height you want the elements to be using the `grid-auto-rows` property. 
 ## Flex
-Allows the design to move in reponse to the user. `display: flex` tells all the children of the element are to be displayed in a flex flow. 
+Allows the design to move in reponse to the user. `display: flex` tells all the children of the element are to be displayed in a flex flow. The `flex-direction` property will tell the container which direction the children are placed in the container. So it defines the main axis along which the flex items are laid out. (column/row) Row is side by side, and column is on top of each other.
+### Children
+Each child then gets flex properties. `flex: 0 80px` will mean that it will not grow and the 80px means it has a starting base height of 80 pixels. `flex: 1` means it will get one fractional unit of growth. Other children that have flex properties with numbers will then get that much fractional units in relation to the other objects.
+### Media Query
+To handle small screen sizes we drop the header and footer if the viewport gets too short, and then orient the main sections as rows if it gets too narrow. To suppors portrait mode, we include a media query that detects when we are in portrait orientation and sets the flex-direction of the main element to be a column instead of a row. 
