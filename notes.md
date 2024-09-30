@@ -317,3 +317,4 @@ Each child then gets flex properties. `flex: 0 80px` will mean that it will not 
 ### Media Query
 To handle small screen sizes we drop the header and footer if the viewport gets too short, and then orient the main sections as rows if it gets too narrow. To suppors portrait mode, we include a media query that detects when we are in portrait orientation and sets the flex-direction of the main element to be a column instead of a row. 
 ## Debugging
+In a browser, you can right click on text and press the `inspect` button to look at the code for the website. The `styles` pane will show you what css properties are applied to the selected element. You can also move your mouse over the different parts of the css pane and see the different box parts in the browser window. 
