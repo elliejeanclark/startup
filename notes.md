@@ -318,3 +318,16 @@ Each child then gets flex properties. `flex: 0 80px` will mean that it will not 
 To handle small screen sizes we drop the header and footer if the viewport gets too short, and then orient the main sections as rows if it gets too narrow. To suppors portrait mode, we include a media query that detects when we are in portrait orientation and sets the flex-direction of the main element to be a column instead of a row. 
 ## Debugging
 In a browser, you can right click on text and press the `inspect` button to look at the code for the website. The `styles` pane will show you what css properties are applied to the selected element. You can also move your mouse over the different parts of the css pane and see the different box parts in the browser window. 
+## Frameworks
+CSS frameworks provide functions and components that commonly appear in web applications. 
+### Tailwind
+Moves a lot of CSS directly into the HTML. It deals with more specific HTML elements recieving specific CSS rules rather than large rule groups. 
+### Bootstrap
+The Reigning Chamption for CSS. This is so widley used, that it also sometimes makes it harder for websites to stand out and catch attention.
+#### Getting Bootstrap
+You can link to Bootstraps CDN (content delivery network), in the head with the following code. (note: this might not be for the newest version of Bootstrap, so this might not be how you do it later.)  `<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"/>`  
+You also will want to add `<meta name="viewport" content="width=device-width, initial-scale=1">` to help the application start to be visually good for mobile devices, and then make it bigger for web browsers.  
+If you are going to use javascript with bootstrap, you will also need that module. `<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>`  
+You can also download bootstrap and include it in your code with this in the terminal: `npm install bootstrap@5.2.3`. 
+#### Using Bootstrap
+When using Bootstrap, you add a class to your element from the bootstrap library.  
