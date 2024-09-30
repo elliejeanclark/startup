@@ -330,4 +330,4 @@ You also will want to add `<meta name="viewport" content="width=device-width, in
 If you are going to use javascript with bootstrap, you will also need that module. `<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>`  
 You can also download bootstrap and include it in your code with this in the terminal: `npm install bootstrap@5.2.3`. 
 #### Using Bootstrap
-When using Bootstrap, you add a class to your element from the bootstrap library.  
+When using Bootstrap, you add a class to your element from the bootstrap library. Inside the HTML file itself. The CSS file is where you then overwrite anything you don't want the bootstrap to do. ie to use the basic button you would say `<button type="button" class="btn btn-primary">Bootstrap</button>` The btn-primary shades the color with the color that is the current primary color for the application. If I then wanted to override the color, I would go into my css document and assign a color to that button different from the one that bootstrap assigned. 
