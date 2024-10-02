@@ -3,13 +3,20 @@
     src: url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
 }
 
-html {
+html, body {
     font-family: "Raleway";
+    height: 100%;
+    background-color: aliceblue;
+    margin: 0;
 }
 
 body {
-    margin: 0;
-    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex-grow: 1;
 }
 
 #head-nav {
@@ -51,4 +58,8 @@ input#submit-button {
 
 #login-form .col-auto{
     margin-right: 0;
+}
+
+footer {
+    background-color: #477ba8;
 }
