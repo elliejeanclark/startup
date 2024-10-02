@@ -3,11 +3,11 @@ body {
     background-color: aliceblue;
 }
 
-#head-nav{
+#head-nav {
     background-color: #81c2e6;
 }
 
-#username{
+#username {
     margin: 5px 0;
 }
 
@@ -15,7 +15,13 @@ body {
     margin: 5px 0;
 }
 
-#submit-button{
+#submit-button {
     background-color: aliceblue;
     margin: 5px 0px;
+}
+
+#logo {
+    border-radius: 10%;
+    width: 200px;
+    height: auto;
 }
