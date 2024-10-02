@@ -330,4 +330,57 @@ You also will want to add `<meta name="viewport" content="width=device-width, in
 If you are going to use javascript with bootstrap, you will also need that module. `<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>`  
 You can also download bootstrap and include it in your code with this in the terminal: `npm install bootstrap@5.2.3`. 
 #### Using Bootstrap
-When using Bootstrap, you add a class to your element from the bootstrap library. Inside the HTML file itself. The CSS file is where you then overwrite anything you don't want the bootstrap to do. ie to use the basic button you would say `<button type="button" class="btn btn-primary">Bootstrap</button>` The btn-primary shades the color with the color that is the current primary color for the application. If I then wanted to override the color, I would go into my css document and assign a color to that button different from the one that bootstrap assigned. 
+When using Bootstrap, you add a class to your element from the bootstrap library. Inside the HTML file itself. The CSS file is where you then overwrite anything you don't want the bootstrap to do. ie to use the basic button you would say `<button type="button" class="btn btn-primary">Bootstrap</button>` The btn-primary shades the color with the color that is the current primary color for the application. If I then wanted to override the color, I would go into my css document and assign a color to that button different from the one that bootstrap assigned.
+# JavaScript
+## Introduction
+It is an interpreter that runs at runtime and not just at compiling. Makes it very portable, but prone to crash. The build it function `console.log()` outputs the contents to the debugger console. You can also write your own javascript functions. It is good practice to include a semicolon after every statment, and keep code blocks in curly braces.
+## JavaScript Console
+This is a useful tool (not your terminal) to help debug your code by outputting things to the console. 
+### Log
+The log parameter is used to output things. You can also format strings with the log parameter. You can also specify CSS stylings for the output. ie, `console.log('%c JavaScript Demo', 'font-size:1.5em; color:green;');`
+### Time
+The time and timeEnd console parameters allow you to wrap code and see how long it takes. ie, `console.time('demo time'); //some code... console.timeEnd('demo time');` outputs `demo time: *insert time here* ms`
+### Count
+The count console parameter allows you to see how many times a block of code is called. ie, `console.count('a')` would output `a: 1` but then if I called `console.count('a')` again I would get `a: 2`
+## Adding JavaScript to HTML
+You can either reference an outside javaScript file with the `src` attribute of script, or you can inside of a `<script>` element you can type the javaScript directly. There are special attributes that you can then add to your HTML with javaScript like `onclick` which creates an automatic event listener that call the code created in the attribute's value. The call can be a JavaScript function, or anything inside of JavaScript code.  
+Using the `document.getElementByID('id')` you can do a lot of things, like change the style, call different javascript, fill in different text, and so much more. You can also set `.display` and `.style` to different things based on clicks or other user inputs.
+### Other Cool things from Lecture
+- window.alert is very useful to find and see if we are entering code, it throws up an alert in the window.
+- Parameters are suggestions in JavaScript
+- The indexOf() method returns the position of the first occurence of a string in a string. 
+## JavaScript type and contsruct
+### Declaring Variables
+Variables are declared using either the `let` or `const` keyword. let allows you to change the value of the variable while const will cause an error if you try to change it. 
+### Types
+- null: they type of variable that has not been assigned a value. 
+- undefined: the type of a variable that has not been defined.
+- boolean: true or false.
+- number: a 64-bit signed number
+- BigInt: A number of arbitrary magnitude.
+- String: a textual sequence of characters
+- symbol: a unique value. 
+### Object Types
+- Object: a collection of properties represented by name-value pairs. Values can be of any type. 
+- Function: An object that has the ability to be called.
+    * function a() {}
+- Date: calander dates and times
+    * new Date('1995-12-17')
+- Map: a collection of key-value paris that support efficient lookups. 
+- JSON: A Lightweight data-interchange format used to share information across programs. 
+### Common operators
+Mathmatical: + = * / and === (equality). String: + (concatenation) and === equality.
+### Type Conversions
+Types can be automatically converted based upon context. The strict equality +++ and inequality !== skip the type conversion when computing equality. This is always preferred. 
+### Conditionals
+if, else, and else if are supported. You can also use ternary operator, here is an example: `a === 1 ? console.log(1) : console.log('not 1');`  
+Common boolean operations: && (and) || (or) ! (not)  
+### Loops
+You can use for, for in, for of, while, do while, and switch loops in JavaScript. for in statment iterates over an object's property name. For of iterates over an iterable's property values like array, map, set. Break and continue statements are used to abort or advance the loop.
+## String Functions
+- length: the number of characters in the string. 
+- indexOf(): the starting index of a given substring
+- split(): split the string into an array on the given delimter string
+- startsWith(): true is the string has a given prefix
+- endsWith(): true if the string has a given suffix
+- toLowerCase(): converts all characters to lowercase.
