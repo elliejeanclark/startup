@@ -6,3 +6,9 @@ body {
 #head-nav{
     background-color: #81c2e6;
 }
+
+#submit-button{
+    background-color: aliceblue;
+    padding: 2px 5px;
+    margin: 5px 0px;
+}
