@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Raleway';
+    src: url(https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap);
+}
+
+html {
+    font-family: "Raleway";
+}
+
 body {
     margin: 0;
     background-color: aliceblue;
@@ -17,11 +26,29 @@ body {
 
 #submit-button {
     background-color: aliceblue;
-    margin: 5px 0px;
+    margin-top: 5px 0;
 }
 
 #logo {
     border-radius: 10%;
     width: 200px;
     height: auto;
+}
+
+#login-form {
+    margin-left: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+input#username,
+input#password,
+input#submit-button {
+    background-color: aliceblue;
+    margin-right: 10px;
+}
+
+#login-form .col-auto{
+    margin-right: 0;
 }
