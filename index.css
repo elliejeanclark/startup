@@ -62,4 +62,18 @@ input#submit-button {
 
 footer {
     background-color: #477ba8;
+    display: flex;
+    flex-direction: row;
+}
+
+#author {
+    margin-left: 10px;
+}
+
+#github {
+    margin-left: auto;
+}
+
+#github a {
+    color: black;
 }
