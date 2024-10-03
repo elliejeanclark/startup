@@ -68,12 +68,15 @@ footer {
 
 #author {
     margin-left: 10px;
+    margin-top: 5px;
 }
 
 #github {
     margin-left: auto;
+    margin-top: 5px;
 }
 
 #github a {
     color: black;
+    padding: 10px;
 }
