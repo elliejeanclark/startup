@@ -135,3 +135,11 @@ footer {
     background-color: #81c2e6;
     margin-left: 15px;
 }
+
+#rating-label {
+    font-style: italic;
+}
+
+#overall-rating {
+    margin-bottom: 20px;
+}

@@ -39,3 +39,4 @@ I will utilize the required techologies in these ways:
 - [x] All application elements styled with css.
 - [x] All application text content styled with css. Raleway was the font I used.
 - [x] My logo image was styled.
+As a note, I have removed the emoji rating system and opted for a slider for simplicity.
