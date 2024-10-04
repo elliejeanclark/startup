@@ -387,3 +387,12 @@ You can use for, for in, for of, while, do while, and switch loops in JavaScript
 ## Functions
 JavaScript functions are first class objects. They can be passed parameters and referenced from an object or array just like any other variable. You start functions with the `function` keyword followed by any passed in parameters in () and then a body that can have one or more return statements. 
 ### Parameters
+If parameters aren't assigned they will be assigned a value of undefined. You can also assign default values in the parameter creation of the funciton. ie `function labeler(value, title="title"){}`. Functions can also be passed in as parameters. 
+### Anonymous Functions
+It is common to assign a function to a variable so that they can be passed as a parameter into other functions. To delcare an anonymous function you assign a function to a variable name. Like this: `const add = function (a, b) {return a + b; };` Then if I wanted to use that function in another function I could say something like `domath(add, a, b)` if domath was a function I already delcared. You can also declare the function in the parameter itself. ie. `domath(function (a, b) {return a + b;}, a, b)` and it would do the same thing.
+### Inner Functions
+You can create functions inside of functions, and then based on values passed into the original function call, call certian functions and assign them to the return value of the original statement. 
+## Arrow Functions
+Arrow syntax replaces the need for the `function` keyword. The arrow symbol `=>` is then used after the parameter declaration. The following {} are then optional. For example, this function always returns 3. `() => 3;`. Arrow functions cannot be used for constructors or iterator generators.
+### Return values
+Arrow syntax has special rules with return. 
