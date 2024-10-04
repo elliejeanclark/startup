@@ -121,3 +121,14 @@ main {
     border-radius: 5px;
     background-color: #81c2e6;
 }
+
+.review-title {
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.review-text {
+    height: 200px;
+    width: auto;
+}
