@@ -88,6 +88,12 @@ main {
     align-items: center;
 }
 
+@media (max-width: 1000px) {
+    #recent-reviews {
+        flex-direction: column;
+    }
+}
+
 #main-page-title {
     padding-top: 10px;
     margin-bottom: 0;
