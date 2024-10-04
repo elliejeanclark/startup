@@ -32,3 +32,10 @@ I will utilize the required techologies in these ways:
 - [x] Login placeholder/create account placeholder as well as place to display username.
 - [x] Websocket placeholder where realtime communication about rating of other reviews will be shown.
 - [x] Placeholders for data that will be saved in the database (previous reviews)
+## CSS Deliverable
+- [x] Header, Footer, and main all styled. Footer leaves when resized, header always stays. 
+- [x] Navigation elements in my header lead to my home page and the personal review page.
+- [x] Responds to the natrual viewport, and the home page switches to a column layout when sized down.
+- [x] All application elements styled with css.
+- [x] All application text content styled with css. Raleway was the font I used.
+- [x] My logo image was styled.
