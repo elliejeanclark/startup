@@ -78,4 +78,39 @@ footer {
 
 #generated-quote {
     text-align: left;
+    font-style: italic;
+    padding-left: 10px;
+    padding-top: 20px;
+}
+
+#my-review {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 50px;
+    
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #81c2e6;
+}
+
+#title {
+    font-size: 1.3em;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 5px;
+    border-width: 1px;
+
+    padding: 10px;
+}
+
+#review {
+    border-radius: 5px;
+    border-width: 1px;
+    background-color: aliceblue;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+#save-review {
+    background-color: aliceblue;
 }
