@@ -395,4 +395,6 @@ You can create functions inside of functions, and then based on values passed in
 ## Arrow Functions
 Arrow syntax replaces the need for the `function` keyword. The arrow symbol `=>` is then used after the parameter declaration. The following {} are then optional. For example, this function always returns 3. `() => 3;`. Arrow functions cannot be used for constructors or iterator generators.
 ### Return values
-Arrow syntax has special rules with return. 
+Arrow syntax has special rules with return. The return keyword isn't required if there are no {} and the function only has a single expression. When this is true, the result of the expression is automatically returned. If {} are present then it just acts like a normal function. ie `() => 3;` returns 3, but `() => {3;}` returns undefined because 3 is a variable not the expression.
+### This pointer
+A closure allows a function to reference its creation scope. This is often used for functions returning another function. This helps when we want to remember what something is when we originally created it, and not when the function is executed. It can also be used like we saw in class to create functions that can do different things based on what is passed in. 
