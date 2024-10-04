@@ -114,3 +114,24 @@ footer {
 #save-review {
     background-color: aliceblue;
 }
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+#search-bar {
+    border-radius: 5px;
+    border-width: 1px;
+    width: 300px;
+}
+
+#search-bar, #search-for-reviews {
+    height: 100%;
+}
+
+#search-for-reviews {
+    background-color: #81c2e6;
+    margin-left: 15px;
+}
