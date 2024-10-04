@@ -398,3 +398,18 @@ Arrow syntax replaces the need for the `function` keyword. The arrow symbol `=>`
 Arrow syntax has special rules with return. The return keyword isn't required if there are no {} and the function only has a single expression. When this is true, the result of the expression is automatically returned. If {} are present then it just acts like a normal function. ie `() => 3;` returns 3, but `() => {3;}` returns undefined because 3 is a variable not the expression.
 ### This pointer
 A closure allows a function to reference its creation scope. This is often used for functions returning another function. This helps when we want to remember what something is when we originally created it, and not when the function is executed. It can also be used like we saw in class to create functions that can do different things based on what is passed in. 
+## Arrays
+It functions like you think it does :joy:
+### Functions
+- push:	Add an item to the end of the array	`a.push(4)`
+- pop:	Remove an item from the end of the array	`x = a.pop()`
+- slice:	Return a sub-array	`a.slice(1,-1)`
+- sort:	Run a function to sort an array in place    `a.sort((a,b) => b-a)`
+- values:	Creates an iterator for use with a for of loop	f`or (i of a.values()) {...}`
+- find:	Find the first item satisfied by a test function	`a.find(i => i < 2)`
+- forEach:	Run a function on each array item	`a.forEach(console.log)`
+- reduce:	Run a function to reduce each array item to a single item	`a.reduce((a, c) => a + c)`
+- map:	Run a function to map an array to a new array	`a.map(i => i+i)`
+- filter:	Run a function to remove items	`a.filter(i => i%2)`
+- every:	Run a function to test if all items match	`a.every(i => i < 3)`
+- some:	Run a function to test if any items match	`a.some(i => i < 1)`
