@@ -82,10 +82,10 @@ main {
     align-items: center;
 }
 
-.recent-reviews {
+#recent-reviews {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    align-items: center;
 }
 
 #main-page-title {
@@ -131,4 +131,16 @@ main {
 .review-text {
     height: 200px;
     width: auto;
+}
+
+#submit-review-rating {
+    background-color: aliceblue;
+    padding: 0;
+    margin: 3px;
+}
+
+.current-rating {
+    border-radius: 5px;
+    border-width: 1px;
+    text-align: center;
 }
