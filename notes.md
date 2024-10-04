@@ -413,3 +413,18 @@ It functions like you think it does :joy:
 - filter:	Run a function to remove items	`a.filter(i => i%2)`
 - every:	Run a function to test if all items match	`a.every(i => i < 3)`
 - some:	Run a function to test if any items match	`a.some(i => i < 1)`
+## JSON
+Stands for JavaScript Object Notation. 
+### Format
+Here are the common data types that JSON files have. 
+- string
+- boolean
+- number
+- array
+- object
+- null
+The most common one is an object. Objects contain zero or more key value pairs. The key is always a string, and the value must be a valid JSON type.
+### Delimination
+Strings are wrapped in double quotes, {} are used for objects, and key value pairs are linked with : and separated by commas. Square brackets wrap arrays with commas seperating the items.
+### Converting to JavaScript
+To conver from JavaScript to JSON you use  `JSON.strigify()` and to convert from JSON to Javascript you use `JSON.parse()`. Anything that is something JSON cannot reprisent gets dropped when converting from JavaScript to JSON.
