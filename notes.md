@@ -428,3 +428,21 @@ The most common one is an object. Objects contain zero or more key value pairs. 
 Strings are wrapped in double quotes, {} are used for objects, and key value pairs are linked with : and separated by commas. Square brackets wrap arrays with commas seperating the items.
 ### Converting to JavaScript
 To conver from JavaScript to JSON you use  `JSON.strigify()` and to convert from JSON to Javascript you use `JSON.parse()`. Anything that is something JSON cannot reprisent gets dropped when converting from JavaScript to JSON.
+## Object and Classes
+An object is a collection of value pairs called properties. Properties must be strings or symbols, but the value can be any type. Objects are created with the `new` operator. Properties can be reference with either dot `obj.prop` or bracket `obj['prop']` notation.
+### Object Literals
+You can declare a varaible of object type with the `object-literal` syntax. IE you can create the base of an ojbect with the {} and then declare some key-pair values inside.
+### Object Functions
+Common functions:
+- entries(): returns an array of key value pairs ie `Object.entries(obj)`
+- keys(): returns an array of keys. ie `Object.keys(obj)`
+- values(): returns an array of values. ie `Object.values(obj)`
+### Constructor
+Any function that returns an object is considered a constructor and can be invoked with the `new` operator. So I can create a functio that returns a key-value pair like `name: name,` and takes in "name" as a paramter, and then call it with `new Person("James")` and it will output `name: James`. You can also create methods on an object, ie having a key pair value that the key is the function name, and then the value is a function.
+### This Pointer
+this.property depends on the scope of where it is used, but with an object it refers to a pointer to the object. 
+### Classes
+classes can define objects. It is used with the intent to create a reusable component rather than a one-off object. Very similar to declaring an object, but they have an explicit constructor. ie `constructor(name) {this.name = name;}`  
+You can make properties and functions of classes private by prefixing them with a #. 
+### Inheritance
+You can extend classes by using the `extends` keyword to define inheritance. Paramteres passed in are delivered using the `super` function. If a child has the same function name as a parent, the child will override the parent. If you want to access a parent's function, you can explicitly access it using the `super` keyword. ie `class Employee extends Person {constructor(name, position) {super(name);}}`
