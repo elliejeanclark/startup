@@ -384,3 +384,6 @@ You can use for, for in, for of, while, do while, and switch loops in JavaScript
 - startsWith(): true is the string has a given prefix
 - endsWith(): true if the string has a given suffix
 - toLowerCase(): converts all characters to lowercase.
+## Functions
+JavaScript functions are first class objects. They can be passed parameters and referenced from an object or array just like any other variable. You start functions with the `function` keyword followed by any passed in parameters in () and then a body that can have one or more return statements. 
+### Parameters
