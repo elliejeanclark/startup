@@ -446,3 +446,29 @@ classes can define objects. It is used with the intent to create a reusable comp
 You can make properties and functions of classes private by prefixing them with a #. 
 ### Inheritance
 You can extend classes by using the `extends` keyword to define inheritance. Paramteres passed in are delivered using the `super` function. If a child has the same function name as a parent, the child will override the parent. If you want to access a parent's function, you can explicitly access it using the `super` keyword. ie `class Employee extends Person {constructor(name, position) {super(name);}}`
+## Regular Expressions
+Regular Expressions are essentially textual pattern matches. You can use it to find a string and know it exists, but then also to replace that string.  
+Creation of regular expressions works either with class constructors (ie `const objRegex = new RegExp('ab*', 'i');`) or with a regular expression literal (ie `const literalRegex = /ab*/i;`).  
+There are several string functions that work with regular expressions. They are, match, replace, search, and split. Search returns the index of the first match of the regular expression in the string. Match returns anything that matched the regular expression. Replace takes in the regular expression and what you want to replace it with. Split allows you to separate a string based on a specific seperator provided by the regular expression. You can also specify how many maximum substrings you want out of the total string you are splitting.
+### Common Rules with Regular Expressions in JavaScript
+1. **Matching a specific string**: Use the string literal directly. For example, `/hello/` will match the string "hello" in a text.
+
+2. **Matching any character**: Use the dot (.) metacharacter. For example, `/a.b/` will match any string that has an "a", followed by any character, and then a "b".
+
+3. **Matching a specific set of characters**: Use square brackets ([]). For example, `/[aeiou]/` will match any vowel in a text.
+
+4. **Matching a range of characters**: Use a hyphen (-) inside square brackets. For example, `/[a-z]/` will match any lowercase letter.
+
+5. **Matching multiple occurrences**: Use the plus sign (+) after the pattern. For example, `/a+/` will match one or more occurrences of the letter "a".
+
+6. **Matching optional occurrences**: Use the question mark (?) after the pattern. For example, `/colou?r/` will match both "color" and "colour".
+
+7. **Matching a specific number of occurrences**: Use curly braces ({}) with a specific number inside. For example, `/a{3}/` will match exactly three occurrences of the letter "a".
+
+8. **Matching word boundaries**: Use the \b metacharacter. For example, `/\bcat\b/` will match the word "cat" but not "catch" or "scattered".
+
+9. **Matching the start or end of a string**: Use the caret (^) to match the start and the dollar sign ($) to match the end. For example, `/^hello/` will match any string that starts with "hello".
+
+10. **Matching any character except a specific set**: Use the caret (^) inside square brackets. For example, `/[^0-9]/` will match any character that is not a digit.
+
+These are just a few examples of the common rules and patterns you can use with regular expressions in JavaScript. Regular expressions can be complex, so it's recommended to refer to the official documentation for more advanced patterns and techniques.
