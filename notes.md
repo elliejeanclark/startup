@@ -470,7 +470,6 @@ There are several string functions that work with regular expressions. They are,
 9. **Matching the start or end of a string**: Use the caret (^) to match the start and the dollar sign ($) to match the end. For example, `/^hello/` will match any string that starts with "hello".
 
 10. **Matching any character except a specific set**: Use the caret (^) inside square brackets. For example, `/[^0-9]/` will match any character that is not a digit.
-
 ## Rest and Spread
 ### Rest
 If you want a function to take a list of unknown parameters, you can use the rest function. This essentially is a parameter in JavaScript to hold the "rest" of the parameters. To create the final parameter into a rest parameter, you prefix it with three periods. ie `...numbers` The things passed into the parameter will automatically be put into an array.  
@@ -478,3 +477,8 @@ This is often used with the `.some()` method. This method tests whether there is
 ***Important*** You can only use the rest function on the **last** parameter.
 ### Spread
 The opposite of rest. When you are passed in an iterable object, it expands the object into the rest of the parameters of the function.
+## Exceptions
+### Try, Catch, and Throw
+To catch thrown expressions, wrap code in a `try` block. Then you write a `catch` block. Then any code that throws an exception in a try block will skip the rest of the code in the call block, and move into the catch block. You can also add a `finally` block that will call code every time a try block runs, regardless of whether an exception is thrown in the try block. You can `throw new <ErrorName>(<error message>)` to point out that an error occured, and it will jump to the nearest catch block. 
+### Fallbacks
+This is a pattern to use if you can't find a specific thing or execute a specific function that allows you to still return something and run code. For example, instead of throwing errors in try and cath block, you can try a line of code, and then if an error happens run a different line of code. 
