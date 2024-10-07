@@ -471,4 +471,10 @@ There are several string functions that work with regular expressions. They are,
 
 10. **Matching any character except a specific set**: Use the caret (^) inside square brackets. For example, `/[^0-9]/` will match any character that is not a digit.
 
-These are just a few examples of the common rules and patterns you can use with regular expressions in JavaScript. Regular expressions can be complex, so it's recommended to refer to the official documentation for more advanced patterns and techniques.
+## Rest and Spread
+### Rest
+If you want a function to take a list of unknown parameters, you can use the rest function. This essentially is a parameter in JavaScript to hold the "rest" of the parameters. To create the final parameter into a rest parameter, you prefix it with three periods. ie `...numbers` The things passed into the parameter will automatically be put into an array.  
+This is often used with the `.some()` method. This method tests whether there is at least one element in an array that passes a provided function. It returns true or false.  
+***Important*** You can only use the rest function on the **last** parameter.
+### Spread
+The opposite of rest. When you are passed in an iterable object, it expands the object into the rest of the parameters of the function.
