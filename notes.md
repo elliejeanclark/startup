@@ -449,6 +449,7 @@ You can extend classes by using the `extends` keyword to define inheritance. Par
 ## Regular Expressions
 Regular Expressions are essentially textual pattern matches. You can use it to find a string and know it exists, but then also to replace that string.  
 Creation of regular expressions works either with class constructors (ie `const objRegex = new RegExp('ab*', 'i');`) or with a regular expression literal (ie `const literalRegex = /ab*/i;`).  
+There are ways to modify how you are doing the search. Add modifiers after the regular expression. `/regularexpression/modifiers`  
 There are several string functions that work with regular expressions. They are, match, replace, search, and split. Search returns the index of the first match of the regular expression in the string. Match returns anything that matched the regular expression. Replace takes in the regular expression and what you want to replace it with. Split allows you to separate a string based on a specific seperator provided by the regular expression. You can also specify how many maximum substrings you want out of the total string you are splitting.
 ### Common Rules with Regular Expressions in JavaScript
 1. **Matching a specific string**: Use the string literal directly. For example, `/hello/` will match the string "hello" in a text.
@@ -476,9 +477,18 @@ If you want a function to take a list of unknown parameters, you can use the res
 This is often used with the `.some()` method. This method tests whether there is at least one element in an array that passes a provided function. It returns true or false.  
 ***Important*** You can only use the rest function on the **last** parameter.
 ### Spread
-The opposite of rest. When you are passed in an iterable object, it expands the object into the rest of the parameters of the function.
+The opposite of rest. When you are passed in an iterable object, it expands the object into the rest of the parameters of the function. You still use the three dots as a prefix of the parameter to make it spread. 
 ## Exceptions
 ### Try, Catch, and Throw
 To catch thrown expressions, wrap code in a `try` block. Then you write a `catch` block. Then any code that throws an exception in a try block will skip the rest of the code in the call block, and move into the catch block. You can also add a `finally` block that will call code every time a try block runs, regardless of whether an exception is thrown in the try block. You can `throw new <ErrorName>(<error message>)` to point out that an error occured, and it will jump to the nearest catch block. 
 ### Fallbacks
 This is a pattern to use if you can't find a specific thing or execute a specific function that allows you to still return something and run code. For example, instead of throwing errors in try and cath block, you can try a line of code, and then if an error happens run a different line of code. 
+## Destructuring
+This is used to destructure objects and arrays or pull things out of them, and is useful when we only want to focus on a few elements of an array and an object. 
+### Destructuring arrays.
+This is essentially done by taking a larger array, and assigning them into a smaller array. For example: `const a = [1, 2, 3, 4]` followed by `const [b, c] = a` and then `console.log(b, c)` will output 1, 2.  
+You can combine the remaining elements of an array using rest syntax. For example: `const [b, c, ...others]` makes 1, 2, [4, 5]
+### Destructuring Objects
+Instead of the assignment being based off of position in arrays, when destructuring objects you need to explicitly specify what properties you want to pull from the source object. For example with the following source object: `const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };` you would then declare the next object with the name being the properties you want to pull. `const { a, c } = o;` would then be 1, ['fish', 'cats'].  
+If you want to rename the properties you are pulling, you would do something like `const { a: count, b: type}` and then later when you did `console.log(count, type)` it would say 1, animals.  
+You can also provide default values if the property doesn't exist. For example if I said `const {a, b = 22} = {}` and then said `console.log(a, b)` it would ouput "undefined, 22". 
