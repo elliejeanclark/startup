@@ -492,3 +492,18 @@ You can combine the remaining elements of an array using rest syntax. For exampl
 Instead of the assignment being based off of position in arrays, when destructuring objects you need to explicitly specify what properties you want to pull from the source object. For example with the following source object: `const o = { a: 1, b: 'animals', c: ['fish', 'cats'] };` you would then declare the next object with the name being the properties you want to pull. `const { a, c } = o;` would then be 1, ['fish', 'cats'].  
 If you want to rename the properties you are pulling, you would do something like `const { a: count, b: type}` and then later when you did `console.log(count, type)` it would say 1, animals.  
 You can also provide default values if the property doesn't exist. For example if I said `const {a, b = 22} = {}` and then said `console.log(a, b)` it would ouput "undefined, 22". 
+## Scope
+Scope is the variables that are visible in the current execution. There are 4 types of scope in JavaScript
+- Global: Visible to all code
+- Module: Visible to all code running in a module
+- Function: visible within a function
+- Block: Visible within a block of code deliminated by {}
+### Var
+We started in JavaScript by declaring variables with the `var` keyword, but it ignored block scope. This means that it would overwrite variables named with the same ignoring that it was wrapped in {} in the first place.
+### This
+The `this` keyword is a variable that points to an object with the context within the scope.
+- Global: whenever `this` is referenced outside a function/object, it is referring to the `globalThis` object. This is the context of the runtime environment. If this is running in a browser, it referrs to the window object.
+- Function: when referenced inside a function, it references the object that owns the function. If there isn't an object that you haven't defined that owns the function the object referenced is globalThis. However, if we are using JavaScript strict, then then a global functions this variable is undefined.
+- Object: If referenced in an object, then this refers to the object
+### Closure
+A function, but also its surrounding state. `this` inside of a function wrapped in a closrue points towards the thing that it is wrapped inside. Inside of an unreturned arrow function `this` points to the creation scope. So if it is inside of an object, it points to where the object was created. Inside of a *returned* arrow function `this` points to the thing it is wrapped inside like a regular function. See notes on closures in Arrow Functions.
