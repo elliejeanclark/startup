@@ -528,3 +528,12 @@ All DOM elements can have event listeners added to them so that when an event ha
 - Mouse: Click events
 - Text selection: When text is selected
 You can also add some event listeners directly into HTML.
+## Local Storage
+Browser's `localStorage` API provides the ability to persistently stroe and retrieve data on a user's browser access across user sessions and HTML page renderings. It is also used as a cache for when data cannot be objtained from the server. 
+### How to use local storage
+Here are the four main functions that can be used with localSotrage
+- setitem(name, value) : sets a named item's value into local storage
+- getitem(name) : gets a named item's value from local storage
+- removeitem(name) : removes a named item from local storage
+- clear() clears all items in local storage
+Any local storage values must be either strings, numbers, or booleans. If you want to store a JavaScript object or array, then you must first convert it to a JSON string with JSON.strigify() and then parse it back to JavaScript with JSON.parse() when retrieved.
