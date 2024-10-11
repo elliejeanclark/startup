@@ -423,6 +423,7 @@ Here are the common data types that JSON files have.
 - array
 - object
 - null
+
 The most common one is an object. Objects contain zero or more key value pairs. The key is always a string, and the value must be a valid JSON type.
 ### Delimination
 Strings are wrapped in double quotes, {} are used for objects, and key value pairs are linked with : and separated by commas. Square brackets wrap arrays with commas seperating the items.
@@ -527,6 +528,7 @@ All DOM elements can have event listeners added to them so that when an event ha
 - Keyboard: Keys are pressed
 - Mouse: Click events
 - Text selection: When text is selected
+
 You can also add some event listeners directly into HTML.
 ## Local Storage
 Browser's `localStorage` API provides the ability to persistently stroe and retrieve data on a user's browser access across user sessions and HTML page renderings. It is also used as a cache for when data cannot be objtained from the server. 
@@ -536,12 +538,14 @@ Here are the four main functions that can be used with localSotrage
 - getitem(name) : gets a named item's value from local storage
 - removeitem(name) : removes a named item from local storage
 - clear() clears all items in local storage
+
 Any local storage values must be either strings, numbers, or booleans. If you want to store a JavaScript object or array, then you must first convert it to a JSON string with JSON.strigify() and then parse it back to JavaScript with JSON.parse() when retrieved.
 ## Promise
 JavaScript promise (this is an object) allows the main thread rendering the HTML to keep on running while it runs its longer code it the background. "I promise I will get back to you with that." Promise runs code asynchronously. Executing asynchronously means that promise constructor may return before the promise executor function runs. So the function will return before the full function is done running. A promise function is always in one of three states.  
 - pending - Currently running asynchronously
 - fulfilled - Completed successfully
 - rejected - Failed to complete
+
 There is a `setTimeout()` function that takes in a number of miliseconds to wait, and a function to run after the milisectonds have passed. `setTimeout(() => {console.log(msg, wait);}, 1000 * wait);`
 Once a promise is done, you need to throw it away and get a new one. 
 ### Resolve and Reject
@@ -551,4 +555,5 @@ The promise object has three built in functions.
 - then: gets called when the promise is fulfilled. 
 - catch: gets called when the promise is rejected.
 - finally: always called when the promise is complete.
+
 You can chain the functions to your promise object. ie `coinToss //insert tab// .then()...`
