@@ -557,3 +557,9 @@ The promise object has three built in functions.
 - finally: always called when the promise is complete.
 
 You can chain the functions to your promise object. ie `coinToss //insert tab// .then()...`
+## Async/Await
+A more consise way of working the promise block. The `await` keyword warps the execution of a promise, and will block until the promise state moves to fulfilled, or throws an exception if the state moves to rejected. Use await in a try catch block to create this code. 
+### Async
+One restriction to await is that you can't control it unless t is called at the top level of the JavaScript or if it is in a function with the async keyword. The `async` keyword basicly transforms any function into an asynchronous function so that it can make asynchronous requests. It then returns a promise object that it is immediately resovled, and the value is the return value of the function.
+### Await
+The `async` keyword declares that a function returns a promise. The `await` keyword wraps the call to the async function, blocks execution until the promise has resoved, and then returns the result of the promise. So then if we prefix the call for a function that returns a promise, execution will stop until the promise has resolved, at which point the result of the promise is returned instead of the actual promise object.
