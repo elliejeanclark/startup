@@ -595,3 +595,15 @@ The `package-lock.json` file tracks the version of the package that you installe
 You can debug a js file in VS by pressing F5, then select node.js. Proceed to debug. You can also continue execution of code by pressing F10 and F11 will step into a function call and F5 while running will continue running from current line. Stop debugging at any time by pressing shift + F5
 # React
 React runs in your web browser. Why use Web Frameworks? It simplifies common patterns, provides common components, improves performance, and increases device coverage. React abstracts HTML into a JavaScript Variant called JSX. It then uses a preprocessor called Babel to go back into valid HTML and JavaScript. The `React.createElement` function will then generate DOM elements and monitor the data they represent for changes. When a change happens, react triggers dependent changes. 
+## Componenets
+React components allow you to modularize the functionality of you application. It can also enable code reuse as common application components often show up repeatedly.
+### The Render Function
+Whatever is retruned from the `render` function is inserted into the component HTML element. 
+### Properties
+Components also allow you to pass infomration to them in the form of element properties. 
+### State
+Components can have internal states. It is called by calling the `React.useState` hook function. the `useState` function returns a variable that contains the current state and a function to update the state. 
+### Class style components
+React supports `class style` components, but is moving away from it.
+### Reactivity 
+The properties and state are used by the framework to determine the reactivity of the interface. 
