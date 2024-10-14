@@ -594,4 +594,4 @@ The `package-lock.json` file tracks the version of the package that you installe
 ## Debugging Node.js
 You can debug a js file in VS by pressing F5, then select node.js. Proceed to debug. You can also continue execution of code by pressing F10 and F11 will step into a function call and F5 while running will continue running from current line. Stop debugging at any time by pressing shift + F5
 # React
-React runs in your web browser. Why use Web Frameworks? It simplifies common patterns, provides common components, improves performance, and increases device coverage. 
+React runs in your web browser. Why use Web Frameworks? It simplifies common patterns, provides common components, improves performance, and increases device coverage. React abstracts HTML into a JavaScript Variant called JSX. It then uses a preprocessor called Babel to go back into valid HTML and JavaScript. The `React.createElement` function will then generate DOM elements and monitor the data they represent for changes. When a change happens, react triggers dependent changes. 
