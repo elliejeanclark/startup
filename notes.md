@@ -1,5 +1,6 @@
-# Startup Setup Notes
+# Startup Notes
 If you are looking for the read me file, then [Click on me](/README.md)
+# Writing in MD
 ## Styling
 ###  Headers
 Headers have a pound symbol before them. Each following pound makes a smaller header. You can have up to six.  
@@ -36,7 +37,7 @@ Emojis are fun and you can use them with the : symbols surrounding the name of t
 Paragraphs are creating by leaving a blank line in between lines of text.   
 New lines are created by two or more spaces after the line and then hitting enter.  
 Footnotes have the square brackets, and then the carrot symbol with the number of the footnote. Then at the bottom of the document you add the cooresponding foot note symbol and a :.
-## Sep 9
+# Getting Started
 ### Technologies
 The laptop connects through wifi to an edge browser. The wifi is a physical layer, then there is an internet layer, a transport layer, and finally an application layer. Physical layers can be different, like a cellphone connected to cell service. Routers all speak "IP" or "internet protocol." wifi --> IP --> TCP --> HTTP --> "Hello world."  
 The IP is like the post office. It has shipping labels. However, it is also unreliable. They connect routers in the internet.  
@@ -110,7 +111,7 @@ Common Elements:
 * main - Main content of the page
 * section - A section of the main content
 * aside - Aside content from the main content
-* div - A block division of content
+* div - A block division of content. A container for HTML content. Puts a line break before and after the element.
 * span - An inline span of content
 * h<1-9> - Text heading. From h1, the highest level, down to h9, the lowest level
 * p - A paragraph of text
@@ -191,7 +192,7 @@ Deploying deletes any previous deployment, copies up all the files found in the 
 If you want to update your HTML, save changes to the code and then redeploy. For deploying to my domain now because I copied the deployFiles.sh content into my [deploy.sh](/deploy.sh) file, the command is `./deploy.sh -k ~/Documents/CS260/inclass.pem -h ellie-jean.com -s <service>`
 # CSS
 ## CSS Introduction
-CSS defines rules for the HTML. A rule has a selector which chooes the HTML element to apply the styling to, and then uses a colon to declare a value for a certain property, like a color. 
+CSS defines rules for the HTML. A rule has a selector which chooses the HTML element to apply the styling to, and then uses a colon to declare a value for a certain property, like a color. 
 ### CSS and HTML
 There are a couple different ways that you can incorporate CSS. 
 - Use the "style" attribute directly inside the HTML itself. 
@@ -242,13 +243,13 @@ CSS Rule declarations specify a property and a value to assignewhen the rule sel
 - font
 - grid: grid layout
 - height: sets the height of the box
-- margin: sets the margin spacing
+- margin: sets the margin spacing, this is spacing OUTSIDE of the element.
 - max: restricts the width or height to no more than the unit.
 - min: restricts the width or height to no less than the unit.
 - opacity
 - overflow: defines what happens when content doesn't fit inside the box. 
 - position: defines how the element is positioned in the document.
-- padding: sets the padding spacing
+- padding: sets the padding spacing, this is spacing INSIDE of the element
 - left: the horizontal value of a positioned element
 - text-align: defines how the text is aligned in the element
 - top: thevertical value of a positioned element
@@ -563,3 +564,28 @@ A more consise way of working the promise block. The `await` keyword warps the e
 One restriction to await is that you can't control it unless t is called at the top level of the JavaScript or if it is in a function with the async keyword. The `async` keyword basicly transforms any function into an asynchronous function so that it can make asynchronous requests. It then returns a promise object that it is immediately resovled, and the value is the return value of the function.
 ### Await
 The `async` keyword declares that a function returns a promise. The `await` keyword wraps the call to the async function, blocks execution until the promise has resoved, and then returns the result of the promise. So then if we prefix the call for a function that returns a promise, execution will stop until the promise has resolved, at which point the result of the promise is returned instead of the actual promise object.
+## Debugging JavaScript
+### Console
+This is one of the simplist ways to debug. Add console.log statements. Use these to see the state of your code as it is running.
+### Browser
+Use the browser debugging to really see what your code is doing. If you select the source tab you can see the different files of your code. Use breakpoints to help.
+## Node.js
+You can run JavaScript with the -e parameter in your console. You can then also run files of JavaScript by passing it into node on your console as a parameter. You can also run it in interpretive node, by just running node in your console. Then you can type JavaScript directly into the interpreter. 
+### Node Package Manager
+To load a JavaScript Package you first install the package locally using the NPM and then include a require statement in your code that references the package name. If you want to install packages you will need to initialize your code. This is done by creating a directory that will contain JavaScript and then running `npm init`. You can skip the questions that then come up about the package if you want to use all the defaults by running `npm init -y`. 
+### Package.json
+The package.json file contains three things. 1: metadata about the project such as name and defailt entry. 2: commands thaty ou can execute to do things. and 3: packages that the project depends upon. To install a package, you run `npm install` and then the name of the package. You can uninstall a package by running `npm uninstall` and then the name of the package. **important** besure to not check the node_modules into your source control system because it will get super big. So include it in your .gitignore file.  
+When you clone your sourcecoee from GitHub to a new location, the first thing you should do is run `npm install` in the project directory. This will cause NPM to download all of the previously installed packages and recreate the node_modules directory.  
+The `package-lock.json` file tracks the version of the package that you installed. That way if you rebuild your node_modules directory you wil lhave the version of hte package tyou initially installed so that it will still be compatible with your code. 
+### Main Steps
+- Create project directory
+- Initialize for use with NPM by running `npm init -y`
+- Make sure .gigignore file contains node_modules
+- Install any desired packages
+- Add  `require('<package-name-here>')` to your application's JavaScript
+- Use the pcode the package provides in your JavaScript
+- Run code with `node index.js`
+## Debugging Node.js
+You can debug a js file in VS by pressing F5, then select node.js. Proceed to debug. You can also continue execution of code by pressing F10 and F11 will step into a function call and F5 while running will continue running from current line. Stop debugging at any time by pressing shift + F5
+# React
+React runs in your web browser. Why use Web Frameworks? It simplifies common patterns, provides common components, improves performance, and increases device coverage. 
