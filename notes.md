@@ -42,7 +42,13 @@ Footnotes have the square brackets, and then the carrot symbol with the number o
 The laptop connects through wifi to an edge browser. The wifi is a physical layer, then there is an internet layer, a transport layer, and finally an application layer. Physical layers can be different, like a cellphone connected to cell service. Routers all speak "IP" or "internet protocol." wifi --> IP --> TCP --> HTTP --> "Hello world."  
 The IP is like the post office. It has shipping labels. However, it is also unreliable. They connect routers in the internet.  
 The TCP is more reliable. It waits for agkowledgement before sending a package.  
-DNS converts a human readable name into an IP address.
+DNS converts a human readable name into an IP address.  
+- an A record is a type of DNS that maps the domain name to the IP address of the computer that hosts the domain.
+### Ports
+Ports are where network connections start and end. 
+- 443 encrypts communication between a web browser and the website.
+- 80 is for HTTPS communications between a client computer and the server they are accessing
+- 23 is the telnet protocal, and it allows remote communication between a user and a computer.  
 ## Creating an AWS Instance  
 ### Access
 My public IP address is 54.208.80.51  
@@ -55,7 +61,7 @@ The Caddyfile is for the configuration of the gateway of your webservices. The p
 The size of the server will change how much traffic your address can run as well as they types of things it can do. I am using a t2.micro
 ## Getting a Domain
 ### Creating the domain
-Through AWS I purchased the domain ellie-jean.com It was $14.00. I also went and added records to my domain so that the domain name points and takes the user to my IP address. After this was successful, I can now reach my website by going to http://ellie-jean.com  
+Through AWS I purchased the domain ellie-jean.com It was $14.00. I also went and added records to my domain so that the domain name points and takes the user to my IP address. After this was successful, I can now reach my website by going to http://ellie-jean.com The top level domain is the thing following the final period. In my case it is "com"
 ### Making it Secure
 using the command `vi Caddyfile` and then pressing the "i" key to enter insert mode I edited the Caddyfile so that now the requests go through a web certificate making it so that the person using my webiste knows that it is me they are connecting to. Pressing the escape key followed `:wq` saved my changes. I then used the command `sudo service caddy restart` to restart caddy and make sure the changes took effect. Now my website uses https so the link is ***now*** https://ellie-jean.com
 ## The Console
@@ -201,7 +207,7 @@ There are a couple different ways that you can incorporate CSS.
 ### Cascading Styles
 Because of the way that CSS works, as you get more specific with an element having a specific rule, it will override the more general rule. All p tags are told to be red, then p tags in this specific table are told to be blue, and then this specific p tag in the table it told to be green. So there will be red, blue, and green tags, blue in the table, and then one specific tag will be green.
 ### Box Model
-Everything in CSS is held inside of boxes. The box contains margins, borders, padding, and content. How big your content box is will automatically determine the size of the other boxes. You can change the height and width of the content and border boxes by using the `box sizing` property of CSS.
+Everything in CSS is held inside of boxes. The box contains margins, borders, padding, and content. How big your content box is will automatically determine the size of the other boxes. You can change the height and width of the content and border boxes by using the `box sizing` property of CSS. The inner layer is content, then padding, then border, than margins.
 ## Selectors
 ### Element Type Selectors
 This is used to select an entire element to change the style of. For example this is how we would change the "default" font for our document.  
@@ -377,7 +383,7 @@ Types can be automatically converted based upon context. The strict equality +++
 if, else, and else if are supported. You can also use ternary operator, here is an example: `a === 1 ? console.log(1) : console.log('not 1');`  
 Common boolean operations: && (and) || (or) ! (not)  
 ### Loops
-You can use for, for in, for of, while, do while, and switch loops in JavaScript. for in statment iterates over an object's property name. For of iterates over an iterable's property values like array, map, set. Break and continue statements are used to abort or advance the loop.
+You can use for, for in, for of, while, do while, and switch loops in JavaScript. for in statment iterates over an object's property name. For of iterates over an iterable's property values like array, map, set. Break and continue statements are used to abort or advance the loop. Switch statments have a bunch of `case`s that will compare the output of the expression to and then run code inside of the block and then break the statment. If you don't have anything that matches none of the cases will run.
 ## String Functions
 - length: the number of characters in the string. 
 - indexOf(): the starting index of a given substring
