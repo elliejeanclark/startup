@@ -524,7 +524,7 @@ Web framework bundlers will make everything good in life. And make it so you don
 ## DOM Document object Model
 An object representation of the HTML elements that the browers uses to render the display. Allows you to write programs that dynamically manipulate the HTML. The "document" is like the root object that contains the rest of the code. If you in your console run `console.log(document)` it will open it in a way that you can collapse and open specific elements. 
 ### Changing the DOM Programatically
-The `document` is the root for the whole web page. There are many functions you can then do with the javascript. For example you can use the `querySelectorAll` and select elements from the docuemtn. The `textContent` property contains all of the element's text. You can find and read this way.  
+The `document` is the root for the whole web page. There are many functions you can then do with the javascript. For example you can use the `querySelectorAll` and select elements from the document. The `textContent` property contains all of the element's text. You can find and read this way.  
 You can also `createElement` and insert that element by appending it on to an existing element in the tree.You can also remove elements with the `removeChild` function on the parent element.
 ### Injecting HTML
 You can inject entire blocks of HTML into an element. You can use the `innerHTML` function to add those blocks of code. HOWEVER this is actually really unsafe and can be a place for users to insert bad things into your website. Sanitize HTML or just use DOM manipulation functions instead of `innerHTML`
