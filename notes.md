@@ -607,3 +607,30 @@ Components can have internal states. It is called by calling the `React.useState
 React supports `class style` components, but is moving away from it.
 ### Reactivity 
 The properties and state are used by the framework to determine the reactivity of the interface. 
+## Toolchains
+There are a lot of different things that we abstract away with tools as we develop a website. Here is a list of some. 
+- Code repository - Stores code in a shared, versioned location.
+- Linter - Removes, or warns of, non-idiomatic code usage.
+- Prettier - Formats code according to a shared standard.
+- Transpiler - Compiles code into a different format. For example, from JSX to JavaScript, TypeScript to JavaScript, or SCSS to CSS.
+- Polyfill - Generates backward compatible code for supporting old browser versions that do not support the latest standards.
+- Bundler - Packages code into bundles for delivery to the browser. This enables compatibility (for example with ES6 module support), or performance (with lazy loading).
+- Minifier - Removes whitespace and renames variables in order to make code smaller and more efficient to deploy.
+- Testing - Automated tests at multiple levels to ensure correctness.
+- Deployment - Automated packaging and delivery of code from the development environment to the production environment.
+## Vite
+You will want to use the command line to convert a project over to react. These are the commands you want to run in order to do that for a demonstration that will create a new application on a local server in a file called demoVite.
+- npm create vite@latest demoVite -- --template react
+- cd demoVite
+- npm install
+- npm run dev
+### Files
+In this demo application it loads index.html, main.jsx, and App.jsx. The index file loads the root element for the HTML as well as the script element for the JavaScript. The main file creates the react application by associating the root element with the App component in app.jsx. This causes all of the component render functions to execute and the generated HTML, CSS, and JavaScript to be executed in index.html.
+### JSX vs JS
+Vite uses JSX and not JS. Babel works with either one, but some editor tools work differently with different ones. So if a file contains JSX use a .jsx file. 
+### Building a Production Release
+The `npm run dev` command just loads your code on a local HTTP server. When you want to bundle and deploy to a production environment, you run the `npm run build` command. Vite then outputs everything to a distribution subdirectory named `dist`. 
+### Simon react
+When you deploy the Simon React, it will use the `npm run build` command, and then copy the resulting `dist` directory to your production server. 
+## Router
+A Web framework router provides essential functionality for single-page applications. It allows us to load only one HTML page and then manipulates it to make it look like several pages. We are going to be using the router package react-router-dom Version 6. So then after you Inject the router into the application with `const root = ReactDOM.createRoot(document.getElementById('root'));` you can then add routes to your application. 
