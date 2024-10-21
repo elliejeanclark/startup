@@ -646,3 +646,56 @@ Keys tell React about the identity of each component, which allows React to main
 React hooks allow react function style components to be able to do everything that a class style component can do and more. This makes function style components the preferred way of doing things in React. useState is an example of a hook. Hooks can only be used in function style components and must be called at the top scope of the function. That means a hook cannot be called inside of a loop or conditional. This restriction ensures that hooks are always called in the same order when a component is rendered.
 ### useEffect hook
 The `useEffect` hook allows you to represent lifecycle events. You can control what triggers a useEffect hook by specifying its dependencies. To accomplish this you pass an array of dependencies as a second parameter to the useEffect call. ` React.useEffect(() => { console.log(`count1 effect triggered ${count1}`); }, [count1]);` If you specify an empty array as the hook dependency then it is only called when the component is first rendered.
+## Converting To React -- Notes from Simon
+1) Install and configure Vite
+2) Replace deployment script
+3) Reorganize the code
+4) Convert to React Bootstrap
+5) Enable React
+6) Create app component
+7) Create view components
+8) Create the router
+9) Convert scores component
+10) Convert other components
+### Installing/Configuring Vite
+Go to the directory you want to install vite in. 
+```
+npm init -y
+npm install vite@latest -D
+```
+### Replace Deployment Script
+Then replace the scripts in the package.json file. 
+```
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  }
+```
+**Make sure you add node_modules to your .gitignore file so that you don't commit the imported NPM code.**
+### Reorganize Code
+Have a `public` directory where you have static assets. Have a `src` directory where your code components live.
+### Convert to React Bootstrap
+There is an NPM package called React Bootstrap that wraps the Bootstrap CSS framework in React Components. This allows you to treat boostrap as a react component instead of just imported css and javascript. To use the REact version of Bootstrap, import the NPM package. `npm install bootstrap react-bootstrap`. Now, in the components where you want to refer to bootstrap, you can import the bootstrap style sheet form the imported NPM package just like you would other CSS files. `import 'boostrap/dist/css/bootstrap.min.css';`
+### Enabling React
+To enable react, you need to install the react components for the basic functionality, DOM manipulation, and request routing to display individual components. `npm install react react-dom react-router-dom`  
+With react, we will have a single HTML file that dynamically loads all of the other application components into its DOM using JavaScript. 
+### Create App component
+To begin, you create a top-level component, stored in src/app.jsx . 
+### Create View Components
+for old "pages", you create react component ffiles for each one, and they just begin as stubs that we will populate as we move functionality from the old js files into the jsx components. We place each stupped component in a separate directory so we can keep all component files together. 
+### Create the Router
+We can now create a router that will display each component as the navigation UI requests it. The router controls the whole application by determining what component to display based upon what navigationthe user chooses.
+Importing the router component into the app component...   `import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';` and then the components ie `import { Login } from './login/login';`  
+Then you wrap all the App component's previous elements with the BrowserRouter component so that the Browser router can control links and rendered components for all of its child elements. 
+#### Navigating routes
+We then replace the a elements with the router's NavLink component .the href attribute is replaced with the routers `to` attribute. The NavLink component prevents the browser's default navigation functionality and instead handles it by replacing the currently displayed component. 
+#### Injecting the routed component.
+Router definitions are then inserted so the router knows what component to display for a given path. the `Routes` element replaces the `main` element in the component HTML.
+### Converting to React components
+The code for each of the HTML pages needs to now be converted to the different React components. 
+- Copy the `main` element HTML over and put it in the return value of the component. Don't copy the header and footer HTML since they will now be in app.jsx.
+- Rename the `class` to `className` so that it doesn't conflict with the JavaScript keyword class.
+- Move the CSS over to the component directory and use an `import` statement to bring it into the component's `jsx` file. 
+### Deployment Script
+See new `deployReact.sh` cause we are using vite now. 
