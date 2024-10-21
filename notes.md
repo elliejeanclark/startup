@@ -698,4 +698,4 @@ The code for each of the HTML pages needs to now be converted to the different R
 - Rename the `class` to `className` so that it doesn't conflict with the JavaScript keyword class.
 - Move the CSS over to the component directory and use an `import` statement to bring it into the component's `jsx` file. 
 ### Deployment Script
-See new `deployReact.sh` cause we are using vite now. 
+See new `deployReact.sh` cause we are using vite now. `./deployReact.sh -k <yourpemkey> -h <yourdomain> -s simon`
