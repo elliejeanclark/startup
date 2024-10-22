@@ -685,7 +685,7 @@ To begin, you create a top-level component, stored in src/app.jsx .
 ### Create View Components
 for old "pages", you create react component ffiles for each one, and they just begin as stubs that we will populate as we move functionality from the old js files into the jsx components. We place each stupped component in a separate directory so we can keep all component files together. 
 ### Create the Router
-We can now create a router that will display each component as the navigation UI requests it. The router controls the whole application by determining what component to display based upon what navigationthe user chooses.
+We can now create a router that will display each component as the navigation UI requests it. The router controls the whole application by determining what component to display based upon what navigation the user chooses.
 Importing the router component into the app component...   `import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';` and then the components ie `import { Login } from './login/login';`  
 Then you wrap all the App component's previous elements with the BrowserRouter component so that the Browser router can control links and rendered components for all of its child elements. 
 #### Navigating routes
