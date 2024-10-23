@@ -11,12 +11,15 @@ html, body {
     min-height: 100vh;
 }
 
-.body > * {
-    flex: 1;
+.body > header, .body > footer {
+    flex-shrink: 0;
+}
+  
+.body > main {
+    flex-grow: 1;
 }
   
 footer {
-    flex-shrink: 0;
     background-color: #477ba8;
     display: flex;
     flex-direction: row;
