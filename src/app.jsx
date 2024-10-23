@@ -12,7 +12,7 @@ function App () {
             <header>
                 <nav className="navbar navbar-expand-lg" id="head-nav">
                     <div className="container-fluid">
-                        <img className="navbar-brand" id="logo" src="/logo.png" alt="logo"></img>
+                        <img className="navbar-brand" id="logo" src="/public/logo.png" alt="logo"></img>
                         <menu className="navbar-nav">
                             <li className="nav-item">
                                 <NavLink className="nav-link" to="">Login</NavLink> 
