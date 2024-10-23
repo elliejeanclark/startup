@@ -3,6 +3,7 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/Login';
 import { MyReviews } from './MyReviews/MyReviews';
 import { OtherReviews } from './OtherReviews/OtherReviews';
+import './app.css';
 
 function App () {
     console.log("App is rendering")
