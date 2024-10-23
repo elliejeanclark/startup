@@ -1,7 +1,11 @@
 import React from 'react';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import { Login } from './login/Login';
+import { MyReviews } from './MyReviews/MyReviews';
+import { OtherReviews } from './OtherReviews/OtherReviews';
 
 function App () {
+    console.log("App is rendering")
     return (
         <BrowserRouter>
         <div className="body">
