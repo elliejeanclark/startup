@@ -28,6 +28,16 @@ function App () {
                 </nav>
             </header>
         </div>
+
+        <Routes>
+            <Route
+                path='/'
+                element={<Login />}
+                exact
+            />
+            <Route path="/OtherReviews" element={<OtherReviews />} />
+            <Route path="/MyReviews" element={<MyReviews />} />
+        </Routes>
     </BrowserRouter>
 }
 
