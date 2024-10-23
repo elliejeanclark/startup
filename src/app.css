@@ -18,12 +18,6 @@ html, body {
 .body > main {
     flex-grow: 1;
 }
-  
-footer {
-    background-color: #477ba8;
-    display: flex;
-    flex-direction: row;
-}
 
 header {
     background-color: #81c2e6;
@@ -33,6 +27,12 @@ header {
     border-radius: 10%;
     width: 200px;
     height: auto;
+}
+
+footer {
+    background-color: #477ba8;
+    display: flex;
+    flex-direction: row;
 }
 
 #author {

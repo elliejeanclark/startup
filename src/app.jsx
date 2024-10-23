@@ -46,8 +46,10 @@ function App () {
             </main>
 
             <footer>
-                <div className="container-fluid">
+                <div>
                     <h4 id="author">Author: Elinor Clark</h4>
+                </div>
+                <div>
                     <h4 id="github"><a href="https://github.com/elliejeanclark/startup">GitHub</a></h4>
                 </div>
             </footer>
