@@ -3,7 +3,8 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import 'botstrap/dist/css/bootstrap.min.css';
 
 function App () {
-    <BrowserRouter>
+    return (
+        <BrowserRouter>
         <div>
             <header>
                 <nav className="navbar navbar-expand-lg" id="head-nav">
@@ -38,29 +39,28 @@ function App () {
             <Route path="/OtherReviews" element={<OtherReviews />} />
             <Route path="/MyReviews" element={<MyReviews />} />
         </Routes>
+
+        <footer>
+            <div className="container-fluid">
+                <h4 id="author">Author: Elinor Clark</h4>
+                <h4 id="github"><a href="https://github.com/elliejeanclark/startup">GitHub</a></h4>
+            </div>
+        </footer>
     </BrowserRouter>
+    );
 }
 
 export default App;
-
-                        {/* <ul class="navbar-nav me-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="index.html">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="MyReviews.html">My Reviews</a>
-                            </li>
-                        </ul>
-                        <form id="login-form" class="ms-auto">
-                            <div class="row">
-                                <div class="col">
-                                    <input class="form-control" type="text" id="username" name="username" placeholder="Username">
-                                </div>
-                                <div class="col">
-                                    <input class="form-control" type="password" id="password" name="password" placeholder="Password">
-                                </div>
-                                <div class="col-auto">
-                                    <input id="submit-button" class="btn" type="submit" value="Log In">
-                                </div>
-                            </div>
-                        </form> */}
+                        // <form id="login-form" class="ms-auto">
+                        //     <div class="row">
+                        //         <div class="col">
+                        //             <input class="form-control" type="text" id="username" name="username" placeholder="Username">
+                        //         </div>
+                        //         <div class="col">
+                        //             <input class="form-control" type="password" id="password" name="password" placeholder="Password">
+                        //         </div>
+                        //         <div class="col-auto">
+                        //             <input id="submit-button" class="btn" type="submit" value="Log In">
+                        //         </div>
+                        //     </div>
+                        // </form>
