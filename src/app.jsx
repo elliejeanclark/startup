@@ -51,16 +51,3 @@ function App () {
 }
 
 export default App;
-                        // <form id="login-form" class="ms-auto">
-                        //     <div class="row">
-                        //         <div class="col">
-                        //             <input class="form-control" type="text" id="username" name="username" placeholder="Username">
-                        //         </div>
-                        //         <div class="col">
-                        //             <input class="form-control" type="password" id="password" name="password" placeholder="Password">
-                        //         </div>
-                        //         <div class="col-auto">
-                        //             <input id="submit-button" class="btn" type="submit" value="Log In">
-                        //         </div>
-                        //     </div>
-                        // </form>
