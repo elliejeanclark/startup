@@ -33,15 +33,17 @@ function App () {
                 </nav>
             </header>
 
-            <Routes>
-                <Route
-                    path='/'
-                    element={<Login />}
-                    exact
-                />
-                <Route path="/OtherReviews" element={<OtherReviews />} />
-                <Route path="/MyReviews" element={<MyReviews />} />
-            </Routes>
+            <main>
+                <Routes>
+                    <Route
+                        path='/'
+                        element={<Login />}
+                        exact
+                    />
+                    <Route path="/OtherReviews" element={<OtherReviews />} />
+                    <Route path="/MyReviews" element={<MyReviews />} />
+                </Routes>
+            </main>
 
             <footer>
                 <div className="container-fluid">
