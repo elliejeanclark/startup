@@ -11,10 +11,28 @@ function App () {
                         <img className="navbar-brand" id="logo" src="/Images/Logo.png" alt="logo"></img>
                         <menu className="navbar-nav">
                             <li className="nav-item">
-                                <NavLink className="nav-link" to="/index.html">Home</NavLink> 
+                                <NavLink className="nav-link" to="">Login</NavLink> 
                             </li>
-
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="otherreviews">
+                                    Other Reviews
+                                </NavLink>
+                            </li>
+                            <li className="nav-item">
+                                <NavLink className="nav-link" to="myreviews">
+                                    My Reviews
+                                </NavLink>
+                            </li>
                         </menu>
+                    </div>
+                </nav>
+            </header>
+        </div>
+    </BrowserRouter>
+}
+
+export default App;
+
                         {/* <ul class="navbar-nav me-auto">
                             <li class="nav-item">
                                 <a class="nav-link" href="index.html">Home</a>
@@ -36,11 +54,3 @@ function App () {
                                 </div>
                             </div>
                         </form> */}
-                    </div>
-                </nav>
-            </header>
-        </div>
-    </BrowserRouter>
-}
-
-export default App;
