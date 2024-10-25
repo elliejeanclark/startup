@@ -1,6 +1,7 @@
 import React from 'react';
 import { AuthProvider } from './AuthContext';
 import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
 import { Login } from './login/Login';
 import { MyReviews } from './MyReviews/MyReviews';
 import { OtherReviews } from './OtherReviews/OtherReviews';
@@ -40,8 +41,8 @@ function App () {
                                 path='/'
                                 element={<Login />}
                             />
-                            <Route path="/OtherReviews" element={<OtherReviews />} />
-                            <Route path="/MyReviews" element={<MyReviews />} />
+                            <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews />} />} />
+                            <Route path="/OtherReviews" element={ <ProtectedRoute  element={<OtherReviews />} />} />
                         </Routes>
                     </main>
 
