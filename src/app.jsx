@@ -3,10 +3,14 @@ import { BrowserRouter, NavLink, Route, Routes } from 'react-router-dom';
 import { Login } from './login/Login';
 import { MyReviews } from './MyReviews/MyReviews';
 import { OtherReviews } from './OtherReviews/OtherReviews';
+import { AuthState } from './login/authstate';
 import './app.css';
 
 function App () {
-    console.log("App is rendering")
+    const [userName, setUserName] = React.useState(localStorage.getItem('userName') || '');
+    const currentAuthState = userName ? AuthState.Authenticated : AuthState.Unauthenticated;
+    const [authState, setAuthState] = React.useState(currentAuthState);
+
     return (
         <BrowserRouter>
         <div className="body">
