@@ -12,24 +12,24 @@ function App () {
         <div className="body">
             <header>
                 <nav className="navbar navbar-expand-lg" id="head-nav">
-                    <div className="container-fluid">
+                    <div>
                         <img className="navbar-brand" id="logo" src="/public/logo.png" alt="logo"></img>
-                        <menu className="navbar-nav">
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="">Login</NavLink> 
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="otherreviews">
-                                    Other Reviews
-                                </NavLink>
-                            </li>
-                            <li className="nav-item">
-                                <NavLink className="nav-link" to="myreviews">
-                                    My Reviews
-                                </NavLink>
-                            </li>
-                        </menu>
                     </div>
+                    <menu className="navbar-nav">
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="">Login</NavLink> 
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="otherreviews">
+                                Other Reviews
+                            </NavLink>
+                        </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" to="myreviews">
+                                My Reviews
+                            </NavLink>
+                        </li>
+                    </menu>
                 </nav>
             </header>
 

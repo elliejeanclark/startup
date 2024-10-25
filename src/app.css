@@ -23,10 +23,35 @@ header {
     background-color: #81c2e6;
 }
 
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
 #logo {
     border-radius: 10%;
     width: 200px;
     height: auto;
+    padding: 5px;
+    justify-content: flex-start;
+}
+
+menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.navbar-nav {
+    list-style: none;
+}
+
+.nav-link {
+    text-decoration: none;
+    padding: 5px;
+    margin: 5px;
 }
 
 footer {
