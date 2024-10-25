@@ -1,6 +1,14 @@
 import React from 'react';
 import './login.css';
 
+function submission(event){
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("pswd").value;
+    localStorage.setItem('userName', username);
+    localStorage.setItem('password', password);
+    event.preventDefault();
+}
+
 export function Login() {
     return (    
         <main id="login-content">
@@ -8,10 +16,10 @@ export function Login() {
                 <h1>Welcome to Pop In!</h1>
             </div>
             <div>
-                <form id="login-form">
-                    <input type="username" class="form-control" id="username" placeholder="Enter Username" name="username"/>
-                    <input type="password" class="form-control" placeholder="Enter password" name="pswd"/>
-                    <input id="login-button" type="submit" class="btn btn-success" value="Log In"/>
+                <form id="login-form" onSubmit={submission}>
+                    <input type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
+                    <input type="password" className="form-control" placeholder="Enter password" name="pswd"/>
+                    <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>
                 </form>
             </div>
         </main>
