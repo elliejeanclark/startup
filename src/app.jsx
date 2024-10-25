@@ -35,16 +35,14 @@ function App () {
                         </nav>
                     </header>
 
-                    <main>
-                        <Routes>
+                    <Routes>
                             <Route
                                 path='/'
                                 element={<Login />}
                             />
                             <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews />} />} />
                             <Route path="/OtherReviews" element={ <ProtectedRoute  element={<OtherReviews />} />} />
-                        </Routes>
-                    </main>
+                    </Routes>
 
                     <footer>
                         <div id="author-container">
