@@ -3,7 +3,7 @@
 ### Elevator Pitch
 Have you ever wondered what move or show you should start watching next? Or have you ever wanted a place to keep track of your thoughts on shows and movies that you have watched? My application, Pop In!, will provide an environment where people can write down reviews of movies and tv shows and save them to their profile for later when talking to friends or just trying to remember that show what you wanted to watch! You will also be able to look up other public reviews, and rate them, to get an idea of what to watch next!
 ### Design
-![rough layout for Pop In!](/Images/Rough%20Design.png)
+![rough layout for Pop In!](./public/Rough%20Design.png)
 ### Key Features
 * Secure login over HTTPS
 * Ability to write and save reviews to an individual profile.
