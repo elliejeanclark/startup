@@ -3,7 +3,7 @@ import React from 'react';
 export function Login() {
   return (
     <div>
-      <h1>Login Page</h1>
+      <h1>Welcome to Pop In!</h1>
     </div>
   );
 }

@@ -46,10 +46,10 @@ function App () {
             </main>
 
             <footer>
-                <div>
+                <div id="author-container">
                     <h4 id="author">Author: Elinor Clark</h4>
                 </div>
-                <div>
+                <div id="github-container">
                     <h4 id="github"><a href="https://github.com/elliejeanclark/startup">GitHub</a></h4>
                 </div>
             </footer>

@@ -57,17 +57,20 @@ menu {
 footer {
     background-color: #477ba8;
     display: flex;
-    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
 #author {
     margin-left: 10px;
-    margin-top: 5px;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 #github {
     margin-left: auto;
-    margin-top: 5px;
+    margin-top: 10px;
+    font-size: 20px;
 }
 
 #github a {
