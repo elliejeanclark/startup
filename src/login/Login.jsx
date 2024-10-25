@@ -3,19 +3,17 @@ import './login.css';
 
 export function Login() {
     return (    
-        <div id="login-content">
+        <main id="login-content">
             <div id="title">
                 <h1>Welcome to Pop In!</h1>
             </div>
             <div>
                 <form id="login-form">
-                    <label htmlFor="username">Username:</label>
-                    <input type="text" id="username" name="username" required />
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" id="password" name="password" required />
-                    <button type="submit">Login</button>
+                    <input type="username" class="form-control" id="username" placeholder="Enter Username" name="username"/>
+                    <input type="password" class="form-control" placeholder="Enter password" name="pswd"/>
+                    <input id="login-button" type="submit" class="btn btn-success" value="Log In"/>
                 </form>
             </div>
-        </div>
+        </main>
     );
 }
