@@ -1,8 +1,9 @@
 import React from 'react';
+import './login.css';
 
 export function Login() {
     return (    
-        <main>
+        <div id="login-content">
             <div id="title">
                 <h1>Welcome to Pop In!</h1>
             </div>
@@ -15,6 +16,6 @@ export function Login() {
                     <button type="submit">Login</button>
                 </form>
             </div>
-        </main>
+        </div>
     );
 }
