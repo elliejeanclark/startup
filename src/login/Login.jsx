@@ -13,6 +13,14 @@ export function Login() {
         localStorage.setItem('password', password);
         setIsAuthenticated(true);
     }
+
+    const handleLogout = (event) => {
+        event.preventDefault();
+        localStorage.removeItem('userName');
+        localStorage.removeItem('password');
+        setIsAuthenticated(false);
+        console.log("user logged out")
+    }
     
     return (    
         <main id="login-content">
@@ -21,9 +29,14 @@ export function Login() {
             </div>
             <div>
                 <form id="login-form" onSubmit={handleLogin}>
-                    <input type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
-                    <input type="password" className="form-control" id="pswd" placeholder="Enter password" name="pswd"/>
-                    <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>
+                    <div id="login-inputs">
+                        <input type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
+                        <input type="password" className="form-control" id="pswd" placeholder="Enter password" name="pswd"/>
+                    </div>
+                    <div id="login-buttons">
+                        <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>
+                        <input onClick={handleLogout} id="logout-button" type="button" className="btn btn-primary" value="Log Out" />
+                    </div>
                 </form>
             </div>
         </main>

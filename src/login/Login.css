@@ -9,3 +9,36 @@ main {
     flex-direction: column;
     align-items: center;
 }
+
+#login-form > * {
+    padding: 5px;
+    margin: 5px;
+}
+
+#username, #pswd {
+    padding: 5px;
+}
+
+#username {
+    margin-right: 10px;
+}
+
+#pswd {
+    margin-left: 10px;
+}
+
+#login-button {
+    background-color: #81c2e6;
+    border-radius: 10%;
+    border-color: aliceblue;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+#logout-button {
+    background-color: antiquesilver;
+    border-radius: 10%;
+    border-color: aliceblue;
+    padding: 5px;
+    margin-left: 10px;
+}
