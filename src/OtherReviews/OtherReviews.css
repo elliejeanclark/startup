@@ -1,79 +1,8 @@
-html, body {
+html, .body {
     font-family: "Raleway";
     height: 100%;
     background-color: aliceblue;
     margin: 0;
-}
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex-grow: 1;
-}
-
-#head-nav {
-    background-color: #81c2e6;
-}
-
-#username {
-    margin: 5px 0;
-}
-
-#password {
-    margin: 5px 0;
-}
-
-#submit-button {
-    background-color: aliceblue;
-    margin: 5px 0;
-}
-
-#logo {
-    border-radius: 10%;
-    width: 200px;
-    height: auto;
-}
-
-#login-form {
-    margin-left: auto;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
-}
-
-input#username,
-input#password,
-input#submit-button {
-    background-color: aliceblue;
-    margin-right: 10px;
-}
-
-#login-form .col-auto{
-    margin-right: 0;
-}
-
-footer {
-    background-color: #477ba8;
-    display: flex;
-    flex-direction: row;
-}
-
-#author {
-    margin-left: 10px;
-    margin-top: 5px;
-}
-
-#github {
-    margin-left: auto;
-    margin-top: 5px;
-}
-
-#github a {
-    color: black;
-    padding: 10px;
 }
 
 main {
@@ -85,6 +14,7 @@ main {
 #recent-reviews {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
 }
 
@@ -92,6 +22,16 @@ main {
     #recent-reviews {
         flex-direction: column;
     }
+}
+
+#recent-review-1, #recent-review-2, #recent-review-3 {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 50px;
+    
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #81c2e6;
 }
 
 #main-page-title {
@@ -116,16 +56,6 @@ main {
 #search-for-reviews {
     background-color: #81c2e6;
     margin-left: 15px;
-}
-
-#recent-review-1, #recent-review-2, #recent-review-3 {
-    display: flex;
-    flex-direction: column;
-    margin: 30px 50px;
-    
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #81c2e6;
 }
 
 .review-title {
