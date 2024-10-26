@@ -13,7 +13,7 @@ export function OtherReviews() {
         <div id="recent-reviews">
           <div id="recent-review-1">
             <label className="review-title">Title for Recent Review #1 Here</label>
-            <textarea className="review-text" id="recent-review-1" name="review" placeholder="Most recent review will be here"></textarea>
+            <textarea className="review-text" id="recent-review-1-text" name="review" placeholder="Most recent review will be here"></textarea>
                         
             <label>What do you rate this review out of 10?</label>
             <input type="range" id="rating-1" name="rating" min="0" max="10" />
@@ -25,7 +25,7 @@ export function OtherReviews() {
             
           <div id="recent-review-2">
             <label className="review-title">Title for Recent Review #2 Here</label>
-            <textarea className="review-text" id="recent-review-2" name="review" placeholder="Second most recent review will be here"></textarea>
+            <textarea className="review-text" id="recent-review-2-text" name="review" placeholder="Second most recent review will be here"></textarea>
                         
             <label>What do you rate this review out of 10?</label>
             <input type="range" id="rating-2" name="rating" min="0" max="10" />
@@ -37,7 +37,7 @@ export function OtherReviews() {
             
           <div id="recent-review-3">
             <label className="review-title">Title for Recent Review #3 Here</label>
-            <textarea className="review-text" id="recent-review-3" name="review" placeholder="Third most recent review will be here"></textarea>
+            <textarea className="review-text" id="recent-review-3-text" name="review" placeholder="Third most recent review will be here"></textarea>
         
             <label>What do you rate this review out of 10?</label>
             <input type="range" id="rating-3" name="rating" min="0" max="10" />

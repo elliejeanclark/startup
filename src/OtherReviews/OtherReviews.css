@@ -34,6 +34,11 @@ main {
     background-color: #81c2e6;
 }
 
+.review-text {
+    height: 200px;
+    background-color: aliceblue;
+}
+
 #main-page-title {
     padding-top: 10px;
     margin-bottom: 0;
@@ -62,11 +67,6 @@ main {
     text-align: center;
     align-items: center;
     padding-bottom: 10px;
-}
-
-.review-text {
-    height: 200px;
-    width: auto;
 }
 
 #submit-review-rating {
