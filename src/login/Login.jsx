@@ -11,6 +11,9 @@ export function Login() {
         const password = document.getElementById("pswd").value;
         localStorage.setItem('userName', username);
         localStorage.setItem('password', password);
+        const welcomeMessage = `Welcome ${username}!`;
+        const welcomeMessageElement = document.getElementById("welcome-message");
+        welcomeMessageElement.innerText = welcomeMessage;
         setIsAuthenticated(true);
     }
 
@@ -18,14 +21,18 @@ export function Login() {
         event.preventDefault();
         localStorage.removeItem('userName');
         localStorage.removeItem('password');
+        const welcomeMessageElement = document.getElementById("welcome-message");
+        welcomeMessageElement.innerText = "";
         setIsAuthenticated(false);
-        console.log("user logged out")
+        document.getElementById("username").value = "";
+        document.getElementById("pswd").value = "";
     }
     
     return (    
         <main id="login-content">
             <div id="title">
                 <h1>Welcome to Pop In!</h1>
+                <h3 id="welcome-message"></h3>
             </div>
             <div>
                 <form id="login-form" onSubmit={handleLogin}>

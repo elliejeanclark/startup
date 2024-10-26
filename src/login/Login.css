@@ -4,6 +4,10 @@ main {
     align-items: center;
 }
 
+#welcome-message {
+    text-align: center;
+}
+
 #login-form {
     display: flex;
     flex-direction: column;
