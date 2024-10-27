@@ -28,18 +28,20 @@ export function MyReviews() {
         <input className="btn" id="save-review" type="submit" value="Save My Review" />
       </form>
 
-      <div id="reviews-container">
-        <h3>Your Reviews</h3>
-        <ul>
-          {reviews.map((review, index) => (
-            <li key={index} className="prev-review">
-              <h3 className="prev-review-title">{review.title}</h3>
-              <p className="prev-review-text">{review.text}</p>
-              <p className="prev-review-rating">Rating: {review.rating}</p>
-            </li>
-          ))}
-        </ul>
-      </div>
+      <h3>Your Reviews</h3>
+      {reviews.length > 0 && (
+        <div id="reviews-container">
+          <ul>
+            {reviews.map((review, index) => (
+              <li key={index} className="prev-review">
+                <h3 className="prev-review-title">{review.title}</h3>
+                <p className="prev-review-text">{review.text}</p>
+                <p className="prev-review-rating">Rating: {review.rating}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </main>
   );
 }

@@ -77,3 +77,26 @@ main {
 #overall-rating {
     margin-bottom: 20px;
 }
+
+#reviews-container {
+    margin: 20px auto;
+    padding: 15px;
+    border: 1px solid #81c2e6;
+    background-color: #477ba8;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.prev-review {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #81c2e6;
+}
+
+.prev-review-title, .prev-review-text, .prev-review-rating {
+    flex: 1;
+    margin-right: 10px;
+}
