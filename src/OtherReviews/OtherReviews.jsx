@@ -40,11 +40,7 @@ export function OtherReviews() {
   
   return (
     <main>
-        <h3 id="main-page-title">Find Movie Reviews Here!</h3>
-        <form className="search-container">
-          <input type="text" id="search-bar" name="search" placeholder="Find a Review..." />
-          <input className="btn" id="search-for-reviews" type="submit" value="Search" />
-        </form>
+        <h1 id="main-page-title">Find Movie Reviews Here!</h1>
 
         <div id="recent-reviews">
           <div id="recent-review-1">
