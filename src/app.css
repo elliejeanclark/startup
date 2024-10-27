@@ -11,6 +11,11 @@ html, body {
     min-height: 100vh;
 }
 
+main {
+    display: flex;
+    width: 100%;
+}
+
 .body > header, .body > footer {
     flex-shrink: 0;
 }
