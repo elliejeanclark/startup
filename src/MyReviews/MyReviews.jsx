@@ -12,6 +12,8 @@ export function MyReviews() {
       rating: event.target.rating.value,
     };
     setReviews([...reviews, newReview]);
+    event.target.reset();
+    event.target.rating.value = 10;
   }
   
   return (

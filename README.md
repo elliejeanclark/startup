@@ -40,3 +40,13 @@ I will utilize the required techologies in these ways:
 - [x] All application text content styled with css. Raleway was the font I used.
 - [x] My logo image was styled.
 As a note, I have removed the emoji rating system and opted for a slider for simplicity.
+## React Deliverable
+- [x] Bundled Using Vite
+- [x] There are three components, login, other reviews, and my reviews either fully functional or mocking full functionality.
+- [x] Login component prevents user from accessing the website unless they have logged in. Logging out is an option and a welcome message is displayed to let the user know they logged in.
+- [x] Other reviews component lets users rate a review, and then doesn't let them change that result after they have clicked the submit button. Current rating is displayed as only what the user has rated the review, but will be updated with other users ratings as well.
+- [x] My reviews component saves completed reviews to a container below the form to write a new review.
+- [x] React router used to navigate between components
+- [x] All functionality styled nicely with css.
+- [x] useState and useEffect and other hooks utilized in all components.
+As a note, I have removed the search bar functionality as getting the functionality I already have took many hours, and I feel that going further is beyond my skill level currently with this class.
