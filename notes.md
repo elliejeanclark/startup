@@ -699,3 +699,37 @@ The code for each of the HTML pages needs to now be converted to the different R
 - Move the CSS over to the component directory and use an `import` statement to bring it into the component's `jsx` file. 
 ### Deployment Script
 See new `deployReact.sh` cause we are using vite now. `./deployReact.sh -k <yourpemkey> -h <yourdomain> -s simon`
+# HTTP Service
+## The Internet
+The internet is a lot of "wires" connecting all the computers in the world. (not all computers are connected but in general they are.)
+### Making Connections
+In order for devices to communicate, you need to have an IP address. The symbolic name for the IP address is the domain name, which is what humans prefer. Domain names are then converted back into IP addresses by doing a lookup in the domain name service DNS. You can look up the IP address of a given domain using the `dig` command in the console.  
+Once you have the IP address, you connect to the device it represents by first asking for a connection route to the device. A connection route consists of many hops across the network until the destination is discovered.  
+#### Traceroute
+The `traceroute` console utility lets you view the hops across the network. It will start with your network router that your computer is connected, it will jump through some unidentified devices, then it will hit your internet service provider (ISP) then you jump through more unidentified devices until you reach the provided IP address. If you run it again you may see something slightly different because every connection with the internet is unique and dynamic.  
+### Network Internals
+You actually send data through the TCP/ICP model. At the very top is the application layer. It is user functionality such as web(HTTP),  mail (SMTP), files (FTP), remote shell (SSH), and chat (IRC). Then there is the transport layer which breaks the information from the application layer into smaller chunks and and sends the data. The actual connection is made by the internet layer. The internet finds the device that you want to connect to and keeps the connection to the device going. At the very bottom is the physical link layer that has to do with wires and physical connections/hardware.
+- Application: HTTPS - Functionality like web browsing
+- Transport: TCP - Moving connection information packets
+- Internet: IP - Establishing connections
+- Link: Fiber, hardware - Physical connections
+## Web Servers
+A web server is a device that accepts incoming connections and speaks the HTTP application protocol. 
+### Monolithic Web Servers
+In early web programming, you would buy a really big and complicated program that spoke HTTP and installed on a hardware server. Initially it also only did static functionality, but dynamic functionality is really what created the need for a better web server.
+### Web service gateways
+To make it easy for users to remember what port goes to what service we have service gateways. The gateway then looks at requests and maps it to a services on different ports.  
+Our application uses Caddy as the gateway.
+### Microservices
+If a web service provides a single purpose it is called a microservice. If you split functionality this way you can manage the functionality independently in a larger system. You can also scale microservices by creating several instances of them so that you can scale it to larger user capability.
+### Serverless
+The idea of microservices eventually gave birth to esentially getting rid of the server and writing functions that already speak HTTP. That function is loaded through an gateway that maps a web request to the function. The gateway automatically scales the hardware needed to host the serverless function based on demand. This reduces how much the web programmer needs to think about web services down to the function.
+## Domain Names
+A Domain name is just a text string that follows a specific naming convention, which is then listed in a special database called domain name registry. Domain names have a root domain with one or more possible subdomain prefixes. The root domain is represented by a secondary level domain and a top level domain. The TLD (top level domain) is things like com, edu, click and others. The possibe list of TLDs is controlled by ICANN, one of the governing boards of the internet.  
+The owner of a root domain can create any number of sub domains which can resolve to a different ip address. Use `whois` console utility to see information about a domain name from the domain name registry. It will also give you contact information for who owns the domain and how recently it has been updated etc.
+### DNS
+Once a domain name is in the registry it can be listed with a domain name system (DNS) server and associated with an IP address. Every DNS server in the world references a few special DNS servers that are considered the authoritative name servers for associating a domain name with an IP address.  
+The DNS database records that facilitate mapping come in many different flavors. We are concerned with the address `A` and the canonnical name `CNAME` records. An `A` record maps a domain to an IP address. A `CNAME` record maps a domain to another domain. This acts as a domain name alias and can make it so that both an edu and a com with the same prefix go to the same place.  
+When you enter a domain name into a browser, the browser first checks to see if it has the name already in its cache of names. If it does not, it contacts a DNS server and gets the IP address. The DNS server also keeps a cache of names. If the domain name is not in the cache, it will request the name from an authoritative name server. If the authority does not know the name then you get an unknown domain name error. If the process does resolve, then the browser makes the HTTP connection to the associated IP address.
+### Leasing a Domain Name
+You can pay to lease an unused domain name for a specific period of time. Before the lease expires, you have the right to extend the lease for an additional amount of time. The cost to buy the domain varies from something like $3 to $200 a year. Buying, or sub-leasing, an existing domain name from a private party can be very expensive, and so you are better off buying something obscure like idigfor.gold (currently available for only $101). This is one reason why companies have such strange names these days.
