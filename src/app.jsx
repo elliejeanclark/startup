@@ -15,7 +15,7 @@ function App () {
                     <header>
                         <nav className="navbar navbar-expand-lg" id="head-nav">
                             <div>
-                                <img className="navbar-brand" id="logo" src="/public/logo.png" alt="logo"></img>
+                                <img className="navbar-brand" id="logo" src="/Logo.png" alt="logo"></img>
                             </div>
                             <menu className="navbar-nav">
                                 <li className="nav-item">
