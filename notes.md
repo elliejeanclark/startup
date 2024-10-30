@@ -733,3 +733,21 @@ The DNS database records that facilitate mapping come in many different flavors.
 When you enter a domain name into a browser, the browser first checks to see if it has the name already in its cache of names. If it does not, it contacts a DNS server and gets the IP address. The DNS server also keeps a cache of names. If the domain name is not in the cache, it will request the name from an authoritative name server. If the authority does not know the name then you get an unknown domain name error. If the process does resolve, then the browser makes the HTTP connection to the associated IP address.
 ### Leasing a Domain Name
 You can pay to lease an unused domain name for a specific period of time. Before the lease expires, you have the right to extend the lease for an additional amount of time. The cost to buy the domain varies from something like $3 to $200 a year. Buying, or sub-leasing, an existing domain name from a private party can be very expensive, and so you are better off buying something obscure like idigfor.gold (currently available for only $101). This is one reason why companies have such strange names these days.
+## URLs
+The Uniform Resource Locator (URL) is the location of a web resource. This can be a web page, image, font, video stream, JSON object ... It can also be completely short lived, such as a visitation counter, or gaming session. Only the scheme and the domain are required in a url. Here is an example of URL syntax. `<scheme>://<domain name>:<port>/<path>?<parameters>#<anchor>` so it would look like thie `https://byu.edu:443/cs/260/student?filter=accepted#summary`
+### Parts of a URL
+- Scheme: ie. https 
+    * The protocol required to ask for the resource. For web applications, this is usually HTTPS. But it could be any internet protocol such as FTP or MAILTO.
+- Domain name: ie. byu.edu
+    * The domain name that owns the resource represented by the URL.
+- Port: ie. 3000
+    * The port specifies the numbered network port used to connect to the domain server. Lower number ports are reserved for common internet protocols, higher number ports can be used for any purpose. The default port is 80 if the scheme is HTTP, or 443 if the scheme is HTTPS.
+- Path: ie. /school/byu/user/8014
+    * The path to the resource on the domain. The resource does not have to physically be located on the file system with this path. It can be a logical path representing endpoint parameters, a database table, or an object schema.
+- Parameters: ie. filter=names&highlight=intro,summary
+    * The parameters represent a list of key value pairs. Usually it provides additional qualifiers on the resource represented by the path. This might be a filter on the returned resource or how to highlight the resource. The parameters are also sometimes called the query string.
+- Anchor: ie. summary
+    * The anchor usually represents a sub-location in the resource. For HTML pages this represents a request for the browser to automatically scroll to the element with an ID that matches the anchor. The anchor is also sometimes called the hash, or fragment ID.
+Historically, username and password were passed in before the domain name for authentication, but that is not used for security reasons now. 
+### URN and URI
+Sometimes you might hear of URN or URI. A Uniform Resource Name (URN) is a unique resource name that does not specify location information. A Uniform Resource Identifier (URI) is a general resource identifier that could refer to either a URL or a URN. With web programming you are almost always talking about URLs and therefore you should not use the more general URI.
