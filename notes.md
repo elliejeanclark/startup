@@ -751,3 +751,20 @@ The Uniform Resource Locator (URL) is the location of a web resource. This can b
 Historically, username and password were passed in before the domain name for authentication, but that is not used for security reasons now. 
 ### URN and URI
 Sometimes you might hear of URN or URI. A Uniform Resource Name (URN) is a unique resource name that does not specify location information. A Uniform Resource Identifier (URI) is a general resource identifier that could refer to either a URL or a URN. With web programming you are almost always talking about URLs and therefore you should not use the more general URI.
+## Ports
+When connecting a device to the internet, you need two things. A port and an IP address. Port numbers allow a multiple different protocols (ie HTTPS) as well as different services. Different ports can restrict different devices from accessing a service. The internet governing body, IANA, defines the standard usage for port numbers. Ports from 0 to 1023 represent standard protocols. Generally a web service should avoid these ports unless it is providing the protocol represented by the standard. Ports from 1024 to 49151 represent ports that have been assigned to requesting entities. However, it is very common for these ports to be used by services running internally on a device. Ports from 49152 to 65535 are considered dynamic and are used to create dynamic connections to a device.  
+Here is a list of some common ports you might see. 
+- 20: File Transfer Protocol (FTP) for data transfer
+- 22: Secure Shell (SSH) for connecting to remote devices
+- 25: Simple Mail Transfer Protocol (SMTP) for sending email
+- 53: Domain Name System (DNS) for looking up IP addresses
+- 80: Hypertext Transfer Protocol (HTTP) for web requests
+- 110: Post Office Protocol (POP3) for retrieving email
+- 123: Network Time Protocol (NTP) for managing time
+- 161: Simple Network Management Protocol (SNMP) for managing network devices such as routers or printers
+- 194: Internet Relay Chat (IRC) for chatting
+- 443: HTTP Secure (HTTPS) for secure web requests
+### My Ports
+When you built your web server you externally exposed port 22 so that you could use SSH to open a remote console on the server, port 443 for secure HTTP communication, and port 80 for unsecure HTTP communication.  
+Caddy, is listening on ports 80 and 443. It then manages communciation between the different ports.  
+You must make sure that any web service that you are running on your server is using a different port to communicate on. Simon is on 3000 so you **cannot** use port 3000 for another service like startup. It does not matter what high range port you use. It only matters that you are consistent and that they are only used by one service.
