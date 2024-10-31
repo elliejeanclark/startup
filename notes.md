@@ -853,3 +853,35 @@ When using node you will want to run `npm init -y` in the directory and then you
 ### Nodemon
 The nodeman package is a wrapper around node that watches for files that change. When it detects that you saved something it will autmatically restart node. `npm install -g nodemon`
 Then, because VS Code does not know how to launch Nodemon automatically, you need create a VS Code launch configuration. In VS Code press CTRL-SHIFT-P (on Windows) or ⌘-SHIFT-P (on Mac) and type the command `Debug: Add configuration`. This will then ask you what type of configuration you would like to create. Type `Node.js` and select the `Node.js: Nodemon setup` option. In the launch configuration file that it creates, change the program from `app.js` to `main.js` (or whatever the main JavaScript file is for your application) and save the configuration file. Now in visual studio when you press F5 to start debugging it will run Nodemon instead of Node.js and your changes will automatically update your application when you save.
+## Express
+The node package Express provides support for 
+1. Routing requests for service endpoints
+2. Manipulating HTTP requests with JSON body contnet
+3. Generating HTTP responses
+4. Using `middleware` to add functionality.
+Express revolves around creating and using HTTP routing and middleware functions. You create an Express application by using NPM to install the Express package `npm install express` and then calling the express constructor to create the Express application and listen for HTTP requests on a desired port. 
+```
+const express = require('express');
+const app = express();
+
+app.listen(8080);
+```
+With the app object you can now add HTTP routing and middleware functions to the application.
+### Defining Routes
+HTTP endpoints are implemented in express by defining routes that call a function based upon an HTTP path. The express `app` object supports all of the HTTP verbs as functions on the object.  
+The `get` function takes two parameters, a RUL path matching pattern, and a callback function that is invoked when the pattern matches. The path matching parameter is used to match against the URL path of an incoming HTTP request.  
+The callback function has three parameters that represent the HTTP request object. (`req`). The HTTP response object (`res`) and the `next` routing function that Express expects to be called if this routing function wants another function to generate a reponse.  
+```
+app.get('/store/provo', (req, res, next) => {
+  res.send({name: 'provo'});
+});
+```
+The express `app` compares the routing function patterns inthe order that they are added to the Express `app` object. So if you have two routing functions with patterns that both mathc, the first one that was added will be called and given the next matching function in the `next` parameter. Express supports path parameters by prefixing the parameter name with a colon. Express creates a map of path parameters and popluates it with the matching values found in the URL path. You then reference the parameters using the `req.params` object. So instead of hard coding the store name to be provo we would have `res.send({name: req.params.storeName})`.  
+If we run our javascript using `node` we can see the rsult when we make an HTTP request using `curl`.  
+The route path can also include a limited wildcard syntax or even full regular expressions in path pattern.
+### Using Middleware
+The standard Mediator/Middleware design pattern has two pieces: a mediator and a middleware. Middleware represents componetized pieces of functionality. The mediator loads the middleware components and determines their order of execution. When a request comes to the mediator, it then passes the request around to the middleward components. Express is the mediator, and middleware functions are the middleware components.  
+There are some standard middleware functions. These provide functionality like routing, authentication, CORS, sessions, serving static web files, cookies, and logging. Some middleware functions are provided by default, and other ones must be installed using NPM before you can use them. You can also write your own middleware functions and use them with express. The only difference between routing functions and middleware functions is that routing functions are only called if the associated pattern matches. Middleware functions are always called for every HTTP request unless a preceding middleware function does not call `next`. A middleware function has the following pattern: `function middlewareName(req, res, next)`.  
+You can use your own middleware, buildin middleware, and third party middleware by using NPM to install the package and then including the package in your javaScript with the `require` function.
+### Error Handling Middleware
+You can also add middleware for handling erros that occur. Error middleware looks similar to other middleware functions, but it takes an additional `err` parameter that contains the error. `function errorMiddlewareName(err, requ, res, next)`
