@@ -922,3 +922,24 @@ Remote Procedure Calls (RPC) expose service endpoints as simple function calls. 
 Representational State Transfer (REST) attempts to take advantage of the foundational principles of HTTP. REST HTTP verbs always act upon a resource. Operations on a resource impact the state of the resource as it is transferred by a REST endpoint call. This allows for the caching functionality of HTTP to work optimally.
 ### GraphQL
 GraphQL focuses on the manipulation of data instead of a function call or resource. The heart of GraphQL is a query that specifies the desired data and how it should be joined and filtered. Instead of making a call for getting a store, and then a bunch of calls for getting the store's orders and employees, GraphQL would send a single query that would request all of that information in one big JSON response. The server would examine the query, join the desired data, and then filter out anything that was not wanted.
+## Notes from Simon
+### Steps to add the backend service
+First, add basic javascript files after you have installed express and such so that you have a basic place to start. Then follow these steps to add endpoints: 
+1. Install UUID: `npm install uuid` then inport into code `const uuid = require('uuid');`
+2. Parse JSON: `app.use(express.json());`
+3. Create the memory data structures.
+4. Set up a router path for the endpoints: done with a express.router() call
+5. Delete the placeholder endpoint.
+6. Add the service endpoints.
+### Serving the Frontend static File
+To serve frontend static files you need to add the Express middleware to serve static files from the the public directory. `app.use(express.static('public'));`
+### Configuring Vite for debugging
+When running in production, the Simon web service running under Node.js on port 3000 serves up the bundled Simon React application code when the browser requests index.html. The service pulls those files from the application's static HTML, CSS, and JavaScript files located in the public directory as described above.
+
+However, when the application is running in debug mode in your development environment, we actually need two HTTP servers running: one for the Node.js backend HTTP server, and one for the Vite frontend HTTP server. This allows us to develop and debug both our backend and our frontend while viewing the results in the browser.
+
+By default, Vite uses port 5173 when running in development mode. Vite starts up the debugging HTTP server when we run npm run dev. That means the browser is going to send network requests to port 5173. We can configure the Vite HTTP server to proxy service HTTP and WebSocket requests to the Node.js HTTP server by creating a configuration file named vite.config.js in the root of the project.  
+
+Once you can run npm run dev in your startup be sure to commit!
+### Third Party Endpoints
+You make calls to a third party endpoint using `fetch`. Once the endpoint asynchronously returns, the react state variables are updated.
