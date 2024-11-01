@@ -885,3 +885,40 @@ There are some standard middleware functions. These provide functionality like r
 You can use your own middleware, buildin middleware, and third party middleware by using NPM to install the package and then including the package in your javaScript with the `require` function.
 ### Error Handling Middleware
 You can also add middleware for handling erros that occur. Error middleware looks similar to other middleware functions, but it takes an additional `err` parameter that contains the error. `function errorMiddlewareName(err, requ, res, next)`
+## Troubleshoot a 502 Status code
+IF you encounter a 502 status code that means that caddy cannot load your HTTP service. This happens when your code is missing files, crashes when it is running, or doesn't start correctly. In order to fix a 502 status code, you will need to ssh into your production environment and preform some troubleshooting. Below are some steps to get you started.
+### General Steps
+1. SSH into your production environment in a bash terminal using `ssh -i <path to your pem file> ubuntu@<your domain name>`
+2. Navigate to the affected service directory. 
+3. List out the files inside your directory using ls. Check to see if all files that need to be there are present. 
+4. check to see that your javascrip file containing the code to start your node server is named index.js (all lowercase)
+5. check to see thaty our file structure is correct, ie. public folder with frontend code inside, server files in project root directory etc.
+6. check to see if the port listed inside of index.js is correct for the service. Port 3000 for simon, port 4000 for your startup. 
+If you had to edit any files while in your production environment furn `pm2 restart <service>` to restart your service and check your browser. 
+### Additional Steps
+1. While still in your production envirionment and in the affected service directory, run `node index.js`
+2. If an error message appears in the terminal then read it carefully and fix the problem. If a node moduel is missiong, install the module and redeploy. 
+3. If no error message appears then you can verify that the service is reachable from your browser. If that works then press ctrl c to stop the node server from running. This means that the problem is how PM2 is configured to run your service. Check to see what PM2 is running with the command `pm2 describe <service>` This should give you some indication of why PM2 is not starting your service correctly.
+## SOP and CORS
+The Same origin policy (SOP) only allows javascript to make requests to a domain if it is the same domain that the user is currently viewing.  
+Cross origin resource sharing (CORS) allows the client (e.g. browser) to specify the origin of a request and then let the server respond with what origins are allowed.
+### Using Third party services. 
+When you make requests to your own web services you are always on the same origin and so you will not violate the SOP. However if you want to make requests to a different domain than the one your web application is hosted on, then you need to make sure that domain allows requests as defined by the `Access-Control-Allow-Origin` header it returns. 
+## Service Design
+### Model and sequence diagrams
+Stick to what the user thinks of your application as doing, not the actual programming behind the scenes. Leveraget eh fact that HTTP requests often fulfill the things that it sounds like it is going to do. 
+### Endpoints
+A web service is usually divided up into multiple service endpoints. Each endpoint provides a single functional purpose. All of the criteria that you would apply to creating a well designed code functions also applies when exposing service endpoints. (Service endpoints are often called an Application Programming Interface (API))  
+Things to think about
+- Grammatical: with HTTP everything is a resource. You act on the resource with an HTTP Verb
+- Readable: The resource you are referencing with an HTTP request should be clearly readable in the URL path.
+- Discoverable: As you expose resources that contain other resources you can provide the endpoints for the aggregated resources. This makes it so someone using your endpoints only needs to remember the top level endpoint, and then they can discover anything else.
+- Compatible: When you build your endpoints you want to make it so that you can add new functionality without breaking existing clients. Usually this means that the clients of your service endpoints should ignore anything that they don't understand.
+- Simple: Keeping your endpoints focused on the primary resources of your application helps to avoid the temptation to add endpoints that duplicate or create parallel access to primary resources. It is very helpful to write some simple class and sequence diagrams that outline your primary resources before you begin coding.
+- Documented: It is highly suggested that you create use and maintain documentation of your service endpoints. 
+### RPC
+Remote Procedure Calls (RPC) expose service endpoints as simple function calls. When RPC is used over HTTP it usually just lewverages the POST HTTP verb. The actual verb and subject of the function call is represented by the function name. One advantage of RPC is that it maps directly to function calls that might exist within the server. This can also be a disadvantage as it directly exposes the inner workings of the service. 
+### Rest
+Representational State Transfer (REST) attempts to take advantage of the foundational principles of HTTP. REST HTTP verbs always act upon a resource. Operations on a resource impact the state of the resource as it is transferred by a REST endpoint call. This allows for the caching functionality of HTTP to work optimally.
+### GraphQL
+GraphQL focuses on the manipulation of data instead of a function call or resource. The heart of GraphQL is a query that specifies the desired data and how it should be joined and filtered. Instead of making a call for getting a store, and then a bunch of calls for getting the store's orders and employees, GraphQL would send a single query that would request all of that information in one big JSON response. The server would examine the query, join the desired data, and then filter out anything that was not wanted.
