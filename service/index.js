@@ -28,7 +28,7 @@ apiRouter.post('/auth/create', async (req, res_) => {
 });
 
 app.get('*', (_req, res) => {
-  res.send({ msg: 'Simon service' });
+  res.send({ msg: 'Startup Service' });
 });
 
 app.listen(port, () => {
