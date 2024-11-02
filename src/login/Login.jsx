@@ -38,7 +38,7 @@ export function Login() {
                 <form id="login-form" onSubmit={handleLogin}>
                     <div id="login-inputs">
                         <input type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
-                        <input type="password" className="form-control" id="pswd" placeholder="Enter password" name="pswd"/>
+                        <input type="password" className="form-control" id="pswd" placeholder="Enter Password" name="pswd"/>
                     </div>
                     <div id="login-buttons">
                         <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>
