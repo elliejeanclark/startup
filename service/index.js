@@ -40,6 +40,15 @@ apiRouter.post('/auth/login', async (req, res_) => {
     res_.status(401).send({ msg: 'Invalid username or password' });
 });
 
+// DeleteAuth logout a user
+apiRouter.delete('/auth/logout', (req,res) => {
+    const user = Object.values(users).find(user => user.token === req.body.token);
+    if (user) {
+        delete user.token;
+    }
+    res.status(204).end();
+});
+
 app.get('*', (_req, res) => {
   res.send({ msg: 'Startup Service' });
 });
