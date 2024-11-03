@@ -27,6 +27,19 @@ apiRouter.post('/auth/create', async (req, res_) => {
     }
 });
 
+// GetAuth login an existing user
+apiRouter.post('/auth/login', async (req, res_) => {
+    const user = users[req.body.username];
+    if (user) {
+        if ([req.body.password === user.passowrd]) {
+            user.token = uuid.v4();
+            res_.send({ token: user.token });
+            return;
+        }
+    }
+    res_.status(401).send({ msg: 'Invalid username or password' });
+});
+
 app.get('*', (_req, res) => {
   res.send({ msg: 'Startup Service' });
 });
