@@ -3,7 +3,8 @@ const uuid = require('uuid');
 const app = express();
 
 let users = {};
-let reviews = {};
+let otherReviewRatings = {};
+let myReviews = {};
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
