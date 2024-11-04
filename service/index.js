@@ -62,7 +62,9 @@ apiRouter.post('/myReviews', (req, res) => {
     const review_rating = req.body.review_rating;
 
     myReviews[review_title] = { review_title, review_body, review_rating };
-    recentReviews[1] = { review_title, review_body, review_rating };
+    recentReviews[2] = recentReviews[1];
+    recentReviews[1] = recentReviews[0];
+    recentReviews[0] = { review_title, review_body, review_rating };
 });
 
 // Get my reviews
