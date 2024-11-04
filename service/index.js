@@ -50,6 +50,24 @@ apiRouter.delete('/auth/logout', (req,res) => {
     res.status(204).end();
 });
 
+// Get Ratings on Recent Reviews
+
+// Update/Post Ratings for Recent Reviews
+
+// Save my review
+apiRouter.post('/myReviews', (req, res) => {
+    const review_title = req.body.review_title;
+    const review_body = req.body.review_body;
+    const review_rating = req.body.review_rating;
+
+    myReviews[review_title] = { review_title, review_body, review_rating };
+});
+
+// Get my reviews
+apiRouter.get('/myReviews', (req, res) => {
+    res.send(myReviews);
+});
+
 app.get('*', (_req, res) => {
   res.send({ msg: 'Startup Service' });
 });
