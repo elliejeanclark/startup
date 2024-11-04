@@ -65,6 +65,8 @@ apiRouter.get('/ratings', (req, res) => {
 apiRouter.post('/otherReviews/ratings', (req, res) => {
     const newRating = req.body.newRating;
     recentReviewRatings[reviewID] = newRating;
+    
+    res.status(204).end();
 });
 
 // Save my review
