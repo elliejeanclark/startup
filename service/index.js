@@ -52,6 +52,14 @@ apiRouter.delete('/auth/logout', (req,res) => {
 });
 
 // Get Ratings on Recent Reviews
+apiRouter.get('/ratings', (req, res) => {
+    const userRating = req.body.rating;
+    const reviewID = req.body.reviewID;
+    const oldRating = recentReviewRatings[reviewID];
+
+    let newRating = (userRating + oldRating) / 2;
+    recentReviewRatings[reviewID] = newRating;
+});
 
 // Update/Post Ratings for Recent Reviews
 
@@ -64,7 +72,7 @@ apiRouter.post('/myReviews', (req, res) => {
     myReviews[review_title] = { review_title, review_body, review_rating };
     recentReviews[2] = recentReviews[1];
     recentReviews[1] = recentReviews[0];
-    recentReviews[0] = { review_title, review_body, review_rating };
+    recentReviews[0] = { review_title, review_body };
     
     res.status(204).end();
 });
