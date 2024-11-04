@@ -4,7 +4,7 @@ const app = express();
 
 let users = {};
 let recentReviews = [];
-let recentReviewRatings = {};
+let recentReviewRatings = [];
 let myReviews = {};
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -58,10 +58,14 @@ apiRouter.get('/ratings', (req, res) => {
     const oldRating = recentReviewRatings[reviewID];
 
     let newRating = (userRating + oldRating) / 2;
-    recentReviewRatings[reviewID] = newRating;
+    res.send({ newRating });
 });
 
 // Update/Post Ratings for Recent Reviews
+apiRouter.post('/otherReviews/ratings', (req, res) => {
+    const newRating = req.body.newRating;
+    recentReviewRatings[reviewID] = newRating;
+});
 
 // Save my review
 apiRouter.post('/myReviews', (req, res) => {
