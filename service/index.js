@@ -4,7 +4,7 @@ const app = express();
 
 let users = {};
 let recentReviews = [];
-let otherReviewRatings = {};
+let recentReviewRatings = {};
 let myReviews = {};
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -65,6 +65,8 @@ apiRouter.post('/myReviews', (req, res) => {
     recentReviews[2] = recentReviews[1];
     recentReviews[1] = recentReviews[0];
     recentReviews[0] = { review_title, review_body, review_rating };
+    
+    res.status(204).end();
 });
 
 // Get my reviews
