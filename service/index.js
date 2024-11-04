@@ -3,6 +3,7 @@ const uuid = require('uuid');
 const app = express();
 
 let users = {};
+let recentReviews = [];
 let otherReviewRatings = {};
 let myReviews = {};
 
@@ -61,6 +62,7 @@ apiRouter.post('/myReviews', (req, res) => {
     const review_rating = req.body.review_rating;
 
     myReviews[review_title] = { review_title, review_body, review_rating };
+    recentReviews[1] = { review_title, review_body, review_rating };
 });
 
 // Get my reviews
