@@ -3,7 +3,7 @@ import { AuthContext } from '../AuthContext';
 import './login.css';
 
 export function Login() {
-    const { setIsAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
 
     const handleLogin = async (event) => {
         event.preventDefault();
