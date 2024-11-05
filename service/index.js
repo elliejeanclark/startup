@@ -18,6 +18,8 @@ app.use('/api', apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res_) => {
+    console.log('Creating user', req.body.username);
+    
     const user = users[req.body.username];
     if (user) {
         res_.status(409).send({ msg: 'That username is already taken'});
@@ -31,6 +33,8 @@ apiRouter.post('/auth/create', async (req, res_) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res_) => {
+    console.log('Logging in user', req.body.username);
+
     const user = users[req.body.username];
     if (user) {
         if ([req.body.password === user.passowrd]) {
@@ -44,6 +48,8 @@ apiRouter.post('/auth/login', async (req, res_) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', (req,res) => {
+    console.log('Logging Out user', req.body.username);
+
     const user = Object.values(users).find(user => user.token === req.body.token);
     if (user) {
         delete user.token;
@@ -65,6 +71,8 @@ function authenticate(req, res, next) {
 
 // Get Ratings on Recent Reviews
 apiRouter.get('/ratings', (req, res) => {
+    console.log('Getting ratings for recent review', +req.query.reviewID);
+
     const reviewID = +req.query.reviewID;
 
     if (reviewID < 0 || reviewID > 2) {
@@ -78,6 +86,8 @@ apiRouter.get('/ratings', (req, res) => {
 
 // Update/Post Ratings for Recent Reviews
 apiRouter.post('/otherReviews/ratings', (req, res) => {
+    console.log('Updating ratings for recent review', +req.body.reviewID);
+
     const reviewID = +req.body.reviewID;
     const userRating = req.body.newRating;
 
@@ -95,6 +105,8 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 
 // Save my review
 apiRouter.post('/myReviews', authenticate, (_req, res) => {
+    console.log('Saving my review', req.body.review_title);
+
     const review_title = req.body.review_title;
     const review_body = req.body.review_body;
     const review_rating = req.body.review_rating;
@@ -109,6 +121,8 @@ apiRouter.post('/myReviews', authenticate, (_req, res) => {
 
 // Get my reviews
 apiRouter.get('/myReviews', authenticate, (_req, res) => {
+    console.log('Getting my reviews', req.user.username);
+
     res.send(myReviews);
 });
 
