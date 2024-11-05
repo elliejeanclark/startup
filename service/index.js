@@ -78,10 +78,19 @@ apiRouter.get('/ratings', (req, res) => {
 
 // Update/Post Ratings for Recent Reviews
 apiRouter.post('/otherReviews/ratings', (req, res) => {
-    const newRating = req.body.newRating;
+    const reviewID = +req.body.reviewID;
+    const userRating = req.body.newRating;
+
+    if (reviewID < 0 || reviewID > 2) {
+        return res.status(400).send({ msg: 'Invalid review ID' });
+    }
+
+    const oldRating = recentReviewRatings[reviewID] || 0;
+    const newRating = (oldRating + userRating) / 2;
+
     recentReviewRatings[reviewID] = newRating;
 
-    res.status(204).end();
+    res.send({ updatedRatgin: newRating });
 });
 
 // Save my review
