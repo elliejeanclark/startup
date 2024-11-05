@@ -5,17 +5,26 @@ import './login.css';
 export function Login() {
     const { setIsAuthenticated } = useContext(AuthContext);
 
-    const handleLogin = (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
-        const username = document.getElementById("username").value;
-        const password = document.getElementById("pswd").value;
-        localStorage.setItem('userName', username);
-        localStorage.setItem('password', password);
-        const welcomeMessage = `Welcome ${username}!`;
-        const welcomeMessageElement = document.getElementById("welcome-message");
-        welcomeMessageElement.innerText = welcomeMessage;
-        setIsAuthenticated(true);
-    }
+
+        try {
+            const response = await fetch('/api/auth/login', {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+            } else {
+                alert('Invalid username or password');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
 
     const handleLogout = (event) => {
         event.preventDefault();
@@ -26,6 +35,10 @@ export function Login() {
         setIsAuthenticated(false);
         document.getElementById("username").value = "";
         document.getElementById("pswd").value = "";
+    }
+
+    const handleCreateAccount = (event) => {
+
     }
     
     return (    
@@ -45,7 +58,7 @@ export function Login() {
                         {isAuthenticated ? (
                             <input onClick={handleLogout} id="logout-button" type="button" className="btn btn-primary" value="Log Out" />
                         ) : (
-                            <input id="create-account-button" type="button" className="btn btn-primary" value="Create Account" />
+                            <input onClick={handleCreateAccount} id="create-account-button" type="button" className="btn btn-primary" value="Create Account" />
                         )}
                     </div>
                 </form>
