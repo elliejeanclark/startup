@@ -8,6 +8,11 @@ main {
     text-align: center;
 }
 
+#error-message {
+    color: red;
+    text-align: center;
+}
+
 #login-form {
     display: flex;
     flex-direction: column;
@@ -45,4 +50,12 @@ main {
     border-color: aliceblue;
     padding: 5px;
     margin-left: 10px;
+}
+
+#create-account-button {
+    background-color: antiquesilver;
+    border-radius: 10%;
+    border-color: aliceblue;
+    padding: 5px;
+    margin-right: 10px;
 }

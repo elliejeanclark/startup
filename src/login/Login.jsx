@@ -6,6 +6,8 @@ export function Login() {
     const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
     const [username, setUsername] = React.useState('');
     const [password, setPassword] = React.useState('');
+    const [welcomeMessage, setWelcomeMessage] = React.useState('');
+    const [errorMessage, setErrorMessage] = React.useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -21,8 +23,12 @@ export function Login() {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
                 setIsAuthenticated(true);
+                setUsername(username);
+                setPassword(password);
+                setWelcomeMessage(`Welcome, ${username}!`);
+                setErrorMessage('');
             } else {
-                alert('Invalid username or password');
+                setErrorMessage('Invalid username or password');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -46,6 +52,10 @@ export function Login() {
                     localStorage.removeItem('token');
                     setIsAuthenticated(false);
                     console.log('Logged out');
+                    setErrorMessage('');
+                    setWelcomeMessage('');
+                    setUsername('');
+                    setPassword('');
                 }
             } catch (error) {
                 alert('You are not logged in');
@@ -69,8 +79,12 @@ export function Login() {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
                 setIsAuthenticated(true);
+                setUsername(username);
+                setPassword(password);
+                setWelcomeMessage(`Welcome, ${username}!`);
+                setErrorMessage('');
             } else {
-                alert('That username is already taken');
+                setErrorMessage('That username is already taken');
             }
         } catch (error) {
             console.error('Error:', error);
@@ -81,13 +95,14 @@ export function Login() {
         <main id="login-content">
             <div id="title">
                 <h1>Welcome to Pop In!</h1>
-                <h3 id="welcome-message"></h3>
+                <h3 id="welcome-message"> { welcomeMessage } </h3>
+                <h3 id="error-message"> { errorMessage } </h3>
             </div>
             <div>
                 <form id="login-form" onSubmit={handleLogin}>
                     <div id="login-inputs">
-                        <input onChange={(e) => setUsername(e.target.value)} type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
-                        <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="pswd" placeholder="Enter Password" name="pswd"/>
+                        <input onChange={(e) => setUsername(e.target.value)} value={username} type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
+                        <input onChange={(e) => setPassword(e.target.value)} value={password} type="password" className="form-control" id="pswd" placeholder="Enter Password" name="pswd"/>
                     </div>
                     <div id="login-buttons">
                         <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>
