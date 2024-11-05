@@ -28,18 +28,28 @@ export function Login() {
 
     const handleLogout = (event) => {
         event.preventDefault();
-        localStorage.removeItem('userName');
-        localStorage.removeItem('password');
-        const welcomeMessageElement = document.getElementById("welcome-message");
-        welcomeMessageElement.innerText = "";
-        setIsAuthenticated(false);
-        document.getElementById("username").value = "";
-        document.getElementById("pswd").value = "";
     }
 
-    const handleCreateAccount = (event) => {
+    const handleCreateAccount = async (event) => {
+        event.preventDefault();
 
-    }
+        try {
+            const response = await fetch('/api/auth/create', {
+                method: "POST",
+                hdeaders: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, password })
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                localStorage.setItem('token', data.token);
+            } else {
+                alert('That username is already taken');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
     
     return (    
         <main id="login-content">
