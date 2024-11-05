@@ -65,12 +65,15 @@ function authenticate(req, res, next) {
 
 // Get Ratings on Recent Reviews
 apiRouter.get('/ratings', (req, res) => {
-    const userRating = req.body.rating;
-    const reviewID = req.body.reviewID;
-    const oldRating = recentReviewRatings[reviewID];
+    const reviewID = +req.query.reviewID;
 
-    let newRating = (userRating + oldRating) / 2;
-    res.send({ newRating });
+    if (reviewID < 0 || reviewID > 2) {
+        return res.status(400).send({ msg: 'Invalid review ID' });
+    }
+
+    const currentRating = recentReviewRatings[reviewID];
+
+    res.send({ rating: currentRating || 'No rating yet, be the first to rate this review!' });
 });
 
 // Update/Post Ratings for Recent Reviews
@@ -96,7 +99,7 @@ apiRouter.post('/myReviews', authenticate, (_req, res) => {
 });
 
 // Get my reviews
-apiRouter.get('/myReviews', (_req, res) => {
+apiRouter.get('/myReviews', authenticate, (_req, res) => {
     res.send(myReviews);
 });
 
