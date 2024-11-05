@@ -29,8 +29,30 @@ export function Login() {
         }
     };
 
-    const handleLogout = (event) => {
+    const handleLogout = async (event) => {
         event.preventDefault();
+
+        const token = localStorage.getItem('token');
+
+        if (token) {
+            try {
+                const response = await fetch('/api/auth/logout', {
+                    method: "DELETE",
+                    headers: { 'Content-Type': 'applicaiton/json' },
+                    body: JSON.stringify({ token })
+                });
+
+                if (response.ok) {
+                    localStorage.removeItem('token');
+                    setIsAuthenticated(false);
+                    console.log('Logged out');
+                }
+            } catch (error) {
+                alert('You are not logged in');
+            }
+        } else {
+            alert('You are not logged in');
+        }
     }
 
     const handleCreateAccount = async (event) => {
