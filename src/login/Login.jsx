@@ -42,7 +42,11 @@ export function Login() {
                     </div>
                     <div id="login-buttons">
                         <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>
-                        <input onClick={handleLogout} id="logout-button" type="button" className="btn btn-primary" value="Log Out" />
+                        {isAuthenticated ? (
+                            <input onClick={handleLogout} id="logout-button" type="button" className="btn btn-primary" value="Log Out" />
+                        ) : (
+                            <input id="create-account-button" type="button" className="btn btn-primary" value="Create Account" />
+                        )}
                     </div>
                 </form>
             </div>
