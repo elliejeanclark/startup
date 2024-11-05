@@ -4,6 +4,8 @@ import './login.css';
 
 export function Login() {
     const { isAuthenticated, setIsAuthenticated } = useContext(AuthContext);
+    const [username, setUsername] = React.useState('');
+    const [password, setPassword] = React.useState('');
 
     const handleLogin = async (event) => {
         event.preventDefault();
@@ -18,6 +20,7 @@ export function Login() {
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
+                setIsAuthenticated(true);
             } else {
                 alert('Invalid username or password');
             }
@@ -36,13 +39,14 @@ export function Login() {
         try {
             const response = await fetch('/api/auth/create', {
                 method: "POST",
-                hdeaders: { 'Content-Type': 'application/json' },
+                headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ username, password })
             });
 
             if (response.ok) {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
+                setIsAuthenticated(true);
             } else {
                 alert('That username is already taken');
             }
@@ -60,8 +64,8 @@ export function Login() {
             <div>
                 <form id="login-form" onSubmit={handleLogin}>
                     <div id="login-inputs">
-                        <input type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
-                        <input type="password" className="form-control" id="pswd" placeholder="Enter Password" name="pswd"/>
+                        <input onChange={(e) => setUsername(e.target.value)} type="username" className="form-control" id="username" placeholder="Enter Username" name="username"/>
+                        <input onChange={(e) => setPassword(e.target.value)} type="password" className="form-control" id="pswd" placeholder="Enter Password" name="pswd"/>
                     </div>
                     <div id="login-buttons">
                         <input id="login-button" type="submit" className="btn btn-success" value="Log In"/>

@@ -21,13 +21,16 @@ apiRouter.post('/auth/create', async (req, res_) => {
     console.log('Creating user', req.body.username);
     
     const user = users[req.body.username];
+    console.log('User exists:', Boolean(user));
+
     if (user) {
         res_.status(409).send({ msg: 'That username is already taken'});
     } else {
-        const user = { username: req.body.username, password: req.body.password, token: uuid.v4() };
-        users[user.username] = user;
+        const newUser = { username: req.body.username, password: req.body.password, token: uuid.v4() };
+        users[newUser.username] = newUser;
+        console.log('User created:', newUser);
 
-        res_.send({ token: user.token });
+        res_.send({ token: newUser.token });
     }
 });
 
