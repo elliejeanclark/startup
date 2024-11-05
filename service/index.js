@@ -3,7 +3,7 @@ const uuid = require('uuid');
 const app = express();
 
 let users = {};
-let recentReviews = [];
+let recentReviews = {};
 let recentReviewRatings = [];
 let myReviews = {};
 
@@ -51,6 +51,18 @@ apiRouter.delete('/auth/logout', (req,res) => {
     res.status(204).end();
 });
 
+function authenticate(req, res, next) {
+    const token = req.headers['authorization'];
+    const user = Object.values(users).find(user => user.token === token);
+
+    if (!user) {
+        return res.status(401).send({ msg: 'Unauthorized' });
+    }
+
+    req.user = user;
+    next();
+}
+
 // Get Ratings on Recent Reviews
 apiRouter.get('/ratings', (req, res) => {
     const userRating = req.body.rating;
@@ -65,17 +77,17 @@ apiRouter.get('/ratings', (req, res) => {
 apiRouter.post('/otherReviews/ratings', (req, res) => {
     const newRating = req.body.newRating;
     recentReviewRatings[reviewID] = newRating;
-    
+
     res.status(204).end();
 });
 
 // Save my review
-apiRouter.post('/myReviews', (req, res) => {
+apiRouter.post('/myReviews', authenticate, (_req, res) => {
     const review_title = req.body.review_title;
     const review_body = req.body.review_body;
     const review_rating = req.body.review_rating;
 
-    myReviews[review_title] = { review_title, review_body, review_rating };
+    myReviews[userId] = { review_title, review_body, review_rating };
     recentReviews[2] = recentReviews[1];
     recentReviews[1] = recentReviews[0];
     recentReviews[0] = { review_title, review_body };
@@ -84,7 +96,7 @@ apiRouter.post('/myReviews', (req, res) => {
 });
 
 // Get my reviews
-apiRouter.get('/myReviews', (req, res) => {
+apiRouter.get('/myReviews', (_req, res) => {
     res.send(myReviews);
 });
 
