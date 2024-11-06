@@ -108,12 +108,7 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 
 // Save my review
 apiRouter.post('/myReviews/post', (req, res) => {
-    console.log('Saving my review', req.body.review_title);
-
     const token = req.headers['authorization'].split(' ')[1];
-    console.log('Extracted Token:', token);
-    const user = Object.values(users).find(user => user.token === token);
-    console.log('User:', user);
     if (user) {
         const reviewTitle = req.body.reviewTitle;
         const reviewText = req.body.reviewText;
