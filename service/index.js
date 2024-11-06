@@ -110,16 +110,22 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 apiRouter.post('/myReviews/post', authenticate, (_req, res) => {
     console.log('Saving my review', req.body.review_title);
 
-    const review_title = req.body.review_title;
-    const review_body = req.body.review_body;
-    const review_rating = req.body.review_rating;
-
-    myReviews[userId] = { review_title, review_body, review_rating };
-    recentReviews[2] = recentReviews[1];
-    recentReviews[1] = recentReviews[0];
-    recentReviews[0] = { review_title, review_body };
+    const token = req.headers['authorization'].split(' ')[1];
+    const user = Object.values(users).find(user => user.token === token);
+    if (user) {
+        const review_title = req.body.review_title;
+        const review_body = req.body.review_body;
+        const review_rating = req.body.review_rating;
     
-    res.status(204).end();
+        myReviews[userId] = { review_title, review_body, review_rating };
+        recentReviews[2] = recentReviews[1];
+        recentReviews[1] = recentReviews[0];
+        recentReviews[0] = { review_title, review_body };
+        
+        res.status(204).end();
+    } else {
+      res.status(401).send({ msg: 'Unauthorized' });
+    }
 });
 
 // Get my reviews

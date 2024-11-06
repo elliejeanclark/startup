@@ -25,22 +25,14 @@ export function MyReviews() {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // try {
-    //     const response = await fetch('/api/myReviews/post', {
-    //         method: "POST",
-    //         headers: { 'Content-Type': 'application/json' },
-    //         body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
-    //     });
-
-    //     if (response.ok) {
-    //         const data = await response.json();
-    //         setReviews([reviewTitle]: {reviewText} {reviewRating});
-    //     } else {
-    //         console.error('Error:', response.statusText);
-    //     }
-    // } catch (error) {
-    //     console.error('Error:', error);
-    // }
+    const response = await fetch('/api/myReviews/post', {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      },
+      body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
+    });
   }
   
   return (
