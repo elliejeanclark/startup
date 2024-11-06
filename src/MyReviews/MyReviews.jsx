@@ -48,6 +48,10 @@ export function MyReviews() {
       },
       body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
     });
+
+    if (response.ok) {
+      getReviews();
+    }
   }
   
   return (

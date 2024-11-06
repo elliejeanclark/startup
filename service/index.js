@@ -126,6 +126,8 @@ apiRouter.post('/myReviews/post', (req, res) => {
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
         recentReviews[0] = { reviewTitle, reviewText };
+
+        console.log('My Reviews:', myReviews[token]);
         
         res.status(204).end();
     } else {
