@@ -24,6 +24,7 @@ export function MyReviews() {
   }
   
   const handleSubmit = async (event) => {
+    console.log('token', localStorage.getItem('token'));
     event.preventDefault();
     const reviewTitle = event.target.title.value;
     const reviewText = event.target.review.value;
