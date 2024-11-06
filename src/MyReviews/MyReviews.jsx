@@ -77,9 +77,9 @@ export function MyReviews() {
           <ul>
             {reviews.map((review, index) => (
               <li key={index} className="prev-review">
-                <h3 className="prev-review-title">{review.title}</h3>
-                <p className="prev-review-text">{review.text}</p>
-                <p className="prev-review-rating">Rating: {review.rating}</p>
+                <h3 className="prev-review-title">{review.reviewTitle}</h3>
+                <p className="prev-review-text">{review.reviewText}</p>
+                <p className="prev-review-rating">Rating: {review.reviewRating}</p>
               </li>
             ))}
           </ul>

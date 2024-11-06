@@ -5,7 +5,7 @@ const app = express();
 let users = {};
 let recentReviews = {};
 let recentReviewRatings = [];
-let myReviews = {};
+let myReviews = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -115,7 +115,11 @@ apiRouter.post('/myReviews/post', (req, res) => {
         const reviewText = req.body.reviewText;
         const reviewRating = req.body.reviewRating;
     
-        myReviews[token] = { reviewTitle, reviewText, reviewRating };
+        if (!myReviews[token]){
+            myReviews[token] = [];
+        }
+
+        myReviews[token].push({ reviewTitle, reviewText, reviewRating});
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
         recentReviews[0] = { reviewTitle, reviewText };
