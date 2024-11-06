@@ -135,8 +135,15 @@ apiRouter.post('/myReviews/post', (req, res) => {
 
 // Get my reviews
 apiRouter.get('/myReviews/get', (req, res) => {
+    const token = req.headers['authorization'].split(' ')[1];
+    console.log('Extracted Token:', token);
+    console.log('My Reviews:', myReviews[token]);
 
-    res.send(myReviews[req.headers['authorization'].split(' ')[1]]);
+    if (myReviews[req.headers[token]] === undefined) {
+        res.send([]);
+    } else {
+        res.send(myReviews[req.headers['authorization'].split(' ')[1]]);
+    }
 });
 
 app.get('*', (_req, res) => {
