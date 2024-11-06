@@ -3,17 +3,44 @@ import './MyReviews.css';
 
 export function MyReviews() {
   const [reviews, setReviews] = React.useState([]);
+  React.useEffect(() => {
+    getReviews();
+  }, []);
 
-  const handleSubmit = (event) => {
+  const getReviews = async () => {
+    try {
+      const response = await fetch('/api/myReviews/get');
+
+      if (response.ok) {
+        const data = await response.json();
+        setReviews(data);
+      } else {
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const newReview = {
-      title: event.target.title.value,
-      text: event.target.review.value,
-      rating: event.target.rating.value,
-    };
-    setReviews([...reviews, newReview]);
-    event.target.reset();
-    event.target.rating.value = 10;
+
+    // try {
+    //     const response = await fetch('/api/myReviews/post', {
+    //         method: "POST",
+    //         headers: { 'Content-Type': 'application/json' },
+    //         body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
+    //     });
+
+    //     if (response.ok) {
+    //         const data = await response.json();
+    //         setReviews([reviewTitle]: {reviewText} {reviewRating});
+    //     } else {
+    //         console.error('Error:', response.statusText);
+    //     }
+    // } catch (error) {
+    //     console.error('Error:', error);
+    // }
   }
   
   return (

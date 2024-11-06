@@ -107,7 +107,7 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 });
 
 // Save my review
-apiRouter.post('/myReviews', authenticate, (_req, res) => {
+apiRouter.post('/myReviews/post', authenticate, (_req, res) => {
     console.log('Saving my review', req.body.review_title);
 
     const review_title = req.body.review_title;
@@ -123,7 +123,7 @@ apiRouter.post('/myReviews', authenticate, (_req, res) => {
 });
 
 // Get my reviews
-apiRouter.get('/myReviews', authenticate, (_req, res) => {
+apiRouter.get('/myReviews/get', authenticate, (_req, res) => {
     console.log('Getting my reviews', req.user.username);
 
     res.send(myReviews);
