@@ -2,6 +2,30 @@ import React from 'react';
 import './OtherReviews.css';
 
 export function OtherReviews() {
+  const [ratings, setRatings] = React.useState([]);
+  React.useEffect(() => {
+    const fetchRatings = async () => {
+      for (let i = 0; i < 3; i++) {
+        try {
+          const response = await fetch('/api/ratings?reviewID=${i}');
+          if (response.ok) {
+            const data = await response.json();
+            setRatings(oldRatings => {
+              const newRatings = [...oldRatings];
+              newRatings[i] = data.rating;
+              return newRatings;
+            });
+          }
+        } catch (error) {
+          console.error('Error fetching ratings:', error);
+        }
+      }
+    };
+
+    fetchRatings();
+
+  }, []);
+
   const [review1, setIsRated1] = React.useState(false);
   const [buttonLabel1, setButton1Label] = React.useState("Submit");
 
