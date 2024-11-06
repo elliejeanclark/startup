@@ -116,18 +116,13 @@ apiRouter.post('/myReviews/post', (req, res) => {
     console.log('User:', user);
     if (user) {
         const reviewTitle = req.body.reviewTitle;
-        console.log('Review Title:', reviewTitle);
         const reviewText = req.body.reviewText;
-        console.log('Review Text:', reviewText);
         const reviewRating = req.body.reviewRating;
-        console.log('Review Rating:', reviewRating);
     
         myReviews[token] = { reviewTitle, reviewText, reviewRating };
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
         recentReviews[0] = { reviewTitle, reviewText };
-
-        console.log('My Reviews:', myReviews[token]);
         
         res.status(204).end();
     } else {
@@ -138,14 +133,9 @@ apiRouter.post('/myReviews/post', (req, res) => {
 // Get my reviews
 apiRouter.get('/myReviews/get', (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
-    console.log('Extracted Token:', token);
-    console.log('My Reviews:', myReviews[token]);
-
-    if (myReviews[req.headers[token]] === undefined) {
-        res.send([]);
-    } else {
-        res.send(myReviews[req.headers['authorization'].split(' ')[1]]);
-    }
+    const reviews = myReviews[token] || [];
+    console.log(reviews);
+    res.send(reviews);
 });
 
 app.get('*', (_req, res) => {

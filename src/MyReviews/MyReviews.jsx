@@ -21,6 +21,7 @@ export function MyReviews() {
 
       if (response.ok) {
         const data = await response.json();
+        console.log('data', data);
         setReviews(data);
       } else {
         console.error('Error:', response.statusText);
