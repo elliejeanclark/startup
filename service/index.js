@@ -113,14 +113,17 @@ apiRouter.post('/myReviews/post', authenticate, (_req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
     const user = Object.values(users).find(user => user.token === token);
     if (user) {
-        const review_title = req.body.review_title;
-        const review_body = req.body.review_body;
-        const review_rating = req.body.review_rating;
+        const reviewTitle = req.body.reviewTitle;
+        console.log('Review Title:', reviewTitle);
+        const reviewText = req.body.reviewText;
+        console.log('Review Text:', reviewText);
+        const reviewRating = req.body.reviewRating;
+        console.log('Review Rating:', reviewRating);
     
-        myReviews[userId] = { review_title, review_body, review_rating };
+        myReviews[user.token] = { reviewTitle, reviewText, reviewRating };
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
-        recentReviews[0] = { review_title, review_body };
+        recentReviews[0] = { reviewTitle, reviewText };
         
         res.status(204).end();
     } else {

@@ -3,7 +3,7 @@ import './MyReviews.css';
 
 export function MyReviews() {
   const [reviews, setReviews] = React.useState([]);
-  
+
   React.useEffect(() => {
     getReviews();
   }, []);
@@ -25,6 +25,9 @@ export function MyReviews() {
   
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const reviewTitle = event.target.title.value;
+    const reviewText = event.target.review.value;
+    const reviewRating = event.target.rating.value;
 
     const response = await fetch('/api/myReviews/post', {
       method: "POST",
