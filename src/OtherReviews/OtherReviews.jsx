@@ -2,6 +2,10 @@ import React from 'react';
 import './OtherReviews.css';
 
 export function OtherReviews() {
+  const [newRatings, setNewRatings] = React.useState([0, 0, 0]);
+  const [buttonLabels, setButtonLabels] = React.useState(["Submit Rating", "Submit Rating", "Submit Rating"]);
+  const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
+
   const [ratings, setRatings] = React.useState([]);
   React.useEffect(() => {
     const fetchRatings = async () => {
@@ -26,70 +30,76 @@ export function OtherReviews() {
 
   }, []);
 
-  const updateRating = async (reviewID, newRating) => {
+  const updateRating = async (reviewID) => {
     try {
       const response = await fetch('/api/otherReviews/ratings', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify ({ reviewID, newRating }),
+        body: JSON.stringify ({ reviewID, newRating: newRatings[reviewID] }),
       });
 
       if (response.ok) {
         const data = await response.json();
-        setRatings(oldRatings => {
-          const newRatings = [...oldRatings];
-          newRatings[reviewID] = data.updatedRating;
-          return newRatings;
+        setDisabledReviews(prev => {
+          const updated = [...prev];
+          updated[reviewID] = true; // Disable after submitting
+          return updated;
         });
       }
     } catch (error) {
       console.error('Error updating rating:', error);
     }
   }
-  
+
   return (
     <main>
-        <h1 id="main-page-title">Find Movie Reviews Here!</h1>
-
-        <div id="recent-reviews">
-          <div id="recent-review-1">
-            <label className="review-title">Title for Recent Review #1 Here</label>
-            <textarea className="review-text" id="recent-review-1-text" name="review" placeholder="Most recent review will be here"></textarea>
-                        
+      <h1 id="main-page-title">Find Movie Reviews Here!</h1>
+  
+      <div id="recent-reviews">
+        {[0, 1, 2].map(id => (
+          <div key={id} id={`recent-review-${id + 1}`}>
+            <label className="review-title">Title for Recent Review #{id + 1} Here</label>
+            <textarea className="review-text" id={`recent-review-${id + 1}-text`} name="review" placeholder="Most recent review will be here" readOnly />
+  
             <label>What do you rate this review out of 10?</label>
-            <input type="range" id="rating-1" name="rating" min="0" max="10" disabled={review1} />
-            <input className="btn" id="submit-review-rating" type="button" value={buttonLabel1} onClick={updateRating} disabled={review1} />
-                        
+            <input 
+              type="range" 
+              id={`rating-${id + 1}`} 
+              name="rating" 
+              min="0" 
+              max="10" 
+              value={newRatings[id]} 
+              onChange={(e) => setNewRatings(prev => {
+                const updated = [...prev];
+                updated[id] = Number(e.target.value);
+                return updated;
+              })}
+              disabled={disabledReviews[id]} 
+            />
+            <input 
+              className="btn" 
+              id={`submit-review-rating-${id + 1}`} 
+              type="button" 
+              value={buttonLabels[id]} 
+              onClick={() => updateRating(id)} 
+              disabled={disabledReviews[id]} 
+            />
+  
             <label>Current rating:</label>
-            <input className="current-rating" type="text" id="current-rating-1" name="rating" placeholder="Current rating here" readOnly />
+            <input 
+              className="current-rating" 
+              type="text" 
+              id={`current-rating-${id + 1}`} 
+              name="rating" 
+              placeholder="Current rating here" 
+              readOnly 
+            />
           </div>
-            
-          <div id="recent-review-2">
-            <label className="review-title">Title for Recent Review #2 Here</label>
-            <textarea className="review-text" id="recent-review-2-text" name="review" placeholder="Second most recent review will be here"></textarea>
-                        
-            <label>What do you rate this review out of 10?</label>
-            <input type="range" id="rating-2" name="rating" min="0" max="10" disabled={review2} />
-            <input className="btn" id="submit-review-rating" type="button" value={buttonLabel2} onClick={updateRating} disabled={review2} />
-        
-            <label>Current rating:</label>
-            <input className="current-rating" type="text" id="current-rating-2" name="rating" placeholder="Current rating here" readOnly />
-          </div>
-            
-          <div id="recent-review-3">
-            <label className="review-title">Title for Recent Review #3 Here</label>
-            <textarea className="review-text" id="recent-review-3-text" name="review" placeholder="Third most recent review will be here"></textarea>
-        
-            <label>What do you rate this review out of 10?</label>
-            <input type="range" id="rating-3" name="rating" min="0" max="10" disabled={review3} />
-            <input className="btn" id="submit-review-rating" type="button" value={buttonLabel3} onClick={updateRating} disabled={review3} />
-        
-            <label>Current rating:</label>
-            <input className="current-rating" type="text" id="current-rating-3" name="rating" placeholder="Current rating here" readOnly />
-          </div>
-        </div>
+        ))}
+      </div>
     </main>
   );
+
 }
