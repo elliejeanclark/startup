@@ -26,6 +26,29 @@ export function OtherReviews() {
 
   }, []);
 
+  const updateRating = async (reviewID, newRating) => {
+    try {
+      const response = await fetch('/api/otherReviews/ratings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify ({ reviewID, newRating }),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setRatings(oldRatings => {
+          const newRatings = [...oldRatings];
+          newRatings[reviewID] = data.updatedRating;
+          return newRatings;
+        });
+      }
+    } catch (error) {
+      console.error('Error updating rating:', error);
+    }
+  }
+
   const [review1, setIsRated1] = React.useState(false);
   const [buttonLabel1, setButton1Label] = React.useState("Submit");
 
