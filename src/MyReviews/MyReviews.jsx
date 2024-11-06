@@ -10,7 +10,14 @@ export function MyReviews() {
 
   const getReviews = async () => {
     try {
-      const response = await fetch('/api/myReviews/get');
+      const response = await fetch('/api/myReviews/get', {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
 
       if (response.ok) {
         const data = await response.json();
@@ -27,8 +34,11 @@ export function MyReviews() {
     console.log('token', localStorage.getItem('token'));
     event.preventDefault();
     const reviewTitle = event.target.title.value;
+    console.log('reviewTitle', reviewTitle);
     const reviewText = event.target.review.value;
+    console.log('reviewText', reviewText);
     const reviewRating = event.target.rating.value;
+    console.log('reviewRating', reviewRating);
 
     const response = await fetch('/api/myReviews/post', {
       method: "POST",
