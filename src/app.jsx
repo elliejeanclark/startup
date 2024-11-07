@@ -8,6 +8,54 @@ import { OtherReviews } from './OtherReviews/OtherReviews';
 import './app.css';
 
 function App () {
+    const [reviews, setReviews] = React.useState([]);
+
+    React.useEffect(() => {
+      getReviews();
+    }, []);
+  
+    const getReviews = async () => {
+      try {
+        const response = await fetch('/api/myReviews/get', {
+          method: "GET",
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+          }
+        });
+  
+  
+        if (response.ok) {
+          const data = await response.json();
+          setReviews(data);
+        } else {
+          console.error('Error:', response.statusText);
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
+    
+    const handleSubmit = async (event) => {
+      event.preventDefault();
+      const reviewTitle = event.target.title.value;
+      const reviewText = event.target.review.value;
+      const reviewRating = event.target.rating.value;
+  
+      const response = await fetch('/api/myReviews/post', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
+      });
+  
+      if (response.ok) {
+        getReviews();
+      }
+    }
+    
     return (
         <AuthProvider>
             <BrowserRouter>
@@ -40,7 +88,7 @@ function App () {
                                 path='/'
                                 element={<Login />}
                             />
-                            <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews />} />} />
+                            <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} />} />} />
                             <Route path="/OtherReviews" element={ <ProtectedRoute  element={<OtherReviews />} />} />
                     </Routes>
 
