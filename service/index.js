@@ -72,6 +72,16 @@ function authenticate(req, res, next) {
     next();
 }
 
+// Get old ratings
+apiRouter.get('/otherReviews/oldRatings', (req, res) => {
+    const reviewID = +req.query.reviewID;
+    if (!recentReviewRatings[reviewID]) {
+        const oldRating = 'No Rating yet!';
+        recentReviewRatings[reviewID] = oldRating;
+    }
+    res.send(recentReviewRatings[reviewID]);
+})
+
 // Update/Post Ratings for Recent Reviews
 apiRouter.post('/otherReviews/ratings', (req, res) => {
     const reviewID = +req.body.reviewID;

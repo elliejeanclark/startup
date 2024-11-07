@@ -5,13 +5,41 @@ export function OtherReviews() {
   const [newRatings, setNewRatings] = React.useState([0, 0, 0]);
   const [buttonLabels, setButtonLabels] = React.useState(["Submit Rating", "Submit Rating", "Submit Rating"]);
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
+  const [oldRatings, setOldRatings] = React.useState([0, 0, 0]);
 
   const [recentReviews, setRecentReviews] = React.useState([new Array(3).fill({})]);
   React.useEffect(() => {
     getRecentReviews(0);
     getRecentReviews(1);
     getRecentReviews(2);
+    getOldRating(0);
+    getOldRating(1);
+    getOldRating(2);
   }, []);
+
+  const getOldRating = async (reviewID) => {
+    try {
+      const response = await fetch(`api/otherReviews/oldRatings?reviewID=${reviewID}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setOldRatings(prev => {
+          const updated = [...prev];
+          updated[reviewID] = data;
+          return updated;
+        });
+      } else {
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
   const getRecentReviews = async (reviewID) => {
     try {
@@ -105,7 +133,7 @@ export function OtherReviews() {
               type="text" 
               id={`current-rating-${id + 1}`} 
               name="rating" 
-              placeholder={newRatings[id]} 
+              placeholder={oldRatings[id]} 
               readOnly 
             />
           </div>
