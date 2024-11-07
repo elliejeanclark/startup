@@ -6,7 +6,7 @@ export function OtherReviews() {
   const [buttonLabels, setButtonLabels] = React.useState(["Submit Rating", "Submit Rating", "Submit Rating"]);
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
 
-  const [recentReviews, setRecentReviews] = React.useState([]);
+  const [recentReviews, setRecentReviews] = React.useState([new Array(3).fill({})]);
   React.useEffect(() => {
     getRecentReviews(0);
     getRecentReviews(1);
@@ -15,7 +15,7 @@ export function OtherReviews() {
 
   const getRecentReviews = async (reviewID) => {
     try {
-      const response = await fetch(`/api/otherReviews/reviews/get?reviewID=${reviewID}`, {
+      const response = await fetch(`/api/otherReviews/reviews?reviewID=${reviewID}`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -24,7 +24,11 @@ export function OtherReviews() {
 
       if (response.ok) {
         const data = await response.json();
-        setRecentReviews(data);
+        setRecentReviews(prev => {
+          const updatedReviews = [...prev];
+          updatedReviews[reviewID] = data;
+          return updatedReviews;
+        });
       } else {
         console.error('Error:', response.statusText);
       }
@@ -56,6 +60,8 @@ export function OtherReviews() {
     }
   }
 
+
+  console.log(recentReviews);
   return (
     <main>
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>
