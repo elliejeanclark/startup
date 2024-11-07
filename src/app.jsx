@@ -11,7 +11,7 @@ function App () {
   const [newRatings, setNewRatings] = React.useState([0, 0, 0]);
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
   const [oldRatings, setOldRatings] = React.useState([]);
-  const [recentReviews, setRecentReviews] = React.useState([new Array(3).fill({})]);
+  const [recentReviews, setRecentReviews] = React.useState(new Array(3).fill({}));
   
   React.useEffect(() => {
     getRecentReviews(0);
@@ -147,7 +147,13 @@ function App () {
         getReviews();
       }
     }
-    
+
+    console.log('Reviews:', recentReviews);
+    console.log('New Ratings:', newRatings);
+    console.log('Disabled Reviews:', disabledReviews);
+    console.log('Old Ratings:', oldRatings);
+
+
     return (
         <AuthProvider>
             <BrowserRouter>
@@ -181,13 +187,7 @@ function App () {
                                 element={<Login />}
                             />
                             <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} />} />} />
-                            <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews 
-                                newRatings={newRatings} 
-                                disabledReviews={disabledReviews} 
-                                oldRatings={oldRatings} 
-                                recentReviews={recentReviews} 
-                                updateRating={updateRating} 
-                            />} />} />
+                            <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} />} />} />
                     </Routes>
 
                     <footer>
