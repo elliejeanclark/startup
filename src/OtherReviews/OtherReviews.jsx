@@ -19,11 +19,6 @@ export function OtherReviews() {
       setNewRatings(JSON.parse(storedRatings));
     }
 
-    const storedDisabledReviews = localStorage.getItem('disabledReviews');
-    if (storedDisabledReviews) {
-      setDisabledReviews(JSON.parse(storedDisabledReviews));
-    }
-
     getRecentReviews(0);
     getRecentReviews(1);
     getRecentReviews(2);
@@ -39,10 +34,6 @@ export function OtherReviews() {
   React.useEffect(() => {
     localStorage.setItem('newRatings', JSON.stringify(newRatings));
   }, [newRatings]);
-
-  React.useEffect(() => {
-    localStorage.setItem('disabledReviews', JSON.stringify(disabledReviews));
-  }, [disabledReviews]);
 
   const getOldRating = async (reviewID) => {
     if (oldRatings[reviewID]) {
