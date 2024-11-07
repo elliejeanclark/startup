@@ -2,32 +2,34 @@ import React from 'react';
 import './MyReviews.css';
 
 export function MyReviews( { reviews = [], handleSubmit}) {
-  const [quote, setQuote] = React.useState('');
+  const [dadJoke, setDadJoke] = React.useState('');
 
   React.useEffect(() => {
-    const fetchQuote = async () => {
+    const fetchJoke = async () => {
       try{
-        const response = await fetch('https://movie-quote-api.herokuapp.com/v1/quote/');
+        const response = await fetch('https://icanhazdadjoke.com/', {
+          headers: { Accept: 'application/json' }
+        });
         
         if(response.ok) {
           const data = await response.json();
-          setQuote(data.quote);
+          setDadJoke(data.joke);
         } else {
-          console.error('Error getting quote:', response.statusText);
+          console.error('Error getting joke:', response.statusText);
         }
       } catch (error) {
-        console.error('Error getting quote:', error);
+        console.error('Error getting joke:', error);
       }
     };
     
-    fetchQuote();
+    fetchJoke();
   }, []);
   
   return (
     <main>
       <h1>My Reviews</h1>
 
-      <p id="generated-quote">{quote || 'Loading quote...'}</p>
+      <p id="generated-dad-joke">{dadJoke || "Getting Dad Joke..."}</p>
         
       <form id="my-review" onSubmit={handleSubmit}>
         <input type="text" id="title" name="title" placeholder="Title Here" />
