@@ -31,6 +31,7 @@ export function OtherReviews() {
         setOldRatings(prev => {
           const updated = [...prev];
           updated[reviewID] = data;
+          console.log(updated[reviewID])
           return updated;
         });
       } else {
@@ -84,6 +85,7 @@ export function OtherReviews() {
         });
         setNewRatings(prev => {
           const updated = [...prev];
+          console.log(data.updatedRating)
           updated[reviewID] = data.updatedRating;
           return updated;
         })
@@ -132,8 +134,8 @@ export function OtherReviews() {
               className="current-rating" 
               type="text" 
               id={`current-rating-${id + 1}`} 
-              name="rating" 
-              placeholder={oldRatings[id]}
+              name="rating"
+              placeholder={disabledReviews[id] ? newRatings[id] : oldRatings[id].rating}
               readOnly 
             />
           </div>

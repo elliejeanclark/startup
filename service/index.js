@@ -21,14 +21,12 @@ apiRouter.post('/auth/create', async (req, res_) => {
     console.log('Creating user', req.body.username);
     
     const user = users[req.body.username];
-    console.log('User exists:', Boolean(user));
 
     if (user) {
         res_.status(409).send({ msg: 'That username is already taken'});
     } else {
         const newUser = { username: req.body.username, password: req.body.password, token: uuid.v4() };
         users[newUser.username] = newUser;
-        console.log('User created:', newUser);
 
         res_.send({ token: newUser.token });
     }
@@ -79,7 +77,6 @@ apiRouter.get('/otherReviews/oldRatings', (req, res) => {
         const oldRating =  "No Rating Yet!";
         recentReviewRatings[reviewID] = oldRating;
     }
-    console.log(recentReviewRatings[reviewID]);
     res.send({ rating: recentReviewRatings[reviewID] });
 })
 
@@ -93,7 +90,7 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
     }
 
     const oldRating = recentReviewRatings[reviewID] || 0;
-    if (oldRating === 0) {
+    if (oldRating === "No Rating Yet!") {
         const newRating = userRating;
         recentReviewRatings[reviewID] = newRating;
         res.send({ updatedRating: newRating });
@@ -132,9 +129,6 @@ apiRouter.post('/myReviews/post', (req, res) => {
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
         recentReviews[0] = { reviewTitle, reviewText };
-        console.log(recentReviews[0]);
-        console.log(recentReviews[1]);
-        console.log(recentReviews[2]);
         
         res.status(204).end();
     } else {
