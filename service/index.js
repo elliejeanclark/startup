@@ -106,7 +106,7 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 apiRouter.get('/otherReviews/reviews', (req, res) => {
     const reviewID = +req.query.reviewID;
     if (!recentReviews[reviewID]) {
-        const reviewTitle = "No Reviews Yet!";
+        const reviewTitle = "No Review Yet!";
         const reviewText = "Write a review to see it here!";
         recentReviews[reviewID] = { reviewTitle, reviewText };
     }

@@ -6,28 +6,32 @@ export function OtherReviews() {
   const [buttonLabels, setButtonLabels] = React.useState(["Submit Rating", "Submit Rating", "Submit Rating"]);
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
 
+  const [recentReviews, setRecentReviews] = React.useState([]);
   React.useEffect(() => {
-    const fetchRatings = async () => {
-      for (let i = 0; i < 3; i++) {
-        try {
-          const response = await fetch('/api/ratings?reviewID=${i}');
-          if (response.ok) {
-            const data = await response.json();
-            setRatings(oldRatings => {
-              const newRatings = [...oldRatings];
-              newRatings[i] = data.rating;
-              return newRatings;
-            });
-          }
-        } catch (error) {
-          console.error('Error fetching ratings:', error);
-        }
-      }
-    };
-
-    fetchRatings();
-
+    getRecentReviews(0);
+    getRecentReviews(1);
+    getRecentReviews(2);
   }, []);
+
+  const getRecentReviews = async (reviewID) => {
+    try {
+      const response = await fetch(`/api/myReviews/get?reviewID=${reviewID}`, {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setRecentReviews(data);
+      } else {
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
 
   const updateRating = async (reviewID) => {
     try {
@@ -59,8 +63,8 @@ export function OtherReviews() {
       <div id="recent-reviews">
         {[0, 1, 2].map(id => (
           <div key={id} id={`recent-review-${id + 1}`}>
-            <label className="review-title">Title for Recent Review #{id + 1} Here</label>
-            <textarea className="review-text" id={`recent-review-${id + 1}-text`} name="review" placeholder="Most recent review will be here" readOnly />
+            <label className="review-title">{recentReviews[id]?.reviewTitle}</label>
+            <textarea className="review-text" id={`recent-review-${id + 1}-text`} name="review" placeholder={recentReviews[id]?.reviewText} readOnly />
   
             <label>What do you rate this review out of 10?</label>
             <input 
