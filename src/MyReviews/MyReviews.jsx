@@ -21,7 +21,6 @@ export function MyReviews() {
 
       if (response.ok) {
         const data = await response.json();
-        console.log('data', data);
         setReviews(data);
       } else {
         console.error('Error:', response.statusText);
@@ -32,14 +31,10 @@ export function MyReviews() {
   }
   
   const handleSubmit = async (event) => {
-    console.log('token', localStorage.getItem('token'));
     event.preventDefault();
     const reviewTitle = event.target.title.value;
-    console.log('reviewTitle', reviewTitle);
     const reviewText = event.target.review.value;
-    console.log('reviewText', reviewText);
     const reviewRating = event.target.rating.value;
-    console.log('reviewRating', reviewRating);
 
     const response = await fetch('/api/myReviews/post', {
       method: "POST",

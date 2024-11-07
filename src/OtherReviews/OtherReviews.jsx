@@ -15,7 +15,7 @@ export function OtherReviews() {
 
   const getRecentReviews = async (reviewID) => {
     try {
-      const response = await fetch(`/api/myReviews/get?reviewID=${reviewID}`, {
+      const response = await fetch(`/api/otherReviews/reviews/get?reviewID=${reviewID}`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
