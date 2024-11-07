@@ -1,100 +1,7 @@
 import React from 'react';
 import './OtherReviews.css';
 
-export function OtherReviews() {
-  const [newRatings, setNewRatings] = React.useState([0, 0, 0]);
-  const [buttonLabels, setButtonLabels] = React.useState(["Submit Rating", "Submit Rating", "Submit Rating"]);
-  const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
-  const [oldRatings, setOldRatings] = React.useState([0, 0, 0]);
-
-  const [recentReviews, setRecentReviews] = React.useState([new Array(3).fill({})]);
-  React.useEffect(() => {
-    getRecentReviews(0);
-    getRecentReviews(1);
-    getRecentReviews(2);
-    getOldRating(0);
-    getOldRating(1);
-    getOldRating(2);
-  }, []);
-
-  const getOldRating = async (reviewID) => {
-    try {
-      const response = await fetch(`api/otherReviews/oldRatings?reviewID=${reviewID}`, {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setOldRatings(prev => {
-          const updated = [...prev];
-          updated[reviewID] = data;
-          console.log(updated[reviewID])
-          return updated;
-        });
-      } else {
-        console.error('Error:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-  const getRecentReviews = async (reviewID) => {
-    try {
-      const response = await fetch(`/api/otherReviews/reviews?reviewID=${reviewID}`, {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setRecentReviews(prev => {
-          const updatedReviews = [...prev];
-          updatedReviews[reviewID] = data;
-          return updatedReviews;
-        });
-      } else {
-        console.error('Error:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-  const updateRating = async (reviewID) => {
-    try {
-      const response = await fetch('/api/otherReviews/ratings', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify ({ reviewID, newRating: newRatings[reviewID] }),
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setDisabledReviews(prev => {
-          const updated = [...prev];
-          updated[reviewID] = true;
-          return updated;
-        });
-        setNewRatings(prev => {
-          const updated = [...prev];
-          console.log(data.updatedRating)
-          updated[reviewID] = data.updatedRating;
-          return updated;
-        })
-      }
-    } catch (error) {
-      console.error('Error updating rating:', error);
-    }
-  }
-
+export function OtherReviews( newRatings = [], disabledReviews = [], oldRatings = [], recentReviews = [], updateRating ) {  
   return (
     <main>
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>
@@ -124,7 +31,7 @@ export function OtherReviews() {
               className="btn" 
               id={`submit-review-rating-${id + 1}`} 
               type="button" 
-              value={buttonLabels[id]} 
+              value="Submit Rating" 
               onClick={() => updateRating(id)} 
               disabled={disabledReviews[id]} 
             />
@@ -135,7 +42,7 @@ export function OtherReviews() {
               type="text" 
               id={`current-rating-${id + 1}`} 
               name="rating"
-              placeholder={disabledReviews[id] ? newRatings[id] : oldRatings[id].rating}
+              placeholder={disabledReviews[id] ? newRatings[id] : (oldRatings[id]?.rating || "No Rating Yet!")}
               readOnly 
             />
           </div>
