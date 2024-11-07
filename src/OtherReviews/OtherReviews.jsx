@@ -54,14 +54,17 @@ export function OtherReviews() {
           updated[reviewID] = true;
           return updated;
         });
+        setNewRatings(prev => {
+          const updated = [...prev];
+          updated[reviewID] = data.updatedRating;
+          return updated;
+        })
       }
     } catch (error) {
       console.error('Error updating rating:', error);
     }
   }
 
-
-  console.log(recentReviews);
   return (
     <main>
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>
@@ -102,7 +105,7 @@ export function OtherReviews() {
               type="text" 
               id={`current-rating-${id + 1}`} 
               name="rating" 
-              placeholder="Current rating here" 
+              placeholder={newRatings[id]} 
               readOnly 
             />
           </div>
