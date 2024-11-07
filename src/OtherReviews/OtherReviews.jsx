@@ -1,7 +1,7 @@
 import React from 'react';
 import './OtherReviews.css';
 
-export function OtherReviews({ newRatings = [], disabledReviews = [], oldRatings = [], recentReviews = [], updateRating }) {
+export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating }) {
   return (
     <main>
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>

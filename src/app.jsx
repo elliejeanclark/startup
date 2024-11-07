@@ -180,7 +180,7 @@ function App () {
                                 element={<Login />}
                             />
                             <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} />} />} />
-                            <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} />} />} />
+                            <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} />} />} />
                     </Routes>
 
                     <footer>
