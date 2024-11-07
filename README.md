@@ -50,3 +50,5 @@ As a note, I have removed the emoji rating system and opted for a slider for sim
 - [x] All functionality styled nicely with css.
 - [x] useState and useEffect and other hooks utilized in all components.
 As a note, I have removed the search bar functionality as getting the functionality I already have took many hours, and I feel that going further is beyond my skill level currently with this class.
+## Service Deliverable
+- [x] 
