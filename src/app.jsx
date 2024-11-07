@@ -90,7 +90,6 @@ function App () {
         });
         setNewRatings(prev => {
           const updated = [...prev];
-          console.log(data.updatedRating)
           updated[reviewID] = data.updatedRating;
           return updated;
         })
@@ -147,12 +146,6 @@ function App () {
         getReviews();
       }
     }
-
-    console.log('Reviews:', recentReviews);
-    console.log('New Ratings:', newRatings);
-    console.log('Disabled Reviews:', disabledReviews);
-    console.log('Old Ratings:', oldRatings);
-
 
     return (
         <AuthProvider>
