@@ -82,11 +82,15 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
     }
 
     const oldRating = recentReviewRatings[reviewID] || 0;
-    const newRating = (oldRating + userRating) / 2;
-
-    recentReviewRatings[reviewID] = newRating;
-
-    res.send({ updatedRating: newRating });
+    if (oldRating === 0) {
+        const newRating = userRating;
+        recentReviewRatings[reviewID] = newRating;
+        res.send({ updatedRating: newRating });
+    } else {
+        const newRating = (oldRating + userRating) / 2;
+        recentReviewRatings[reviewID] = newRating;
+        res.send({ updatedRating: newRating });
+    }
 });
 
 // Get Recent Reviews
