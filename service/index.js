@@ -76,10 +76,11 @@ function authenticate(req, res, next) {
 apiRouter.get('/otherReviews/oldRatings', (req, res) => {
     const reviewID = +req.query.reviewID;
     if (!recentReviewRatings[reviewID]) {
-        const oldRating = 'No Rating yet!';
+        const oldRating =  "No Rating Yet!";
         recentReviewRatings[reviewID] = oldRating;
     }
-    res.send(recentReviewRatings[reviewID]);
+    console.log(recentReviewRatings[reviewID]);
+    res.send({ rating: recentReviewRatings[reviewID] });
 })
 
 // Update/Post Ratings for Recent Reviews

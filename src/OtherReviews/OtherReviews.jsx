@@ -9,16 +9,6 @@ export function OtherReviews() {
 
   const [recentReviews, setRecentReviews] = React.useState([new Array(3).fill({})]);
   React.useEffect(() => {
-    const storedReviews = localStorage.getItem('recentReviews');
-    if (storedReviews) {
-      setRecentReviews(JSON.parse(storedReviews));
-    }
-
-    const storedRatings = localStorage.getItem('newRatings');
-    if (storedRatings) {
-      setNewRatings(JSON.parse(storedRatings));
-    }
-
     getRecentReviews(0);
     getRecentReviews(1);
     getRecentReviews(2);
@@ -27,19 +17,7 @@ export function OtherReviews() {
     getOldRating(2);
   }, []);
 
-  React.useEffect(() => {
-    localStorage.setItem('recentReviews', JSON.stringify(recentReviews));
-  }, [recentReviews]);
-
-  React.useEffect(() => {
-    localStorage.setItem('newRatings', JSON.stringify(newRatings));
-  }, [newRatings]);
-
   const getOldRating = async (reviewID) => {
-    if (oldRatings[reviewID]) {
-      return
-    }
-
     try {
       const response = await fetch(`api/otherReviews/oldRatings?reviewID=${reviewID}`, {
         method: "GET",
@@ -64,10 +42,6 @@ export function OtherReviews() {
   }
 
   const getRecentReviews = async (reviewID) => {
-    if (recentReviews[reviewID].reviewTitle) {
-      return;
-    }
-    
     try {
       const response = await fetch(`/api/otherReviews/reviews?reviewID=${reviewID}`, {
         method: "GET",
@@ -159,7 +133,7 @@ export function OtherReviews() {
               type="text" 
               id={`current-rating-${id + 1}`} 
               name="rating" 
-              placeholder={disabledReviews?.[id] ? newRatings[id] : oldRatings[id]} 
+              placeholder={oldRatings[id]}
               readOnly 
             />
           </div>
