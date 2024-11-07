@@ -74,8 +74,6 @@ function authenticate(req, res, next) {
 
 // Get Ratings on Recent Reviews
 apiRouter.get('/ratings', (req, res) => {
-    console.log('Getting ratings for recent review', +req.query.reviewID);
-
     const reviewID = +req.query.reviewID;
 
     if (reviewID < 0 || reviewID > 2) {
@@ -84,13 +82,11 @@ apiRouter.get('/ratings', (req, res) => {
 
     const currentRating = recentReviewRatings[reviewID];
 
-    res.send({ rating: currentRating || 'No rating yet, be the first to rate this review!' });
+    res.send({ rating: currentRating || 'No rating yet!' });
 });
 
 // Update/Post Ratings for Recent Reviews
 apiRouter.post('/otherReviews/ratings', (req, res) => {
-    console.log('Updating ratings for recent review', +req.body.reviewID);
-
     const reviewID = +req.body.reviewID;
     const userRating = req.body.newRating;
 
@@ -103,7 +99,18 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 
     recentReviewRatings[reviewID] = newRating;
 
-    res.send({ updatedRatgin: newRating });
+    res.send({ updatedRating: newRating });
+});
+
+// Get Recent Reviews
+apiRouter.get('/otherReviews/reviews', (req, res) => {
+    const reviewID = +req.query.reviewID;
+    if (!recentReviews[reviewID]) {
+        const reviewTitle = "No Reviews Yet!";
+        const reviewText = "Write a review to see it here!";
+        recentReviews[reviewID] = { reviewTitle, reviewText };
+    }
+    res.send(recentReviews[reviewID]);
 });
 
 // Save my review
@@ -123,6 +130,9 @@ apiRouter.post('/myReviews/post', (req, res) => {
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
         recentReviews[0] = { reviewTitle, reviewText };
+        console.log(recentReviews[0]);
+        console.log(recentReviews[1]);
+        console.log(recentReviews[2]);
         
         res.status(204).end();
     } else {
@@ -134,7 +144,6 @@ apiRouter.post('/myReviews/post', (req, res) => {
 apiRouter.get('/myReviews/get', (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
     const reviews = myReviews[token] || [];
-    console.log(reviews);
     res.send(reviews);
 });
 

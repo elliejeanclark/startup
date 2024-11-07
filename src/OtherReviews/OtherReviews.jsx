@@ -6,7 +6,6 @@ export function OtherReviews() {
   const [buttonLabels, setButtonLabels] = React.useState(["Submit Rating", "Submit Rating", "Submit Rating"]);
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
 
-  const [ratings, setRatings] = React.useState([]);
   React.useEffect(() => {
     const fetchRatings = async () => {
       for (let i = 0; i < 3; i++) {
@@ -44,7 +43,7 @@ export function OtherReviews() {
         const data = await response.json();
         setDisabledReviews(prev => {
           const updated = [...prev];
-          updated[reviewID] = true; // Disable after submitting
+          updated[reviewID] = true;
           return updated;
         });
       }
