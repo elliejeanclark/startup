@@ -56,3 +56,4 @@ As a note, I have removed the search bar functionality as getting the functional
 - [x] Front end calls third party service random dad joke endpoint on the My Reviews page. This has changed from the movie quote because that API actually wasn't open resource. https://icanhazdadjoke.com/
 - [x] Backend provides service endpoints for logging in, creating, and logging out users, as well as storing and updating a users reviews and ratings on other users reviews. 
 - [x] Frontend calls the above endpoints.
+As a note, I have changed which third party I am calling, as well as some of the functionality isn't fully there because i haven't loaded to a database yet. Logging in and consistently calling files will be fully implemented in the next deliverable. 
