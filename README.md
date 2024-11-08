@@ -51,4 +51,8 @@ As a note, I have removed the emoji rating system and opted for a slider for sim
 - [x] useState and useEffect and other hooks utilized in all components.
 As a note, I have removed the search bar functionality as getting the functionality I already have took many hours, and I feel that going further is beyond my skill level currently with this class.
 ## Service Deliverable
-- [x] 
+- [x] I have created an HTTP Service with Node.js and Express
+- [x] There is middleware to serve up my public and source frond end code.
+- [x] Front end calls third party service random dad joke endpoint on the My Reviews page. This has changed from the movie quote because that API actually wasn't open resource. https://icanhazdadjoke.com/
+- [x] Backend provides service endpoints for logging in, creating, and logging out users, as well as storing and updating a users reviews and ratings on other users reviews. 
+- [x] Frontend calls the above endpoints.
