@@ -952,3 +952,22 @@ Frontend code should handle the uploading of the file and displaying an error if
 In order to build storage support into the server you need to install multer using `npm install multer`. Multer handles reading the file from the HTTP request, enforcing the size limit of the upload, and storing the file in the uploads directory. Backend code will also handle requests for static files so we can serve up our front end code, handle errors, and provide a GET endpoint where we can serve up a file from the uploads directory.
 ### Where you store the files
 Where you store your files is important, right now your server has very limited code and will fill up fast and then not work properly. So you don't want to put your files in your server. Instead you want to use a dedicated storage service that has durability guarantees, is not tied to your compute capacity, and can be accessed by multiple application servers.
+## Storage Services
+### AWS S3
+Benefits of AWS S3
+- It has unlimited capacity
+- You only pay for the storage that you use
+- It is optimized for global access
+- It keeps multiple redundant copies of every file
+- You can version the files
+- It is performant
+- It supports metadata tags
+- You can make your files publicly available directly from S3
+- You can keep your files private and only accessible to your application
+#### Using AWS S3
+Steps to use AWS S3
+- Creating a S3 bucket to store your data in.
+- Getting credentials so that your application can access the bucket.
+- Using the credentials in your application.
+- Using the SDK to write, list, read, and delete files from the bucket.
+***Warning*** Make sure that you do not include your credentials in your code. If you check your credentials into your GitHub repository they will immediately be stolen and used by hackers to take over your AWS account. This may result in significant monetary damage to you.
