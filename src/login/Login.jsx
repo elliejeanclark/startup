@@ -46,7 +46,7 @@ export function Login() {
             try {
                 const response = await fetch('/api/auth/logout', {
                     method: "DELETE",
-                    headers: { 'Content-Type': 'applicaiton/json' },
+                    headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ token })
                 });
 
