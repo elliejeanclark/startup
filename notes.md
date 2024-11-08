@@ -943,3 +943,12 @@ By default, Vite uses port 5173 when running in development mode. Vite starts up
 Once you can run npm run dev in your startup be sure to commit!
 ### Third Party Endpoints
 You make calls to a third party endpoint using `fetch`. Once the endpoint asynchronously returns, the react state variables are updated.
+# Authentication Services and Data
+## Uploading Files
+You will often need to upload files from the frontend to the backend. We can accomplish this by using the HTML `input` element of type `file` on the frontend, and the `Multer` NPM package on the backend.
+### The frontend
+Frontend code should handle the uploading of the file and displaying an error if there was a problem uploading the file. The frontend also then takes the response from the server to update the DOM.
+### The Backend
+In order to build storage support into the server you need to install multer using `npm install multer`. Multer handles reading the file from the HTTP request, enforcing the size limit of the upload, and storing the file in the uploads directory. Backend code will also handle requests for static files so we can serve up our front end code, handle errors, and provide a GET endpoint where we can serve up a file from the uploads directory.
+### Where you store the files
+Where you store your files is important, right now your server has very limited code and will fill up fast and then not work properly. So you don't want to put your files in your server. Instead you want to use a dedicated storage service that has durability guarantees, is not tied to your compute capacity, and can be accessed by multiple application servers.
