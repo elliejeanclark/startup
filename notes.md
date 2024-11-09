@@ -981,3 +981,4 @@ We need to be careful for connecting to mongo database. A common way to protect 
 You will remember that a user has been authenticated and logged in by remembering for some period of time that they user has authenticated by storing an authentication token on the user's device. Often stored in a cookie. 
 ## Accont Creation and Login
 We will be using bycrypt and also uuid along with cookies. For full example code, see the assignments testauth.
+## Simon Login Notes
