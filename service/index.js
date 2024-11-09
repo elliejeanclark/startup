@@ -1,6 +1,9 @@
+const cookieParser = require('cookie-parser');
+const bcrypt = require('bcrypt');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 let users = {};
 let recentReviews = {};
@@ -9,10 +12,19 @@ let myReviews = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
+//Json body parser
 app.use(express.json());
 
+// Adding cookie parser to the express app
+app.use(cookieParser());
+
+// Serve static content
 app.use(express.static('public'));
 
+//Trust headers from proxy
+app.set('trust proxy', true);
+
+// Router for service endpoints
 var apiRouter = express.Router();
 app.use('/api', apiRouter);
 
