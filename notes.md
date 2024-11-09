@@ -971,3 +971,9 @@ Steps to use AWS S3
 - Using the credentials in your application.
 - Using the SDK to write, list, read, and delete files from the bucket.
 ***Warning*** Make sure that you do not include your credentials in your code. If you check your credentials into your GitHub repository they will immediately be stolen and used by hackers to take over your AWS account. This may result in significant monetary damage to you.
+## Data Services
+For this class, we are going to be using MongoDB. It uses JSON objects as its core model. MongoDB makes it so that you can adapt your files to be exactly what you need them to be. Each document may have specialized fields and common fields that are missing, so you can morph your objects. To add a new field to a Mongo collection, you just insert the field into the documents as desired.
+### Using MongoDB in My Service
+First you need to install mongo DB `npm install mongodb`. You will need a username, password, and the hostname of the database server. To insert a javaScript object as a Mongo document, you call the `insertOne` function on the collection object and pass the JavaScript object. If it doesn't exist, mongo will automatically create them for you. You can then query documents using `find` function to look for things. 
+### Keeping your keys out of your code
+We need to be careful for connecting to mongo database. A common way to protect from posting your credentials to a public github is to make a configuration file that you then never commit to github.
