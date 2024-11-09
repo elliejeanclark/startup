@@ -977,3 +977,7 @@ For this class, we are going to be using MongoDB. It uses JSON objects as its co
 First you need to install mongo DB `npm install mongodb`. You will need a username, password, and the hostname of the database server. To insert a javaScript object as a Mongo document, you call the `insertOne` function on the collection object and pass the JavaScript object. If it doesn't exist, mongo will automatically create them for you. You can then query documents using `find` function to look for things. 
 ### Keeping your keys out of your code
 We need to be careful for connecting to mongo database. A common way to protect from posting your credentials to a public github is to make a configuration file that you then never commit to github.
+## Authorization Services
+You will remember that a user has been authenticated and logged in by remembering for some period of time that they user has authenticated by storing an authentication token on the user's device. Often stored in a cookie. 
+## Accont Creation and Login
+We will be using bycrypt and also uuid along with cookies. For full example code, see the assignments testauth.
