@@ -82,5 +82,6 @@ module.exports = {
     addPersonalReview,
     getPersonalReviews,
     addRecentReview,
+    updateRating,
     getRecentReviews
 }
