@@ -41,11 +41,46 @@ async function addPersonalReview(review) {
     await personalReviewCollection.insertOne(fullReview);
 }
 
+function getPersonalReviews(username) {
+    return personalReviewsCollection.findOne({ username: username });
+}    
+
 async function addRecentReview(review) {
     const partialReview = {
         title: review.title,
         text: review.text,
+        currRating: "No rating yet!"
     };
     
     await recentReviewCollection.insertOne(partialReview);
+}
+
+async function updateRating(review, userRating) {
+    if (review.currRating === "No rating yet!") {
+        newRating = userRating;
+    } else {
+        newRating = (review.currRating + userRating) / 2;
+    }
+    
+    const updatedRecentReview = {
+        title: review.title,
+        text: review.text,
+        currRating: newRating
+    };
+
+    await recentReviewCollection.replaceOne({ title: review.title }, updatedRecentReview);
+}
+
+function getRecentReviews() {
+    return recentReviewCollection.limit(3).toArray();
+}
+
+module.exports = {
+    getUser,
+    getUserByToken,
+    createUser,
+    addPersonalReview,
+    getPersonalReviews,
+    addRecentReview,
+    getRecentReviews
 }
