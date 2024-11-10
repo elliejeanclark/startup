@@ -5,6 +5,7 @@ const config = require('./dbConfig.json');
 
 const url = `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
 const client = new MongoClient(url);
+const db = client.db('startup');
 const userCollection = db.collection('users');
 const personalReviewCollection = db.collection('reviews');
 const recentReviewCollection = db.collection('recentReviews');
