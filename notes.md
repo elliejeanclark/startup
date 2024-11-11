@@ -979,6 +979,19 @@ First you need to install mongo DB `npm install mongodb`. You will need a userna
 We need to be careful for connecting to mongo database. A common way to protect from posting your credentials to a public github is to make a configuration file that you then never commit to github.
 ## Authorization Services
 You will remember that a user has been authenticated and logged in by remembering for some period of time that they user has authenticated by storing an authentication token on the user's device. Often stored in a cookie. 
-## Accont Creation and Login
+## Account Creation and Login
 We will be using bycrypt and also uuid along with cookies. For full example code, see the assignments testauth.
-## Simon Login Notes
+## Service Daemons PM2
+When you run a program from the console, the program will automatically terminate when you close the console, or if the compute rrestarts. In order to keep programs running after a shutdown, you need to register it as a `daemon`. A process manager does this
+### Regeistering a new web service
+1. Add the rule to the caddyfile to tell it how to direct requests for the domain.
+2. Create a directory and add the files for the web service. 
+3. Configure PM2 to host the web service. 
+#### Modify Caddyfile
+ssh into your server.
+Copy the section for the startup subdomain and alter it so that it represents the desired subdomain and give it a different port number that is not currently used on your server. Restart caddy to load new settings.
+#### Create web service
+copy the servies startup directory to a directory that represents the purpose of your service. 
+#### Configure PM2 to host web service
+from the ssh console session run `pm2 ls` then run commands to start and then save the pm2 configuration. ie `pm2 start index.js -n tacos -- 5000` and `pm2 save`. 
+## UI testing
