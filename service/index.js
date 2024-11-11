@@ -37,7 +37,7 @@ apiRouter.post('/auth/create', async (req, res) => {
     } else {
         const user = await DB.createUser(req.body.username, req.body.password);
         
-        //Set cooke
+        //Set cookie
         res.cookie('token', user.token, { httpOnly: true });
 
         res.send({ token: user.token });
@@ -45,28 +45,24 @@ apiRouter.post('/auth/create', async (req, res) => {
 });
 
 // GetAuth login an existing user
-apiRouter.post('/auth/login', async (req, res_) => {
-    console.log('Logging in user', req.body.username);
+apiRouter.post('/auth/login', async (req, res) => {
+    console.log("In index.js loginAuth");
 
-    const user = users[req.body.username];
-    if (user) {
-        if (req.body.password === user.password) {
-            user.token = uuid.v4();
-            res_.send({ token: user.token });
-            return;
-        }
+    const user = await DB.getUser(req.body.username);
+    console.log("User exists, checking password");
+    if (await bcrypt.compare(req.body.password, user.password)) {
+        res.cookie('token', user.token, { httpOnly: true });
+        res.send({ id: user._id });
+        console.log("password matches");
+        return;
     }
-    res_.status(401).send({ msg: 'Invalid username or password' });
+    res.status(401).send({ msg: 'Invalid username or password' });
 });
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', (req,res) => {
-    console.log('Logging Out user', req.body.username);
-
-    const user = Object.values(users).find(user => user.token === req.body.token);
-    if (user) {
-        delete user.token;
-    }
+    console.log('In index.js logoutAuth');
+    res.clearCookie('token');
     res.status(204).end();
 });
 
