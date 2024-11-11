@@ -30,8 +30,6 @@ app.use('/api', apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-    console.log("In index.js creatAuth");
-
     if (await DB.getUser(req.body.username)) {
         res_.status(409).send({ msg: 'That username is already taken'});
     } else {
@@ -39,6 +37,7 @@ apiRouter.post('/auth/create', async (req, res) => {
         
         //Set cookie
         res.cookie('token', user.token, { httpOnly: true });
+        console.log("account created")
 
         res.send({ token: user.token });
     }
@@ -46,14 +45,12 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-    console.log("In index.js loginAuth");
-
     const user = await DB.getUser(req.body.username);
     console.log("User exists, checking password");
     if (await bcrypt.compare(req.body.password, user.password)) {
         res.cookie('token', user.token, { httpOnly: true });
         res.send({ id: user._id });
-        console.log("password matches");
+        console.log("User logged in");
         return;
     }
     res.status(401).send({ msg: 'Invalid username or password' });
@@ -65,18 +62,6 @@ apiRouter.delete('/auth/logout', (req,res) => {
     res.clearCookie('token');
     res.status(204).end();
 });
-
-function authenticate(req, res, next) {
-    const token = req.headers['authorization'];
-    const user = Object.values(users).find(user => user.token === token);
-
-    if (!user) {
-        return res.status(401).send({ msg: 'Unauthorized' });
-    }
-
-    req.user = user;
-    next();
-}
 
 // Get old ratings
 apiRouter.get('/otherReviews/oldRatings', (req, res) => {
