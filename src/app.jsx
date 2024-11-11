@@ -111,7 +111,7 @@ function App () {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${localStorage.getItem('token')}`
+          'Authorization': `Bearer ${document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]}`
         }
       });
   
@@ -138,8 +138,8 @@ function App () {
     const response = await fetch('/api/myReviews/post', {
       method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]}`
       },
       body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
     });
