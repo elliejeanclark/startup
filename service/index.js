@@ -29,8 +29,8 @@ var apiRouter = express.Router();
 app.use('/api', apiRouter);
 
 // CreateAuth a new user
-apiRouter.post('/auth/create', async (req, res_) => {
-    console.log('Creating user', req.body.username);
+apiRouter.post('/auth/create', async (req, res) => {
+    console.log("In index.js creatAuth");
 
     if (await DB.getUser(req.body.username)) {
         res_.status(409).send({ msg: 'That username is already taken'});
@@ -38,7 +38,7 @@ apiRouter.post('/auth/create', async (req, res_) => {
         const user = await DB.createUser(req.body.username, req.body.password);
         
         //Set cooke
-        setAuthCookie(res, user.token);
+        res.cookie('token', user.token, { httpOnly: true });
 
         res.send({ token: user.token });
     }
