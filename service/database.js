@@ -19,7 +19,6 @@ function getUserByToken(token) {
 }
 
 async function createUser(username, password) {
-    console.log("In database.js creatUser");
     //hash Password
     const hashedPassword = await bcrypt.hash(password, 10);
 
