@@ -32,18 +32,18 @@ async function createUser(username, password) {
     return user;
 }
 
-async function addPersonalReview(review) {
-    const fullReview = {
-        title: review.title,
-        text: review.text,
-        rating: review.rating
-    };
-    
-    await personalReviewCollection.insertOne(fullReview);
+async function addPersonalReview(user, review) {
+    const token = user.token;
+    const reviewWithToken = {
+        ...review,
+        token: token
+    }
+    await personalReviewCollection.insertOne(reviewWithToken);
 }
 
-function getPersonalReviews(username) {
-    return personalReviewsCollection.findOne({ username: username });
+function getPersonalReviews(user) {
+    const token = user.token;
+    return personalReviewCollection.find({ token: token }).toArray();
 }    
 
 async function addRecentReview(review) {

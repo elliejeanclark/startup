@@ -5,10 +5,8 @@ const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
 
-let users = {};
 let recentReviews = {};
 let recentReviewRatings = [];
-let myReviews = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -106,19 +104,18 @@ apiRouter.get('/otherReviews/reviews', (req, res) => {
 });
 
 // Save my review
-apiRouter.post('/myReviews/post', (req, res) => {
-    const token = req.headers['authorization'].split(' ')[1];
-    const user = Object.values(users).find(user => user.token === token);
+apiRouter.post('/myReviews/post', async (req, res) => {
+    const user = await DB.getUserByToken(req.headers['authorization'].split(' ')[1]);
+    console.log("User exists, saving review");
+
     if (user) {
         const reviewTitle = req.body.reviewTitle;
         const reviewText = req.body.reviewText;
         const reviewRating = req.body.reviewRating;
     
-        if (!myReviews[token]){
-            myReviews[token] = [];
-        }
+        const fullReview = { reviewTitle, reviewText, reviewRating };
+        await DB.addPersonalReview(user, fullReview);
 
-        myReviews[token].push({ reviewTitle, reviewText, reviewRating});
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];
         recentReviews[0] = { reviewTitle, reviewText };
@@ -130,9 +127,9 @@ apiRouter.post('/myReviews/post', (req, res) => {
 });
 
 // Get my reviews
-apiRouter.get('/myReviews/get', (req, res) => {
-    const token = req.headers['authorization'].split(' ')[1];
-    const reviews = myReviews[token] || [];
+apiRouter.get('/myReviews/get', async (req, res) => {
+    const user = await DB.getUserByToken(req.headers['authorization'].split(' ')[1]);
+    const reviews = await DB.getPersonalReviews(user) || [];
     res.send(reviews);
 });
 
