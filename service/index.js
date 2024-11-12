@@ -43,15 +43,18 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-    const user = await DB.getUser(req.body.username);
-    console.log("User exists, checking password");
-    if (await bcrypt.compare(req.body.password, user.password)) {
-        res.cookie('token', user.token, { httpOnly: true });
-        res.send({ id: user._id });
-        console.log("User logged in");
-        return;
+    try {
+        const user = await DB.getUser(req.body.username);
+        if (await bcrypt.compare(req.body.password, user.password)) {
+            res.cookie('token', user.token, { httpOnly: true });
+            res.send({ id: user._id });
+            console.log("User logged in");
+            return;
+        }
+        res.status(401).send({ msg: 'Invalid username or password' });
+    } catch {
+        res.status(401).send({ msg: 'Invalid username or password' });
     }
-    res.status(401).send({ msg: 'Invalid username or password' });
 });
 
 // DeleteAuth logout a user
