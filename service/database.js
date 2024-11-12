@@ -32,7 +32,7 @@ async function createUser(username, password) {
     return user;
 }
 
-async function addPersonalReview(user, review) {
+async function addPersonalReview(token, review) {
     const reviewWithToken = {
         ...review,
         token: token
