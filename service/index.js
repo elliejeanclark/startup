@@ -47,7 +47,7 @@ apiRouter.post('/auth/login', async (req, res) => {
         const user = await DB.getUser(req.body.username);
         if (await bcrypt.compare(req.body.password, user.password)) {
             res.cookie('token', user.token, { httpOnly: true });
-            res.send({ id: user._id });
+            res.send({ token: user.token });
             console.log("User logged in");
             return;
         }
@@ -108,16 +108,16 @@ apiRouter.get('/otherReviews/reviews', (req, res) => {
 
 // Save my review
 apiRouter.post('/myReviews/post', async (req, res) => {
-    const user = await DB.getUserByToken(req.headers['authorization'].split(' ')[1]);
+    const token = req.headers['authorization'].split(' ')[1];
     console.log("User exists, saving review");
 
-    if (user) {
+    if (token) {
         const reviewTitle = req.body.reviewTitle;
         const reviewText = req.body.reviewText;
         const reviewRating = req.body.reviewRating;
     
         const fullReview = { reviewTitle, reviewText, reviewRating };
-        await DB.addPersonalReview(user, fullReview);
+        await DB.addPersonalReview(token, fullReview);
 
         recentReviews[2] = recentReviews[1];
         recentReviews[1] = recentReviews[0];

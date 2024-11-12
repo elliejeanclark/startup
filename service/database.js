@@ -33,7 +33,6 @@ async function createUser(username, password) {
 }
 
 async function addPersonalReview(user, review) {
-    const token = user.token;
     const reviewWithToken = {
         ...review,
         token: token
@@ -41,8 +40,7 @@ async function addPersonalReview(user, review) {
     await personalReviewCollection.insertOne(reviewWithToken);
 }
 
-function getPersonalReviews(user) {
-    const token = user.token;
+function getPersonalReviews(token) {
     return personalReviewCollection.find({ token: token }).toArray();
 }    
 

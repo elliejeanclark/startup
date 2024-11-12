@@ -111,7 +111,7 @@ function App () {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]}`
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
       });
   
@@ -140,7 +140,7 @@ function App () {
       method: "POST",
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1]}`
+      'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
     });
