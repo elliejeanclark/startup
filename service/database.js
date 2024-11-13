@@ -54,24 +54,15 @@ async function addRecentReview(review) {
     await recentReviewCollection.insertOne(partialReview);
 }
 
-async function updateRating(review, userRating) {
-    let newRating;
-    
-    if (review.currRating === "No rating yet!") {
-        newRating = userRating;
-    } else {
-        newRating = (review.currRating + userRating) / 2;
-    }
-    
+async function updateRating(review, newRating) { 
     const updatedRecentReview = {
-        reviewTitle: review.title,
-        reviewText: review.text,
+        reviewTitle: review.reviewTitle,
+        reviewText: review.reviewText,
         currRating: newRating,
         createdAt: review.createdAt
     };
 
     await recentReviewCollection.replaceOne({ title: review.title }, updatedRecentReview);
-    return newRating;
 }
 
 async function getRecentReviews() {
