@@ -41,7 +41,7 @@ function App () {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify ({ newRating: newRatings[reviewID] }),
+        body: JSON.stringify ({ reviewID, newRating: newRatings[reviewID] }),
       });
   
       if (response.ok) {

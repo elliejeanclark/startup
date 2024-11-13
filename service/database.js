@@ -55,6 +55,8 @@ async function addRecentReview(review) {
 }
 
 async function updateRating(review, userRating) {
+    let newRating;
+    
     if (review.currRating === "No rating yet!") {
         newRating = userRating;
     } else {
@@ -62,16 +64,18 @@ async function updateRating(review, userRating) {
     }
     
     const updatedRecentReview = {
-        ...review,
-        currRating: newRating
+        reviewTitle: review.title,
+        reviewText: review.text,
+        currRating: newRating,
+        createdAt: review.createdAt
     };
 
     await recentReviewCollection.replaceOne({ title: review.title }, updatedRecentReview);
+    return newRating;
 }
 
 async function getRecentReviews() {
     const reviews = await recentReviewCollection.find().sort({ createdAt: -1 }).limit(3).toArray();
-    console.log(reviews);
     return reviews;
 }
 

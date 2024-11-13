@@ -80,19 +80,22 @@ apiRouter.get('/otherReviews/oldRatings', async (req, res) => {
 
 // Update/Post Ratings for Recent Reviews
 apiRouter.post('/otherReviews/ratings', async (req, res) => {
+    console.log(req.body.reviewID)
     const recentReviews = await DB.getRecentReviews();
     const review = recentReviews[req.body.reviewID];
+    console.log(review);
     const userRating = req.body.newRating;
+    console.log(userRating);
 
-    DB.updateRating(review, userRating);
-    res.status(204).end();
+    const updatedRating = DB.updateRating(review, userRating);
+    console.log(updatedRating);
+    res.send({ updatedRating: updatedRating });
 });
 
 // Get Recent Reviews
 apiRouter.get('/otherReviews/reviews', async (req, res) => {
     const recentReviews = await DB.getRecentReviews();
     res.send(recentReviews);
-    const reviewID = +req.query.reviewID;
 });
 
 // Save my review
