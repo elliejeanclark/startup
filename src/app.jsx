@@ -100,10 +100,6 @@ function App () {
   }
     
   const [reviews, setReviews] = React.useState([]);
-
-  React.useEffect(() => {
-    getReviews();
-  }, []);
   
   const getReviews = async () => {
     try {
@@ -183,7 +179,7 @@ function App () {
                       path='/'
                       element={<Login />}
                     />
-                    <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} />} />} />
+                    <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} getReviews={getReviews} />} />} />
                     <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} />} />} />
                   </Routes>
 

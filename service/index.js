@@ -132,6 +132,7 @@ apiRouter.post('/myReviews/post', async (req, res) => {
 apiRouter.get('/myReviews/get', async (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
     const reviews = await DB.getPersonalReviews(token) || [];
+    console.log(reviews);
     res.send(reviews);
 });
 

@@ -1,8 +1,12 @@
 import React from 'react';
 import './MyReviews.css';
 
-export function MyReviews( { reviews = [], handleSubmit}) {
+export function MyReviews( { reviews = [], handleSubmit, getReviews}) {
   const [dadJoke, setDadJoke] = React.useState('');
+
+  React.useEffect(() => {
+    getReviews();
+  }, []);
 
   React.useEffect(() => {
     const fetchJoke = async () => {
