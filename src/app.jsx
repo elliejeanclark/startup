@@ -14,9 +14,6 @@ function App () {
   const [recentReviews, setRecentReviews] = React.useState(new Array(3).fill({}));
   
   React.useEffect(() => {
-    getRecentReviews(0);
-    getRecentReviews(1);
-    getRecentReviews(2);
     getOldRating(0);
     getOldRating(1);
     getOldRating(2);
@@ -49,7 +46,7 @@ function App () {
 
   const getRecentReviews = async (reviewID) => {
     try {
-      const response = await fetch(`/api/otherReviews/reviews?reviewID=${reviewID}`, {
+      const response = await fetch('/api/otherReviews/reviews', {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
@@ -58,11 +55,7 @@ function App () {
 
       if (response.ok) {
         const data = await response.json();
-        setRecentReviews(prev => {
-          const updatedReviews = [...prev];
-          updatedReviews[reviewID] = data;
-          return updatedReviews;
-        });
+        setRecentReviews(data);
       } else {
         console.error('Error:', response.statusText);
       }
@@ -180,7 +173,7 @@ function App () {
                       element={<Login />}
                     />
                     <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} getReviews={getReviews} />} />} />
-                    <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} />} />} />
+                    <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} getRecentReviews={getRecentReviews} />} />} />
                   </Routes>
 
                   <footer>

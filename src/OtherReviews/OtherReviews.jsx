@@ -1,7 +1,13 @@
 import React from 'react';
 import './OtherReviews.css';
 
-export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating }) {
+export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews }) {
+  
+  
+  React.useEffect(() => {
+    getRecentReviews();
+  }, []);
+  
   return (
     <main>
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>

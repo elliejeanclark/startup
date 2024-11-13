@@ -47,7 +47,8 @@ function getPersonalReviews(token) {
 async function addRecentReview(review) {
     const partialReview = {
         ...review,
-        currRating: "No rating yet!"
+        currRating: "No rating yet!",
+        createdAt: new Date()
     };
     
     await recentReviewCollection.insertOne(partialReview);
@@ -61,16 +62,17 @@ async function updateRating(review, userRating) {
     }
     
     const updatedRecentReview = {
-        title: review.title,
-        text: review.text,
+        ...review,
         currRating: newRating
     };
 
     await recentReviewCollection.replaceOne({ title: review.title }, updatedRecentReview);
 }
 
-function getRecentReviews() {
-    return recentReviewCollection.limit(3).toArray();
+async function getRecentReviews() {
+    const reviews = await recentReviewCollection.find().sort({ createdAt: -1 }).limit(3).toArray();
+    console.log(reviews);
+    return reviews;
 }
 
 module.exports = {

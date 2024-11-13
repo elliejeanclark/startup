@@ -95,14 +95,10 @@ apiRouter.post('/otherReviews/ratings', (req, res) => {
 });
 
 // Get Recent Reviews
-apiRouter.get('/otherReviews/reviews', (req, res) => {
+apiRouter.get('/otherReviews/reviews', async (req, res) => {
+    const recentReviews = await DB.getRecentReviews();
+    res.send(recentReviews);
     const reviewID = +req.query.reviewID;
-    if (!recentReviews[reviewID]) {
-        const reviewTitle = "No Review Yet!";
-        const reviewText = "Write a review to see it here!";
-        recentReviews[reviewID] = { reviewTitle, reviewText };
-    }
-    res.send(recentReviews[reviewID]);
 });
 
 // Save my review
