@@ -5,7 +5,6 @@ const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
 
-let recentReviews = {};
 let recentReviewRatings = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
@@ -64,34 +63,29 @@ apiRouter.delete('/auth/logout', (req,res) => {
 });
 
 // Get old ratings
-apiRouter.get('/otherReviews/oldRatings', (req, res) => {
-    const reviewID = +req.query.reviewID;
-    if (!recentReviewRatings[reviewID]) {
-        const oldRating =  "No Rating Yet!";
-        recentReviewRatings[reviewID] = oldRating;
-    }
-    res.send({ rating: recentReviewRatings[reviewID] });
+apiRouter.get('/otherReviews/oldRatings', async (req, res) => {
+    const recentReviews = await DB.getRecentReviews();
+    
+    const recentReview1 = recentReviews[0];
+    const recentReview2 = recentReviews[1];
+    const recentReview3 = recentReviews[2];
+
+    const rating1 = recentReview1.currRating;
+    const rating2 = recentReview2.currRating;
+    const rating3 = recentReview3.currRating;
+
+    const ratings = [rating1, rating2, rating3];
+    res.send(ratings);
 })
 
 // Update/Post Ratings for Recent Reviews
-apiRouter.post('/otherReviews/ratings', (req, res) => {
-    const reviewID = +req.body.reviewID;
+apiRouter.post('/otherReviews/ratings', async (req, res) => {
+    const recentReviews = await DB.getRecentReviews();
+    const review = recentReviews[req.body.reviewID];
     const userRating = req.body.newRating;
 
-    if (reviewID < 0 || reviewID > 2) {
-        return res.status(400).send({ msg: 'Invalid review ID' });
-    }
-
-    const oldRating = recentReviewRatings[reviewID] || 0;
-    if (oldRating === "No Rating Yet!") {
-        const newRating = userRating;
-        recentReviewRatings[reviewID] = newRating;
-        res.send({ updatedRating: newRating });
-    } else {
-        const newRating = (oldRating + userRating) / 2;
-        recentReviewRatings[reviewID] = newRating;
-        res.send({ updatedRating: newRating });
-    }
+    DB.updateRating(review, userRating);
+    res.status(204).end();
 });
 
 // Get Recent Reviews

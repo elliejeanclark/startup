@@ -12,50 +12,20 @@ function App () {
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
   const [oldRatings, setOldRatings] = React.useState([]);
   const [recentReviews, setRecentReviews] = React.useState(new Array(3).fill({}));
-  
-  React.useEffect(() => {
-    getOldRating(0);
-    getOldRating(1);
-    getOldRating(2);
-  }, []);
 
-  const getOldRating = async (reviewID) => {
+
+  const getOldRatings = async () => {
     try {
-      const response = await fetch(`api/otherReviews/oldRatings?reviewID=${reviewID}`, {
+      const response = await fetch(`api/otherReviews/oldRatings`, {
         method: "GET",
         headers: {
           'Content-Type': 'application/json',
-        }
+        },
       });
 
       if (response.ok) {
         const data = await response.json();
-        setOldRatings(prev => {
-          const updated = [...prev];
-          updated[reviewID] = data;
-          console.log(updated[reviewID])
-          return updated;
-        });
-      } else {
-        console.error('Error:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-
-  const getRecentReviews = async (reviewID) => {
-    try {
-      const response = await fetch('/api/otherReviews/reviews', {
-        method: "GET",
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        setRecentReviews(data);
+        setOldRatings(data);
       } else {
         console.error('Error:', response.statusText);
       }
@@ -71,7 +41,7 @@ function App () {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify ({ reviewID, newRating: newRatings[reviewID] }),
+        body: JSON.stringify ({ newRating: newRatings[reviewID] }),
       });
   
       if (response.ok) {
@@ -89,6 +59,26 @@ function App () {
       }
     } catch (error) {
       console.error('Error updating rating:', error);
+    }
+  }
+
+  const getRecentReviews = async () => {
+    try {
+      const response = await fetch('/api/otherReviews/reviews', {
+        method: "GET",
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        setRecentReviews(data);
+      } else {
+        console.error('Error:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error:', error);
     }
   }
     
@@ -173,7 +163,7 @@ function App () {
                       element={<Login />}
                     />
                     <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} getReviews={getReviews} />} />} />
-                    <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} getRecentReviews={getRecentReviews} />} />} />
+                    <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} getRecentReviews={getRecentReviews} getOldRatings={getOldRatings} />} />} />
                   </Routes>
 
                   <footer>

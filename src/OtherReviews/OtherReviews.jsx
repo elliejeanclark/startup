@@ -1,10 +1,10 @@
 import React from 'react';
 import './OtherReviews.css';
 
-export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews }) {
-  
+export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings }) {
   
   React.useEffect(() => {
+    getOldRatings();
     getRecentReviews();
   }, []);
   
