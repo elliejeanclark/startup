@@ -59,7 +59,6 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', (req,res) => {
-    console.log('In index.js logoutAuth');
     res.clearCookie('token');
     res.status(204).end();
 });
@@ -131,8 +130,8 @@ apiRouter.post('/myReviews/post', async (req, res) => {
 
 // Get my reviews
 apiRouter.get('/myReviews/get', async (req, res) => {
-    const user = await DB.getUserByToken(req.headers['authorization'].split(' ')[1]);
-    const reviews = await DB.getPersonalReviews(user) || [];
+    const token = req.headers['authorization'].split(' ')[1];
+    const reviews = await DB.getPersonalReviews(token) || [];
     res.send(reviews);
 });
 

@@ -53,7 +53,6 @@ export function Login() {
                 if (response.ok) {
                     localStorage.removeItem('token');
                     setIsAuthenticated(false);
-                    console.log('Logged out');
                     setErrorMessage('');
                     setWelcomeMessage('');
                     setUsername('');
