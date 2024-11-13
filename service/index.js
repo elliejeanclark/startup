@@ -108,7 +108,6 @@ apiRouter.get('/otherReviews/reviews', (req, res) => {
 // Save my review
 apiRouter.post('/myReviews/post', async (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
-    console.log("User exists, saving review");
 
     if (token) {
         const reviewTitle = req.body.reviewTitle;
@@ -118,9 +117,8 @@ apiRouter.post('/myReviews/post', async (req, res) => {
         const fullReview = { reviewTitle, reviewText, reviewRating };
         await DB.addPersonalReview(token, fullReview);
 
-        recentReviews[2] = recentReviews[1];
-        recentReviews[1] = recentReviews[0];
-        recentReviews[0] = { reviewTitle, reviewText };
+        const partialReview = { reviewTitle, reviewText };
+        await DB.addRecentReview(partialReview);
         
         res.status(204).end();
     } else {
@@ -132,7 +130,6 @@ apiRouter.post('/myReviews/post', async (req, res) => {
 apiRouter.get('/myReviews/get', async (req, res) => {
     const token = req.headers['authorization'].split(' ')[1];
     const reviews = await DB.getPersonalReviews(token) || [];
-    console.log(reviews);
     res.send(reviews);
 });
 

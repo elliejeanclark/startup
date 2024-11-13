@@ -46,8 +46,7 @@ function getPersonalReviews(token) {
 
 async function addRecentReview(review) {
     const partialReview = {
-        title: review.title,
-        text: review.text,
+        ...review,
         currRating: "No rating yet!"
     };
     
