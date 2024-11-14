@@ -994,4 +994,20 @@ Copy the section for the startup subdomain and alter it so that it represents th
 copy the servies startup directory to a directory that represents the purpose of your service. 
 #### Configure PM2 to host web service
 from the ssh console session run `pm2 ls` then run commands to start and then save the pm2 configuration. ie `pm2 start index.js -n tacos -- 5000` and `pm2 save`. 
-## UI testing
+# WebSocket
+Web socket is fully Duplexed. This means that after the inital connection is made from a client, using vanilla HTTP, and then upgraded by the server to a websocket connection, the relationship changes a peer-to-peer connection where either party can efficiently send data at any time.
+## Creating a websocket conversation.
+If javascript is running on a brower, it can initate a websocket conenction with the browser's websocket API. First you create a websocket object by specifying the port you want to communicate on. You can then send messages with the send function and register a callback using the onmessage function to recievve messages.  
+```
+const socket = new WebSocket('ws://localhost:9900');
+
+socket.onmessage = (event) => {
+  console.log('received: ', event.data);
+};
+
+socket.send('I am listening');
+```
+The server uses the ws package to create a WebSocketServer that is listening on the same port the browser is using. By specifying a port when you create the WEbSocketServer, you are telling the server to listen for HTTP connections on that port and autmatically upgrade them to a websocket connection if the request has a connection: upgrade header.  
+When a connection is detected it calls the server's `on connection` callback. The server can then send messages with the `send` function, and register a callback using the `on message` function to recieve messages.
+## Debugging WebSocket
+You can debug both sides of the websocket communication with VS code to debug the server, and Chrome to debug the client. 
