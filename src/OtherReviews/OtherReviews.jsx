@@ -1,7 +1,7 @@
 import React from 'react';
 import './OtherReviews.css';
 
-export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings }) {
+export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings, getRatedBy }) {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {

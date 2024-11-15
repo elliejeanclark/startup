@@ -64,6 +64,11 @@ async function updateRating(token, review, newRating) {
     );
 }
 
+async function getRatedBy(reviewTitle) {
+    const review = await recentReviewCollection.findOne({ reviewTitle: reviewTitle });
+    return review.ratedBy;
+}
+
 async function getRecentReviews() {
     const reviews = await recentReviewCollection.find().sort({ createdAt: -1 }).limit(3).toArray();
     return reviews;
@@ -77,5 +82,6 @@ module.exports = {
     getPersonalReviews,
     addRecentReview,
     updateRating,
+    getRatedBy,
     getRecentReviews
 }

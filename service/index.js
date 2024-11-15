@@ -99,6 +99,13 @@ apiRouter.post('/otherReviews/ratings', async (req, res) => {
     res.send({ updatedRating: newRating });
 });
 
+// Get Rated By
+apiRouter.post('/otherReviews/ratedBy', async (req, res) => {
+    const reviewTitle = req.body.reviewTitle;
+    const ratedBy = await DB.getRatedBy(reviewTitle);
+    res.send(ratedBy);
+})
+
 // Get Recent Reviews
 apiRouter.get('/otherReviews/reviews', async (req, res) => {
     const recentReviews = await DB.getRecentReviews();
