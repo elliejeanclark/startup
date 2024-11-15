@@ -10,7 +10,17 @@ const userCollection = db.collection('users');
 const personalReviewCollection = db.collection('reviews');
 const recentReviewCollection = db.collection('recentReviews');
 
+// This will asynchronously test the connection and exit the process if it fails
+(async function testConnection() {
+    await client.connect();
+    await db.command({ ping: 1 });
+})().catch((ex) => {
+    console.log(`Unable to connect to database with ${url} because ${ex.message}`);
+    process.exit(1);
+});
+
 function getUser(username) {
+    console.log(userCollection);
     return userCollection.findOne({ username: username });
 }
 

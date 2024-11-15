@@ -57,3 +57,9 @@ As a note, I have removed the search bar functionality as getting the functional
 - [x] Backend provides service endpoints for logging in, creating, and logging out users, as well as storing and updating a users reviews and ratings on other users reviews. 
 - [x] Frontend calls the above endpoints.
 As a note, I have changed which third party I am calling, as well as some of the functionality isn't fully there because i haven't loaded to a database yet. Logging in and consistently calling files will be fully implemented in the next deliverable. 
+## Login Deliverably
+- [x] You can create a new user, you will be informed if the username is already taken
+- [x] Existing users can log in and log out. 
+- [x] Application data like users, reviews, and ratings are all saved in my mongoDB.
+- [x] User credentials are retrieved and stored in database.js and index.js
+- [x] You can only actually go to the other reviews and my reivews page if you are logged in

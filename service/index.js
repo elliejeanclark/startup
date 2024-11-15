@@ -1,11 +1,8 @@
 const cookieParser = require('cookie-parser');
 const bcrypt = require('bcrypt');
 const express = require('express');
-const uuid = require('uuid');
 const app = express();
 const DB = require('./database.js');
-
-let recentReviewRatings = [];
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -51,7 +48,7 @@ apiRouter.post('/auth/login', async (req, res) => {
             return;
         }
         res.status(401).send({ msg: 'Invalid username or password' });
-    } catch {
+    } catch (error) {
         res.status(401).send({ msg: 'Invalid username or password' });
     }
 });
