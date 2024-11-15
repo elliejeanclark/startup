@@ -97,7 +97,6 @@ function App () {
   
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setReviews(data);
       } else {
         console.error('Error:', response.statusText);
