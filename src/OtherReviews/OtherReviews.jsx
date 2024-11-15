@@ -2,11 +2,21 @@ import React from 'react';
 import './OtherReviews.css';
 
 export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings }) {
-  
+  const [isLoading, setIsLoading] = React.useState(true);
+
   React.useEffect(() => {
-    getOldRatings();
-    getRecentReviews();
+    const fetchData = async () => {
+      await getRecentReviews();
+      await getOldRatings();
+      setIsLoading(false);
+    };
+
+    fetchData();
   }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
   
   return (
     <main>
@@ -48,7 +58,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
               type="text" 
               id={`current-rating-${id + 1}`} 
               name="rating"
-              placeholder={disabledReviews[id] ? newRatings[id] : (oldRatings[id]?.rating || "No Rating Yet!")}
+              value={disabledReviews[id] ? newRatings[id] : (oldRatings[id] ?? "No rating yet!")}
               readOnly 
             />
           </div>
