@@ -132,13 +132,14 @@ function App () {
     const reviewTitle = event.target.title.value;
     const reviewText = event.target.review.value;
     const reviewRating = event.target.rating.value;
+    const token = localStorage.getItem('token');
   
     const response = await fetch('/api/myReviews/post', {
       method: "POST",
       headers: {
       'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
+      body: JSON.stringify({ reviewTitle, reviewText, reviewRating, token })
     });
   
 

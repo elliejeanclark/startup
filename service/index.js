@@ -114,7 +114,7 @@ apiRouter.get('/otherReviews/reviews', async (req, res) => {
 
 // Save my review
 apiRouter.post('/myReviews/post', async (req, res) => {
-    const token = req.headers['authorization'].split(' ')[1];
+    const token = req.body.token;
 
     if (token) {
         const reviewTitle = req.body.reviewTitle;
