@@ -101,6 +101,9 @@ apiRouter.post('/otherReviews/ratings', async (req, res) => {
 apiRouter.post('/otherReviews/ratedBy', async (req, res) => {
     const reviewTitle = req.body.reviewTitle;
     const ratedBy = await DB.getRatedBy(reviewTitle);
+    if (!ratedBy) {
+        res.send([]);
+    }
     res.send(ratedBy);
 })
 

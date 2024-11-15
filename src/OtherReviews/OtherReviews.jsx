@@ -7,6 +7,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
   React.useEffect(() => {
     const fetchData = async () => {
       const reviews = await getRecentReviews(); // Wait for reviews to load
+      console.log(reviews);
       await getOldRatings();
 
       const updatedDisabledReviews = [...disabledReviews];

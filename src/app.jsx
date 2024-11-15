@@ -71,10 +71,15 @@ function App () {
         body: JSON.stringify({ reviewTitle }),
       });
 
-      if (response.ok) {
-        const data = await response.json();
+        const text = await response.text();
+        console.log(text);
+        const data = JSON.parse(text); // Parse JSON manually
         return data;
-      }
+
+      // if (response.ok) {
+      //   const data = await response.json();
+      //   return data;
+      // }
     } catch (error) {
       console.error('Error getting rated by:', error);
     }
@@ -143,6 +148,7 @@ function App () {
 
     if (response.ok) {
       getReviews();
+      getRecentReviews();
     }
   }
 
