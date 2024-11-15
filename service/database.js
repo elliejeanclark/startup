@@ -54,10 +54,13 @@ async function addRecentReview(review) {
     await recentReviewCollection.insertOne(partialReview);
 }
 
-async function updateRating(review, newRating) { 
+async function updateRating(token, review, newRating) { 
     await recentReviewCollection.updateOne(
         { reviewTitle: review.reviewTitle },
-        { $set: { currRating: newRating } }
+        {
+            $set: { currRating: newRating },
+            $addToSet: { ratedBy: token }
+        }
     );
 }
 

@@ -41,7 +41,7 @@ function App () {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify ({ reviewID, newRating: newRatings[reviewID] }),
+        body: JSON.stringify ({ reviewID, newRating: newRatings[reviewID], token: localStorage.getItem('token') }),
       });
   
       if (response.ok) {
@@ -111,14 +111,11 @@ function App () {
     const reviewTitle = event.target.title.value;
     const reviewText = event.target.review.value;
     const reviewRating = event.target.rating.value;
-
-    console.log(localStorage.getItem('token'));
   
     const response = await fetch('/api/myReviews/post', {
       method: "POST",
       headers: {
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${localStorage.getItem('token')}`
       },
       body: JSON.stringify({ reviewTitle, reviewText, reviewRating })
     });
