@@ -14,6 +14,25 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
     fetchData();
   }, []);
 
+  const checkIfRated = async (reviewTitle, reviewID) => {
+    const token = localStorage.getItem('token');
+
+    const ratedBy = await getRatedBy(reviewTitle);
+    
+    for (let i = 0; i < recentReviews.length; i++) {
+      if (recentReviews[i].reviewTitle === reviewTitle) {
+        if (ratedBy.includes(token)) {
+          disabledReviews[i] = true;
+          console.log('Review already rated!');
+          return disabledReviews[i];
+        }
+      }
+    }
+
+    console.log('Review not rated yet!');
+    return disabledReviews[reviewID];
+  }
+
   if (isLoading) {
     return <p>Loading...</p>;
   }
@@ -41,7 +60,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
                 updated[id] = Number(e.target.value);
                 return updated;
               })}
-              disabled={disabledReviews[id]} 
+              disabled={checkIfRated(recentReviews[id]?.reviewTitle, id)} 
             />
             <input 
               className="btn" 
@@ -49,7 +68,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
               type="button" 
               value="Submit Rating" 
               onClick={() => updateRating(id)} 
-              disabled={disabledReviews[id]} 
+              disabled={checkIfRated(recentReviews[id]?.reviewTitle, id)} 
             />
   
             <label>Current rating:</label>

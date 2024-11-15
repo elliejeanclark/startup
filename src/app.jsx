@@ -13,7 +13,6 @@ function App () {
   const [oldRatings, setOldRatings] = React.useState([]);
   const [recentReviews, setRecentReviews] = React.useState(new Array(3).fill({}));
 
-
   const getOldRatings = async () => {
     try {
       const response = await fetch(`api/otherReviews/oldRatings`, {
