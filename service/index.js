@@ -80,12 +80,9 @@ apiRouter.get('/otherReviews/oldRatings', async (req, res) => {
 
 // Update/Post Ratings for Recent Reviews
 apiRouter.post('/otherReviews/ratings', async (req, res) => {
-    console.log(req.body.reviewID)
     const recentReviews = await DB.getRecentReviews();
     const review = recentReviews[req.body.reviewID];
-    console.log(review);
     const userRating = req.body.newRating;
-    console.log(userRating);
 
     let newRating;
     
@@ -94,8 +91,6 @@ apiRouter.post('/otherReviews/ratings', async (req, res) => {
     } else {
         newRating = (review.currRating + userRating) / 2;
     }
-
-    console.log(newRating);
 
     DB.updateRating(review, newRating);
     res.send({ updatedRating: newRating });

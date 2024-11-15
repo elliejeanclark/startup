@@ -55,8 +55,6 @@ async function addRecentReview(review) {
 }
 
 async function updateRating(review, newRating) { 
-    console.log(review.reviewTitle);
-    
     await recentReviewCollection.updateOne(
         { reviewTitle: review.reviewTitle },
         { $set: { currRating: newRating } }
