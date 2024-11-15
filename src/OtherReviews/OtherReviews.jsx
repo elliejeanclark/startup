@@ -1,37 +1,29 @@
 import React from 'react';
 import './OtherReviews.css';
 
-export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings, getRatedBy }) {
+export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], setDisabledReviews, oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings, getRatedBy }) {
   const [isLoading, setIsLoading] = React.useState(true);
 
   React.useEffect(() => {
     const fetchData = async () => {
-      await getRecentReviews();
+      const reviews = await getRecentReviews(); // Wait for reviews to load
       await getOldRatings();
+
+      const updatedDisabledReviews = [...disabledReviews];
+      const token = localStorage.getItem('token');
+
+      for (let i = 0; i < reviews.length; i++) { // Use fetched reviews directly
+        console.log(reviews[i].reviewTitle);
+        const ratedBy = await getRatedBy(reviews[i].reviewTitle);
+        updatedDisabledReviews[i] = ratedBy.includes(token);
+      }
+
+      setDisabledReviews(updatedDisabledReviews);
       setIsLoading(false);
     };
 
     fetchData();
   }, []);
-
-  const checkIfRated = async (reviewTitle, reviewID) => {
-    const token = localStorage.getItem('token');
-
-    const ratedBy = await getRatedBy(reviewTitle);
-    
-    for (let i = 0; i < recentReviews.length; i++) {
-      if (recentReviews[i].reviewTitle === reviewTitle) {
-        if (ratedBy.includes(token)) {
-          disabledReviews[i] = true;
-          console.log('Review already rated!');
-          return disabledReviews[i];
-        }
-      }
-    }
-
-    console.log('Review not rated yet!');
-    return disabledReviews[reviewID];
-  }
 
   if (isLoading) {
     return <p>Loading...</p>;
@@ -60,7 +52,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
                 updated[id] = Number(e.target.value);
                 return updated;
               })}
-              disabled={checkIfRated(recentReviews[id]?.reviewTitle, id)} 
+              disabled={disabledReviews[id]} 
             />
             <input 
               className="btn" 
@@ -68,7 +60,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
               type="button" 
               value="Submit Rating" 
               onClick={() => updateRating(id)} 
-              disabled={checkIfRated(recentReviews[id]?.reviewTitle, id)} 
+              disabled={disabledReviews[id]} 
             />
   
             <label>Current rating:</label>

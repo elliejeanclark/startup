@@ -62,6 +62,7 @@ function App () {
   }
 
   const getRatedBy = async (reviewTitle) => {
+    console.log('reviewTitle:', reviewTitle);
     try {
       const response = await fetch('/api/otherReviews/ratedBy', {
         method: 'POST',
@@ -91,7 +92,9 @@ function App () {
 
       if (response.ok) {
         const data = await response.json();
+        console.log(data);
         setRecentReviews(data);
+        return data; // Return fetched reviews
       } else {
         console.error('Error:', response.statusText);
       }
@@ -177,7 +180,7 @@ function App () {
                       element={<Login />}
                     />
                     <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} getReviews={getReviews} />} />} />
-                    <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} getRecentReviews={getRecentReviews} getOldRatings={getOldRatings} getRatedBy={getRatedBy} />} />} />
+                    <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} setDisabledReviews={setDisabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} getRecentReviews={getRecentReviews} getOldRatings={getOldRatings} getRatedBy={getRatedBy} />} />} />
                   </Routes>
 
                   <footer>

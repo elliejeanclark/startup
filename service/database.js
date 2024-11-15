@@ -66,6 +66,7 @@ async function updateRating(token, review, newRating) {
 
 async function getRatedBy(reviewTitle) {
     const review = await recentReviewCollection.findOne({ reviewTitle: reviewTitle });
+    console.log(review);
     return review.ratedBy;
 }
 
