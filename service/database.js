@@ -55,14 +55,12 @@ async function addRecentReview(review) {
 }
 
 async function updateRating(review, newRating) { 
-    const updatedRecentReview = {
-        reviewTitle: review.reviewTitle,
-        reviewText: review.reviewText,
-        currRating: newRating,
-        createdAt: review.createdAt
-    };
-
-    await recentReviewCollection.replaceOne({ title: review.title }, updatedRecentReview);
+    console.log(review.reviewTitle);
+    
+    await recentReviewCollection.updateOne(
+        { reviewTitle: review.reviewTitle },
+        { $set: { currRating: newRating } }
+    );
 }
 
 async function getRecentReviews() {
