@@ -85,8 +85,6 @@ apiRouter.post('/otherReviews/ratings', async (req, res) => {
     const userRating = req.body.newRating;
     const token = req.body.token;
 
-    console.log(token);
-
     let newRating;
     
     if (review.currRating === "No rating yet!") {

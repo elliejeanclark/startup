@@ -62,7 +62,6 @@ function App () {
   }
 
   const getRatedBy = async (reviewTitle) => {
-    console.log('reviewTitle:', reviewTitle);
     try {
       const response = await fetch('/api/otherReviews/ratedBy', {
         method: 'POST',
@@ -92,7 +91,6 @@ function App () {
 
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
         setRecentReviews(data);
         return data; // Return fetched reviews
       } else {
