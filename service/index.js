@@ -39,7 +39,11 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
+    console.log('in login');
+    console.log(req.body.username);
+    console.log(req.body.password);
     try {
+        console.log('in try block');
         const user = await DB.getUser(req.body.username);
         if (await bcrypt.compare(req.body.password, user.password)) {
             res.cookie('token', user.token, { httpOnly: true });

@@ -20,7 +20,6 @@ const recentReviewCollection = db.collection('recentReviews');
 });
 
 function getUser(username) {
-    console.log(userCollection);
     return userCollection.findOne({ username: username });
 }
 
