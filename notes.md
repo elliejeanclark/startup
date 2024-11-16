@@ -1010,4 +1010,37 @@ socket.send('I am listening');
 The server uses the ws package to create a WebSocketServer that is listening on the same port the browser is using. By specifying a port when you create the WEbSocketServer, you are telling the server to listen for HTTP connections on that port and autmatically upgrade them to a websocket connection if the request has a connection: upgrade header.  
 When a connection is detected it calls the server's `on connection` callback. The server can then send messages with the `send` function, and register a callback using the `on message` function to recieve messages.
 ## Debugging WebSocket
-You can debug both sides of the websocket communication with VS code to debug the server, and Chrome to debug the client. 
+You can debug both sides of the websocket communication with VS code to debug the server, and Chrome to debug the client.
+# Security
+## Security Terminology
+* Hacking - The process of making a system do something it's not supposed to do.
+* Exploit - Code or input that takes advantage of a programming or configuration flaw.
+* Attack Vector - The method that a hacker employs to penetrate and exploit a system.
+* Attack Surface - The exposed parts of a system that an attacker can access. For example, open ports (22, 443, 80), service endpoints, or user accounts.
+* Attack Payload - The actual code, or data, that a hacker delivers to a system in order to exploit it.
+* Input sanitization - "Cleaning" any input of potentially malicious data.
+* Black box testing - Testing an application without knowledge of the internals of the application.
+* White box testing - Testing an application by with knowledge of the source code and internal infrastructure.
+* Penetration Testing - Attempting to gain access to, or exploit, a system in ways that are not anticipated by the developers.
+* Mitigation - The action taken to remove, or reduce, a threat.
+## Common Hacking Techniques
+* Injection: When an application interacts with a database on the backend, a programmer will often take user input and concatenate it directly into a search query. This allows a hacker can use a specially crafted query to make the database reveal hidden information or even delete the database.
+
+* Cross-Site Scripting (XSS): A category of attacks where an attacker can make malicious code execute on a different user's browser. If successful, an attacker can turn a website that a user trusts, into one that can steal passwords and hijack a user's account.
+
+* Denial of Service: This includes any attack where the main goal is to render any service inaccessible. This can be done by deleting a database using an SQL injection, by sending unexpected data to a service endpoint that causes the program to crash, or by simply making more requests than a server can handle.
+
+* Credential Stuffing: People have a tendency to reuse passwords or variations of passwords on different websites. If a hacker has a user's credentials from a previous website attack, then there is a good chance that they can successfully use those credentials on a different website. A hacker can also try to brute force attack a system by trying every possible combination of password.
+
+* Social engineering - Appealing to a human's desire to help, in order to gain unauthorized access or information.
+## OWASP Top 10
+1. Broken Access Control - when application doesn't properly enforce permissions on users. 
+2. Cryptographic Failures - sensitive data accessible without encryption, weak encryption protocols, or cryptographic protections ignored.
+3. Injection - Allowed to supply data that is then injected into a context where it violates the expected use of the input.
+4. Insecure Design - Flaws unique for individual system. 
+5. Security Misconfiguration - Default passwords, not updating softward, exposing configuration settings, enabling unsecured remote configuration.
+6. Vulnerable and outdated components - longer a application is deployed, more liekly it is that the attack serfuce will increase. Update to mitigate nuewly discovered exploits.
+7. Identification and Authentication Failure - where a hacker can impersonate a user, like guess password, passwords being exposed or stored in application, or stored with weak cryptographic protection. 
+8. Software and data ingtegrity failure - when external software processes and data compromise your application. Be careful with third party stuff.
+9. Security Logging and Monitoring failures - when hackers can delete or alter logs that reveawl the presence of a hacker. 
+10. Server Side Request Forgery - This is when the service makes unintended internal requests to expose internal data or services. 
