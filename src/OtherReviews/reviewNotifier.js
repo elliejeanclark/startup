@@ -35,8 +35,8 @@ class ReviewNotifier {
     }
 
     broadcastEvent(from, event) {
-        const event = new EventMessage(from, event);
-        this.socket.send(JSON.stringify(event));
+        const eventMessage = new EventMessage(from, event);
+        this.socket.send(JSON.stringify(eventMessage));
     }
 
     addHandler(handler) {

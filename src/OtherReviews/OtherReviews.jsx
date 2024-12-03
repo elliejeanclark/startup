@@ -1,5 +1,6 @@
 import React from 'react';
 import './OtherReviews.css';
+import { ReviewEvent, reviewNotifier } from './reviewNotifier';
 
 export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], setDisabledReviews, oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings, getRatedBy }) {
   const [isLoading, setIsLoading] = React.useState(true);
