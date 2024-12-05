@@ -1,4 +1,5 @@
 import React from 'react';
+import './reviewers.css';
 
 import { ReviewEvent, reviewNotifier } from './reviewNotifier';
 
@@ -24,7 +25,7 @@ export function Reviewers(props) {
         for (const [i, event] of events.entries()) {
             let message = 'unknown';
             if (event.type === ReviewEvent.review_written) {
-                message = `${event.from} wrote a review`;
+                message = `${event.from} wrote a review! Refresh this page to check it out!`;
             }
 
             messageArray.push(
@@ -38,8 +39,6 @@ export function Reviewers(props) {
 
     return (
         <div className='reviewers'>
-            Welcome
-            <span className='reviewer-name'>{userName}</span>
             <div id='reviewer-messages'>{createMessageArray()}</div>
         </div>
     );
