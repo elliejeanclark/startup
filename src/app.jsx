@@ -5,6 +5,7 @@ import ProtectedRoute from './ProtectedRoute';
 import { Login } from './login/Login';
 import { MyReviews } from './MyReviews/MyReviews';
 import { OtherReviews } from './OtherReviews/OtherReviews';
+import { ReviewEvent, reviewNotifier } from './OtherReviews/reviewNotifier';
 import './app.css';
 
 function App () {
@@ -148,6 +149,7 @@ function App () {
     if (response.ok) {
       getReviews();
       getRecentReviews();
+      reviewNotifier.broadcastEvent(localStorage.getItem('username'), ReviewEvent.new_review);
     }
   }
 

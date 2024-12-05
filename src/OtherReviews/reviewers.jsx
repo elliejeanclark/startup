@@ -38,7 +38,7 @@ export function Reviewers(props) {
 
     return (
         <div className='reviewers'>
-            Reviewer
+            Welcome
             <span className='reviewer-name'>{userName}</span>
             <div id='reviewer-messages'>{createMessageArray()}</div>
         </div>
