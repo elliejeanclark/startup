@@ -31,7 +31,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
   
   return (
     <main>
-      <Reviewers userName={propTypes.userName} />
+      <Reviewers userName={localStorage.getItem('username')} />
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>
   
       <div id="recent-reviews">

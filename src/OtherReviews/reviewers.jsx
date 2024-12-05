@@ -26,14 +26,13 @@ export function Reviewers(props) {
             if (event.type === ReviewEvent.review_written) {
                 message = `${event.from} wrote a review`;
             }
-        }
 
-        messageArray.push(
-            <div key={i} className='event'>
-                {message}
-            </div>
-        );
-        
+            messageArray.push(
+                <div key={i} className='event'>
+                    {message}
+                </div>
+            );
+        }
         return messageArray;
     }
 
