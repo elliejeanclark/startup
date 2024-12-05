@@ -13,6 +13,8 @@ function App () {
   const [disabledReviews, setDisabledReviews] = React.useState([false, false, false]);
   const [oldRatings, setOldRatings] = React.useState([]);
   const [recentReviews, setRecentReviews] = React.useState(new Array(3).fill({}));
+  const [reviewTitle, setReviewTitle] = React.useState('');
+  const [reviewText, setReviewText] = React.useState('');
 
   const getOldRatings = async () => {
     try {
@@ -73,13 +75,8 @@ function App () {
       });
 
         const text = await response.text();
-        const data = JSON.parse(text); // Parse JSON manually
+        const data = JSON.parse(text);
         return data;
-
-      // if (response.ok) {
-      //   const data = await response.json();
-      //   return data;
-      // }
     } catch (error) {
       console.error('Error getting rated by:', error);
     }
@@ -97,7 +94,7 @@ function App () {
       if (response.ok) {
         const data = await response.json();
         setRecentReviews(data);
-        return data; // Return fetched reviews
+        return data;
       } else {
         console.error('Error:', response.statusText);
       }
@@ -150,6 +147,8 @@ function App () {
       getReviews();
       getRecentReviews();
       reviewNotifier.broadcastEvent(localStorage.getItem('username'), ReviewEvent.new_review);
+      setReviewTitle('');
+      setReviewText('');
     }
   }
 
@@ -185,7 +184,7 @@ function App () {
                       path='/'
                       element={<Login />}
                     />
-                    <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} getReviews={getReviews} />} />} />
+                    <Route path="/MyReviews" element={ <ProtectedRoute  element={<MyReviews reviews={reviews} handleSubmit={handleSubmit} getReviews={getReviews} reviewTitle={reviewTitle} setReviewTitle={setReviewTitle} reviewText={reviewText} setReviewText={setReviewText} />} />} />
                     <Route path="/OtherReviews" element={<ProtectedRoute element={<OtherReviews newRatings={newRatings} setNewRatings={setNewRatings} disabledReviews={disabledReviews} setDisabledReviews={setDisabledReviews} oldRatings={oldRatings} recentReviews={recentReviews} updateRating={updateRating} getRecentReviews={getRecentReviews} getOldRatings={getOldRatings} getRatedBy={getRatedBy} />} />} />
                   </Routes>
 

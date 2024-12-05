@@ -1,7 +1,7 @@
 import React from 'react';
 import './MyReviews.css';
 
-export function MyReviews( { reviews = [], handleSubmit, getReviews}) {
+export function MyReviews( { reviews = [], handleSubmit, getReviews, reviewTitle, setReviewTitle, reviewText, setReviewText}) {
   const [dadJoke, setDadJoke] = React.useState('');
 
   React.useEffect(() => {
@@ -36,8 +36,8 @@ export function MyReviews( { reviews = [], handleSubmit, getReviews}) {
       <p id="generated-dad-joke">{dadJoke || "Getting Dad Joke..."}</p>
         
       <form id="my-review" onSubmit={handleSubmit}>
-        <input type="text" id="title" name="title" placeholder="Title Here" />
-        <textarea id="review" name="review" placeholder="Review Here"></textarea>
+        <input type="text" id="title" name="title" placeholder="Title Here" value={reviewTitle} onChange={(e) => setReviewTitle(e.target.value)} />
+        <textarea id="review" name="review" placeholder="Review Here" value={reviewText} onChange={(e) => setReviewText(e.target.value)}></textarea>
             
         <label id="rating-label">What do you rate this movie/episode out of 10?</label>
         <input type="range" id="overall-rating" name="rating" min="0" max="10" />
