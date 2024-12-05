@@ -4,6 +4,7 @@ const express = require('express');
 const app = express();
 const DB = require('./database.js');
 const { createWebServer } = require('./webServer.js');
+const path = require('path');
 
 const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
@@ -139,8 +140,8 @@ apiRouter.get('/myReviews/get', async (req, res) => {
     res.send(reviews);
 });
 
-app.get('*', (_req, res) => {
-    res.send({ msg: 'Startup Service' });
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 const httpService = app.listen(port, () => {
