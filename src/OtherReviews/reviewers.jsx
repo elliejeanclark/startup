@@ -25,7 +25,7 @@ export function Reviewers(props) {
         for (const [i, event] of events.entries()) {
             let message = 'unknown';
             if (event.type === ReviewEvent.review_written) {
-                message = `${event.from} wrote a review! Refresh this page to check it out!`;
+                message = `${event.from} wrote a review!`;
             }
 
             messageArray.push(

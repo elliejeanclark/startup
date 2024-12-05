@@ -63,3 +63,10 @@ As a note, I have changed which third party I am calling, as well as some of the
 - [x] Application data like users, reviews, and ratings are all saved in my mongoDB.
 - [x] User credentials are retrieved and stored in database.js and index.js
 - [x] You can only actually go to the other reviews and my reivews page if you are logged in
+## Websocket Deliverable
+As a note, I did not fully understand what Websockets were or what they meant when I was planning out my website, so my original plan did not really pan out. Instead for this deliverable I provided realtime updates to other users when someone posts a new review they get a message on the "other reviews" page letting them know someone has written a review.  
+- [x] Backend listens for web socket connections (webServer.js)
+- [x] Frontend makes WebSocket connection (reviewNotifier.js)
+- [x] Data sent over websocket connection (reviewers.jsx)
+- [x] Websocket data displayed in application interface (OtherReviews.jsx)
+- [x] All visible elements are working. My last deliverable had an issue with refreshing, I have since fixed that issue and the website, though simple, is fully functional.
