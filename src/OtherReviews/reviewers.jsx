@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { ReviewEvent, reviewNotifier } from './revieweNotifier';
+import { ReviewEvent, reviewNotifier } from './reviewNotifier';
 
 export function Reviewers(props) {
     const userName = props.userName;

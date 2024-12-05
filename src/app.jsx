@@ -72,7 +72,6 @@ function App () {
       });
 
         const text = await response.text();
-        console.log(text);
         const data = JSON.parse(text); // Parse JSON manually
         return data;
 

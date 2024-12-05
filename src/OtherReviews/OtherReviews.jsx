@@ -1,6 +1,6 @@
 import React from 'react';
 import './OtherReviews.css';
-import { ReviewEvent, reviewNotifier } from './reviewNotifier';
+import { Reviewers } from './reviewers';
 
 export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews = [], setDisabledReviews, oldRatings = [], recentReviews = [], updateRating, getRecentReviews, getOldRatings, getRatedBy }) {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -8,14 +8,12 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
   React.useEffect(() => {
     const fetchData = async () => {
       const reviews = await getRecentReviews(); // Wait for reviews to load
-      console.log(reviews);
       await getOldRatings();
 
       const updatedDisabledReviews = [...disabledReviews];
       const token = localStorage.getItem('token');
 
       for (let i = 0; i < reviews.length; i++) { // Use fetched reviews directly
-        console.log(reviews[i].reviewTitle);
         const ratedBy = await getRatedBy(reviews[i].reviewTitle);
         updatedDisabledReviews[i] = ratedBy.includes(token);
       }
@@ -33,6 +31,7 @@ export function OtherReviews({ newRatings = [], setNewRatings, disabledReviews =
   
   return (
     <main>
+      <Reviewers userName={propTypes.userName} />
       <h1 id="main-page-title">Find Movie Reviews Here!</h1>
   
       <div id="recent-reviews">

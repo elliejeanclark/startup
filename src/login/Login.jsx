@@ -24,6 +24,7 @@ export function Login() {
                 localStorage.setItem('token', data.token);
                 setIsAuthenticated(true);
                 setUsername(username);
+                localStorage.setItem('username', username);
                 setPassword(password);
                 setWelcomeMessage(`Welcome, ${username}!`);
                 setErrorMessage('');
@@ -33,8 +34,6 @@ export function Login() {
         } catch (error) {
             console.error('Error:', error);
         }
-
-        console.log('token:', localStorage.getItem('token'));
     };
 
     const handleLogout = async (event) => {

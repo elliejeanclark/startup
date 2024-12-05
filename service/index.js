@@ -140,7 +140,6 @@ apiRouter.get('/myReviews/get', async (req, res) => {
 });
 
 app.get('*', (_req, res) => {
-    console.log(_req.path);
     res.send({ msg: 'Startup Service' });
 });
 
