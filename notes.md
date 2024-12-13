@@ -1044,3 +1044,50 @@ You can debug both sides of the websocket communication with VS code to debug th
 8. Software and data ingtegrity failure - when external software processes and data compromise your application. Be careful with third party stuff.
 9. Security Logging and Monitoring failures - when hackers can delete or alter logs that reveawl the presence of a hacker. 
 10. Server Side Request Forgery - This is when the service makes unintended internal requests to expose internal data or services. 
+# Notes for Final
+1. What is the default port for HTTP/HTTPS/SSH? -- http uses 80, https uses 443, ssh usses 22.
+2. What does an HTTP status code in the range of 300/400/500 indicate? - 300s rederection (furthere action needed to complete the request), 400s Client errors (bad request from the client), 500s server errors (server failed to fulfill a valid request)
+3. What does the HTTP header content-type allow you to do? - The Content-Type header specifies the media type of the resource being sent. This tells the client how to interpret the data (e.g., JSON, HTML, plain text).
+4. What does a “Secure cookie”/”Http-only cookie”/”Same-site cookie” do?
+    - Secure Cookie: Only sent over HTTPS, not HTTP, adding a layer of security.
+    - HttpOnly Cookie: Inaccessible via JavaScript, helping prevent certain attacks like XSS.
+    - SameSite Cookie: Controls whether the cookie is sent with cross-site requests, helping mitigate CSRF attacks.
+5. Assuming the following Express middleware, what would be the console.log output for an HTTP GET request with a URL path of /api/document? -- use your best judgement
+6. Given the following Express service code: What does the following front end JavaScript that performs a fetch return?
+    - ```fetch('https://example.com/api/document')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+            })
+            .catch(error => {
+            console.error('Error:', error);
+        });```
+7. Given the following MongoDB query, select all of the matching documents {name:Mark} - `db.collection.find({ yourCriteriaHere })`
+8. How should user passwords be stored?
+    - Hashing: Use a strong hashing algorithm like bcrypt.
+    - Salting: Add a unique salt to each password before hashing.
+    - Iterative Hashing: Use multiple iterations to slow down hash computation.
+9. Assuming the following node.js websocket code in the back end, and the following front end websocket code, what will the front end log to the console? -- use your best judgement
+10. What is the websocket protocol intended to provide? - The WebSocket protocol provides full-duplex communication channels over a single TCP connection. It's designed for real-time data transfer, allowing server and client to send data to each other at any time with low latency.
+11. What do the following acronyms stand for? JSX, JS, AWS, NPM, NVM
+    - JSX: JavaScript XML
+    - JS: JavaScript
+    - AWS: Amazon Web Services
+    - NPM: Node Package Manager
+    - NVM: Node Version Manager
+12. Assuming an HTML document with a body element. What text content will the following React component generate?  The react component will use parameters. ```function Greeting(props) { return <h1>Hello, {props.name}!</h1>;} <Greeting name="Alice" />```
+13. Given a set of React components that include each other, what will be generated -- best judgement
+14. What does a React component with React.useState do? - React.useState is a Hook that lets you add state to functional components. It returns an array with two elements: the current state value and a function to update it. 
+15. What are React Hooks used for? - React Hooks are used to add state and lifecycle features to functional components. They allow functional components to manage state, perform side effects, and access context without using class components. Each hook has a specific purpose, like useState for state or useEffect for side effects. 
+16. What does the State Hook/Context Hook/Ref Hook/Effect Hook/Performance Hook do?
+    - State Hook (useState): Adds state to functional components.
+    - Context Hook (useContext): Accesses context values without wrapping components with Context.Consumer.
+    - Ref Hook (useRef): Holds mutable values that persist across renders, often for DOM manipulation.
+    - Effect Hook (useEffect): Performs side effects in function components, like data fetching or subscriptions.
+    - Performance Hook: Not a specific hook, but useMemo and useCallback optimize performance by memoizing values or functions.
+17. Given React Router code, select statements that are true. -- best judgement
+18. What does the package.json file do? - package.json defines a project's metadata and dependencies in Node.js projects. It includes information like the project name, version, scripts, and lists of dependencies and devDependencies.
+19. What does the fetch function do? - The fetch function is used to make network requests in JavaScript. It returns a Promise that resolves to a Response object, allowing you to access the response's data, status, and headers. Typically, it's used for HTTP requests.
+20. What does node.js do? - Node.js is a runtime environment that allows you to run JavaScript on the server side. It's built on Chrome's V8 JavaScript engine and is used to create scalable, event-driven, and non-blocking I/O applications, like web servers and APIs.
+21. What does pm2 do? - PM2 is a process manager for Node.js applications. It helps manage application processes, offering features like automatic restarts, load balancing, and monitoring. It's useful for ensuring applications run smoothly in production. 
+22. What does Vite do? - Vite is a fast development build tool for modern web projects. It provides a faster development experience with hot module replacement (HMR) and quick cold starts. Unlike traditional bundlers, Vite uses native ES modules (import and export syntax statements).
